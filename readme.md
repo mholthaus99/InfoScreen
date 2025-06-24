@@ -8,7 +8,10 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
 - DHT11 temperature and humidity readings
 - Remote control via infrared remote
 
-![Description of image](assets/front.jpg)
+<p align="center">
+  <img src="assets/front.jpg" width="300"/>
+</p>
+
 
 
 ## 🧰 Tech Stack
