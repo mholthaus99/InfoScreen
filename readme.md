@@ -33,6 +33,7 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
 
 ## TODO
 
+- Add location and news url to secrets.h
 - Local server to update messages remotely
 - Pixel art / fun animations
 - Custom character LCD handling
