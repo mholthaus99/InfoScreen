@@ -1,0 +1,87 @@
+\doxysection{src/controller.cpp File Reference}
+\hypertarget{controller_8cpp}{}\label{controller_8cpp}\index{src/controller.cpp@{src/controller.cpp}}
+{\ttfamily \#include "{}mode\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}controller.\+h"{}}\newline
+{\ttfamily \#include "{}network.\+h"{}}\newline
+{\ttfamily \#include "{}time\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}ir\+\_\+receiver.\+h"{}}\newline
+{\ttfamily \#include "{}dht\+\_\+sensor.\+h"{}}\newline
+{\ttfamily \#include "{}weather.\+h"{}}\newline
+{\ttfamily \#include "{}ir\+\_\+handlers.\+h"{}}\newline
+{\ttfamily \#include "{}rss\+\_\+reader.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{controller_8cpp_a7cf6bd39a002a062bfb8a3cca8a13abf}{render\+Current\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Renders the current display mode by calling the appropriate display function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{controller_8cpp_a8c6e58bb7e2a0dcf8537fc940ebfa385}{app\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the application and all hardware/software subsystems. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{controller_8cpp_aaaf55e8e25f9ca2bf3f3ab10816e7c3c}{showing\+Climate}} = 0
+\begin{DoxyCompactList}\small\item\em Tracks whether the default screen is showing climate (1) or weather (0). \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{controller_8cpp_ad6bb5e2a7a256749097eda81738523a9}{last\+Default\+Toggle}} = 0
+\begin{DoxyCompactList}\small\item\em Timestamp of the last toggle between climate and weather on the default screen. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{controller_8cpp_a632f7bf8271500765835467e2dbe17af}{time\+Of\+Last\+Title\+Change}} = 0
+\begin{DoxyCompactList}\small\item\em Timestamp of the last change to the title on the news display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{controller_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{controller_8cpp_a8c6e58bb7e2a0dcf8537fc940ebfa385}\index{controller.cpp@{controller.cpp}!app\_init@{app\_init}}
+\index{app\_init@{app\_init}!controller.cpp@{controller.cpp}}
+\doxysubsubsection{\texorpdfstring{app\_init()}{app\_init()}}
+{\footnotesize\ttfamily \label{controller_8cpp_a8c6e58bb7e2a0dcf8537fc940ebfa385} 
+void app\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the application and all hardware/software subsystems. 
+
+This function should be called in \doxylink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup()}. It initializes serial, LCD, Wi\+Fi, time, IR, DHT sensor, and weather modules, and prints status messages to the display. \Hypertarget{controller_8cpp_a7cf6bd39a002a062bfb8a3cca8a13abf}\index{controller.cpp@{controller.cpp}!renderCurrentMode@{renderCurrentMode}}
+\index{renderCurrentMode@{renderCurrentMode}!controller.cpp@{controller.cpp}}
+\doxysubsubsection{\texorpdfstring{renderCurrentMode()}{renderCurrentMode()}}
+{\footnotesize\ttfamily \label{controller_8cpp_a7cf6bd39a002a062bfb8a3cca8a13abf} 
+void render\+Current\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Renders the current display mode by calling the appropriate display function. 
+
+
+
+\label{doc-var-members}
+\Hypertarget{controller_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{controller_8cpp_ad6bb5e2a7a256749097eda81738523a9}\index{controller.cpp@{controller.cpp}!lastDefaultToggle@{lastDefaultToggle}}
+\index{lastDefaultToggle@{lastDefaultToggle}!controller.cpp@{controller.cpp}}
+\doxysubsubsection{\texorpdfstring{lastDefaultToggle}{lastDefaultToggle}}
+{\footnotesize\ttfamily \label{controller_8cpp_ad6bb5e2a7a256749097eda81738523a9} 
+unsigned long last\+Default\+Toggle = 0}
+
+
+
+Timestamp of the last toggle between climate and weather on the default screen. 
+
+\Hypertarget{controller_8cpp_aaaf55e8e25f9ca2bf3f3ab10816e7c3c}\index{controller.cpp@{controller.cpp}!showingClimate@{showingClimate}}
+\index{showingClimate@{showingClimate}!controller.cpp@{controller.cpp}}
+\doxysubsubsection{\texorpdfstring{showingClimate}{showingClimate}}
+{\footnotesize\ttfamily \label{controller_8cpp_aaaf55e8e25f9ca2bf3f3ab10816e7c3c} 
+int showing\+Climate = 0}
+
+
+
+Tracks whether the default screen is showing climate (1) or weather (0). 
+
+\Hypertarget{controller_8cpp_a632f7bf8271500765835467e2dbe17af}\index{controller.cpp@{controller.cpp}!timeOfLastTitleChange@{timeOfLastTitleChange}}
+\index{timeOfLastTitleChange@{timeOfLastTitleChange}!controller.cpp@{controller.cpp}}
+\doxysubsubsection{\texorpdfstring{timeOfLastTitleChange}{timeOfLastTitleChange}}
+{\footnotesize\ttfamily \label{controller_8cpp_a632f7bf8271500765835467e2dbe17af} 
+unsigned long time\+Of\+Last\+Title\+Change = 0}
+
+
+
+Timestamp of the last change to the title on the news display. 
+

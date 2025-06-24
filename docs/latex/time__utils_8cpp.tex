@@ -1,0 +1,124 @@
+\doxysection{src/time\+\_\+utils.cpp File Reference}
+\hypertarget{time__utils_8cpp}{}\label{time__utils_8cpp}\index{src/time\_utils.cpp@{src/time\_utils.cpp}}
+
+
+Time synchronization and formatting utilities using NTP.  
+
+
+{\ttfamily \#include "{}time\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{time__utils_8cpp_a2628481180bb5d52def509e29a167f2b}{time\+\_\+fetch\+NTP}} ()
+\begin{DoxyCompactList}\small\item\em Synchronizes system time using NTP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{time__utils_8cpp_a04352ea8ee003992baa1d4e993b50dae}{time\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the time system by performing an initial NTP synchronization. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{time__utils_8cpp_a48d87ade571e5f820fe4bc0ef85b5e10}{time\+\_\+getprint}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current formatted time as a C-\/style string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{time__utils_8cpp_a6bd950625db0f240acc63a9cb41873f6}{ntp\+Server}} = "{}time.\+nist.\+gov"{}
+\begin{DoxyCompactList}\small\item\em NTP server used for time synchronization. \end{DoxyCompactList}\item 
+const long \mbox{\hyperlink{time__utils_8cpp_a6c7db28543c3b2ef692f8dcb63964f2b}{gmt\+Offset\+\_\+sec}} = -\/6 \texorpdfstring{$\ast$}{*} 3600
+\begin{DoxyCompactList}\small\item\em GMT offset in seconds (Central Standard Time). \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{time__utils_8cpp_abcecff6206d272c30174ca268e2e6f0a}{daylight\+Offset\+\_\+sec}} = 3600
+\begin{DoxyCompactList}\small\item\em Daylight Saving Time offset in seconds. \end{DoxyCompactList}\item 
+const unsigned long \mbox{\hyperlink{time__utils_8cpp_a0782faac4a4c3923497912ace46d0f87}{SYNC\+\_\+\+INTERVAL}} = 10\+UL \texorpdfstring{$\ast$}{*} 60\+UL \texorpdfstring{$\ast$}{*} 1000\+UL
+\begin{DoxyCompactList}\small\item\em Interval (in ms) to sync time from NTP server (10 minutes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time synchronization and formatting utilities using NTP. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{time__utils_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{time__utils_8cpp_a2628481180bb5d52def509e29a167f2b}\index{time\_utils.cpp@{time\_utils.cpp}!time\_fetchNTP@{time\_fetchNTP}}
+\index{time\_fetchNTP@{time\_fetchNTP}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{time\_fetchNTP()}{time\_fetchNTP()}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a2628481180bb5d52def509e29a167f2b} 
+bool time\+\_\+fetch\+NTP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Synchronizes system time using NTP. 
+
+This function configures time using a specified NTP server, waits for a valid time response (with retries), and updates internal time tracking variables.
+
+\begin{DoxyReturn}{Returns}
+true if synchronization was successful, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{time__utils_8cpp_a48d87ade571e5f820fe4bc0ef85b5e10}\index{time\_utils.cpp@{time\_utils.cpp}!time\_getprint@{time\_getprint}}
+\index{time\_getprint@{time\_getprint}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{time\_getprint()}{time\_getprint()}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a48d87ade571e5f820fe4bc0ef85b5e10} 
+const char \texorpdfstring{$\ast$}{*} time\+\_\+getprint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the current formatted time as a C-\/style string. 
+
+Automatically checks if an NTP resync is needed based on the sync interval. The time is computed by adding the elapsed time (in seconds) since the last sync to the base time.
+
+\begin{DoxyReturn}{Returns}
+A pointer to a static C-\/style string in the format "{}\+HH\+:\+MM\+:\+SS AM/\+PM"{}, or "{}\+Time error"{}. 
+\end{DoxyReturn}
+\Hypertarget{time__utils_8cpp_a04352ea8ee003992baa1d4e993b50dae}\index{time\_utils.cpp@{time\_utils.cpp}!time\_init@{time\_init}}
+\index{time\_init@{time\_init}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{time\_init()}{time\_init()}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a04352ea8ee003992baa1d4e993b50dae} 
+void time\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up the time system by performing an initial NTP synchronization. 
+
+
+
+\label{doc-var-members}
+\Hypertarget{time__utils_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{time__utils_8cpp_abcecff6206d272c30174ca268e2e6f0a}\index{time\_utils.cpp@{time\_utils.cpp}!daylightOffset\_sec@{daylightOffset\_sec}}
+\index{daylightOffset\_sec@{daylightOffset\_sec}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{daylightOffset\_sec}{daylightOffset\_sec}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_abcecff6206d272c30174ca268e2e6f0a} 
+const int daylight\+Offset\+\_\+sec = 3600}
+
+
+
+Daylight Saving Time offset in seconds. 
+
+\Hypertarget{time__utils_8cpp_a6c7db28543c3b2ef692f8dcb63964f2b}\index{time\_utils.cpp@{time\_utils.cpp}!gmtOffset\_sec@{gmtOffset\_sec}}
+\index{gmtOffset\_sec@{gmtOffset\_sec}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{gmtOffset\_sec}{gmtOffset\_sec}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a6c7db28543c3b2ef692f8dcb63964f2b} 
+const long gmt\+Offset\+\_\+sec = -\/6 \texorpdfstring{$\ast$}{*} 3600}
+
+
+
+GMT offset in seconds (Central Standard Time). 
+
+\Hypertarget{time__utils_8cpp_a6bd950625db0f240acc63a9cb41873f6}\index{time\_utils.cpp@{time\_utils.cpp}!ntpServer@{ntpServer}}
+\index{ntpServer@{ntpServer}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{ntpServer}{ntpServer}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a6bd950625db0f240acc63a9cb41873f6} 
+const char\texorpdfstring{$\ast$}{*} ntp\+Server = "{}time.\+nist.\+gov"{}}
+
+
+
+NTP server used for time synchronization. 
+
+\Hypertarget{time__utils_8cpp_a0782faac4a4c3923497912ace46d0f87}\index{time\_utils.cpp@{time\_utils.cpp}!SYNC\_INTERVAL@{SYNC\_INTERVAL}}
+\index{SYNC\_INTERVAL@{SYNC\_INTERVAL}!time\_utils.cpp@{time\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{SYNC\_INTERVAL}{SYNC\_INTERVAL}}
+{\footnotesize\ttfamily \label{time__utils_8cpp_a0782faac4a4c3923497912ace46d0f87} 
+const unsigned long SYNC\+\_\+\+INTERVAL = 10\+UL \texorpdfstring{$\ast$}{*} 60\+UL \texorpdfstring{$\ast$}{*} 1000\+UL}
+
+
+
+Interval (in ms) to sync time from NTP server (10 minutes). 
+

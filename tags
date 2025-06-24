@@ -1,0 +1,97 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DHTPIN	src/dht_sensor.cpp	/^constexpr uint8_t DHTPIN = D6;  \/\/ Define pin internally$/;"	v
+DHTTYPE	src/dht_sensor.cpp	/^#define DHTTYPE /;"	d	file:
+DIGIT_CODES	src/ir_receiver.cpp	/^static const uint32_t DIGIT_CODES[] = {$/;"	v	file:
+FUNC_BUTTON_CODE	src/ir_receiver.cpp	/^static const uint32_t FUNC_BUTTON_CODE = 0x00FFE21D;$/;"	v	file:
+IR_RECV_PIN	src/ir_receiver.cpp	/^constexpr uint16_t IR_RECV_PIN = D5;$/;"	v
+ModeManager::flagForUpdate	src/mode_manager.cpp	/^void ModeManager::flagForUpdate(DisplayMode mode) {$/;"	f	class:ModeManager	signature:(DisplayMode mode)
+ModeManager::markUpdated	src/mode_manager.cpp	/^void ModeManager::markUpdated() {$/;"	f	class:ModeManager	signature:()
+ModeManager::shouldUpdate	src/mode_manager.cpp	/^bool ModeManager::shouldUpdate(DisplayMode mode) {$/;"	f	class:ModeManager	signature:(DisplayMode mode)
+POWER_BUTTON_CODE	src/ir_receiver.cpp	/^static const uint32_t POWER_BUTTON_CODE = 0x00FFA25D;$/;"	v	file:
+SYNC_INTERVAL	src/time_utils.cpp	/^const unsigned long SYNC_INTERVAL = 10UL * 60UL * 1000UL;$/;"	v
+WEATHER_UPDATE_INTERVAL	src/weather.cpp	/^const unsigned long WEATHER_UPDATE_INTERVAL = 10UL * 60UL * 1000UL; \/\/ 10 minutes$/;"	v
+app_init	src/controller.cpp	/^void app_init() {$/;"	f	signature:()
+baseMillis	src/time_utils.cpp	/^static unsigned long baseMillis = 0;$/;"	v	file:
+baseTime	src/time_utils.cpp	/^static time_t baseTime = 0;$/;"	v	file:
+cachedDesc	src/weather.cpp	/^static String cachedDesc = "Unavailable";$/;"	v	file:
+cachedLocation	src/weather.cpp	/^static String cachedLocation = "Unknown";$/;"	v	file:
+cachedTemp	src/weather.cpp	/^static String cachedTemp = "--F";$/;"	v	file:
+currentMode	src/mode_manager.cpp	/^DisplayMode currentMode = MODE_DEFAULT;$/;"	v
+cursorLine	src/display.cpp	/^static int cursorLine = 0;$/;"	v	file:
+daylightOffset_sec	src/time_utils.cpp	/^const int daylightOffset_sec = 3600;$/;"	v
+dht	src/dht_sensor.cpp	/^static DHT dht(DHTPIN, DHTTYPE);  \/\/ Fully initialize here$/;"	p	file:	signature:(DHTPIN, DHTTYPE)
+dhtBuf	src/dht_sensor.cpp	/^static char dhtBuf[21];  \/\/ Static buffer to hold the formatted string$/;"	v	file:
+dhtHumBuf	src/dht_sensor.cpp	/^char dhtHumBuf[16];$/;"	v
+dhtTempBuf	src/dht_sensor.cpp	/^char dhtTempBuf[16];$/;"	v
+dht_getHumidity	src/dht_sensor.cpp	/^float dht_getHumidity() {$/;"	f	signature:()
+dht_getTemperature	src/dht_sensor.cpp	/^float dht_getTemperature() {$/;"	f	signature:()
+dht_init	src/dht_sensor.cpp	/^void dht_init() {$/;"	f	signature:()
+displayClimate	src/controller.cpp	/^static void displayClimate();$/;"	p	file:	signature:()
+displayClimate	src/controller.cpp	/^void displayClimate()$/;"	f	signature:()
+displayDefault	src/controller.cpp	/^static void displayDefault();$/;"	p	file:	signature:()
+displayDefault	src/controller.cpp	/^void displayDefault()$/;"	f	signature:()
+displayDeviceInfo	src/controller.cpp	/^static void displayDeviceInfo();$/;"	p	file:	signature:()
+displayDeviceInfo	src/controller.cpp	/^void displayDeviceInfo()$/;"	f	signature:()
+displayFuncMenu	src/controller.cpp	/^static void displayFuncMenu();$/;"	p	file:	signature:()
+displayFuncMenu	src/controller.cpp	/^void displayFuncMenu()$/;"	f	signature:()
+displayMgr	src/mode_manager.cpp	/^ModeManager displayMgr;$/;"	v
+displayWeather	src/controller.cpp	/^static void displayWeather();$/;"	p	file:	signature:()
+displayWeather	src/controller.cpp	/^void displayWeather()$/;"	f	signature:()
+flagForUpdate	src/mode_manager.cpp	/^void ModeManager::flagForUpdate(DisplayMode mode) {$/;"	f	class:ModeManager	signature:(DisplayMode mode)
+getprint_dht_summary	src/dht_sensor.cpp	/^const char* getprint_dht_summary() {$/;"	f	signature:()
+getprint_dht_temperature	src/dht_sensor.cpp	/^const char* getprint_dht_temperature() {$/;"	f	signature:()
+getprint_humidity	src/dht_sensor.cpp	/^const char* getprint_humidity() {$/;"	f	signature:()
+getprint_location	src/weather.cpp	/^const char* getprint_location()$/;"	f	signature:()
+getprint_temperature	src/weather.cpp	/^const char* getprint_temperature()$/;"	f	signature:()
+getprint_time_default	src/time_utils.cpp	/^const char* getprint_time_default()$/;"	f	signature:()
+getprint_weather_description	src/weather.cpp	/^const char* getprint_weather_description()$/;"	f	signature:()
+getprint_weather_summary	src/weather.cpp	/^const char* getprint_weather_summary()$/;"	f	signature:()
+getprint_wifi_dns	src/network.cpp	/^const char *getprint_wifi_dns()$/;"	f	signature:()
+getprint_wifi_gateway	src/network.cpp	/^const char *getprint_wifi_gateway()$/;"	f	signature:()
+getprint_wifi_ip	src/network.cpp	/^const char *getprint_wifi_ip()$/;"	f	signature:()
+getprint_wifi_password	src/network.cpp	/^const char *getprint_wifi_password()$/;"	f	signature:()
+getprint_wifi_ssid	src/network.cpp	/^const char *getprint_wifi_ssid()$/;"	f	signature:()
+getprint_wifi_subnet	src/network.cpp	/^const char *getprint_wifi_subnet()$/;"	f	signature:()
+gmtOffset_sec	src/time_utils.cpp	/^const long gmtOffset_sec = -6 * 3600;$/;"	v
+handleCode	src/ir_receiver.cpp	/^static void handleCode(uint32_t code)$/;"	f	file:	signature:(uint32_t code)
+ir_init	src/ir_receiver.cpp	/^void ir_init()$/;"	f	signature:()
+ir_poll	src/ir_receiver.cpp	/^void ir_poll()$/;"	f	signature:()
+ir_registerCallbacks	src/ir_receiver.cpp	/^void ir_registerCallbacks(const IRCallbacks& callbacks)$/;"	f	signature:(const IRCallbacks& callbacks)
+irhandle_digit	src/ir_handlers.cpp	/^ void irhandle_digit(int digit) {$/;"	f	signature:(int digit)
+irhandle_func	src/ir_handlers.cpp	/^ void irhandle_func() {$/;"	f	signature:()
+irhandle_power	src/ir_handlers.cpp	/^ void irhandle_power() {$/;"	f	signature:()
+irrecv	src/ir_receiver.cpp	/^static IRrecv irrecv(IR_RECV_PIN);$/;"	p	file:	signature:(IR_RECV_PIN)
+lastDefaultToggle	src/controller.cpp	/^unsigned long lastDefaultToggle = 0;$/;"	v
+lastSyncMillis	src/time_utils.cpp	/^static unsigned long lastSyncMillis = 0;$/;"	v	file:
+lastWeatherFetchMillis	src/weather.cpp	/^static unsigned long lastWeatherFetchMillis = 0;$/;"	v	file:
+lcd_clear	src/display.cpp	/^void lcd_clear()$/;"	f	signature:()
+lcd_init	src/display.cpp	/^void lcd_init()$/;"	f	signature:()
+lcd_toggleBacklight	src/display.cpp	/^void lcd_toggleBacklight()$/;"	f	signature:()
+loop	src/main.cpp	/^void loop() {$/;"	f	signature:()
+markUpdated	src/mode_manager.cpp	/^void ModeManager::markUpdated() {$/;"	f	class:ModeManager	signature:()
+ntpServer	src/time_utils.cpp	/^const char *ntpServer = "time.nist.gov";$/;"	v
+password	src/network.cpp	/^const char *password = WIFI_PASS;$/;"	v
+print	src/display.cpp	/^void print(const char *message)$/;"	f	signature:(const char *message)
+printAt	src/display.cpp	/^void printAt(const char *message, byte line)$/;"	f	signature:(const char *message, byte line)
+printAt	src/display.cpp	/^void printAt(const char *message, byte line, byte col)$/;"	f	signature:(const char *message, byte line, byte col)
+printMultiLine	src/display.cpp	/^void printMultiLine(const char *message)$/;"	f	signature:(const char *message)
+registeredCallbacks	src/ir_receiver.cpp	/^static IRCallbacks registeredCallbacks = {nullptr, nullptr, nullptr};$/;"	v	file:
+renderCurrentMode	src/controller.cpp	/^void renderCurrentMode() {$/;"	f	signature:()
+results	src/ir_receiver.cpp	/^static decode_results results;$/;"	v	file:
+setMode	src/mode_manager.cpp	/^void setMode(DisplayMode mode) {$/;"	f	signature:(DisplayMode mode)
+setup	src/main.cpp	/^void setup() {$/;"	f	signature:()
+shouldUpdate	src/mode_manager.cpp	/^bool ModeManager::shouldUpdate(DisplayMode mode) {$/;"	f	class:ModeManager	signature:(DisplayMode mode)
+showingClimate	src/controller.cpp	/^int showingClimate = 0;$/;"	v
+ssid	src/network.cpp	/^const char *ssid = WIFI_SSID;$/;"	v
+syncTimeFromNTP	src/time_utils.cpp	/^bool syncTimeFromNTP()$/;"	f	signature:()
+time_init	src/time_utils.cpp	/^void time_init()$/;"	f	signature:()
+weatherSummary	src/weather.cpp	/^static String weatherSummary = "Weather data not yet fetched";$/;"	v	file:
+weather_fetch	src/weather.cpp	/^bool weather_fetch()$/;"	f	signature:()
+weather_init	src/weather.cpp	/^void weather_init()$/;"	f	signature:()
+wifi_connect	src/network.cpp	/^void wifi_connect(void (*statusCallback)(const char *))$/;"	f	signature:(void (*statusCallback)(const char *))
+wifi_isConnected	src/network.cpp	/^bool wifi_isConnected()$/;"	f	signature:()

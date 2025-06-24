@@ -1,0 +1,135 @@
+\doxysection{src/ir\+\_\+handlers.cpp File Reference}
+\hypertarget{ir__handlers_8cpp}{}\label{ir__handlers_8cpp}\index{src/ir\_handlers.cpp@{src/ir\_handlers.cpp}}
+{\ttfamily \#include "{}ir\+\_\+handlers.\+h"{}}\newline
+{\ttfamily \#include "{}mode\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_af458013126cd6262140bdbaee73ef7ed}{irhandle\+\_\+power}} ()
+\begin{DoxyCompactList}\small\item\em Handler for the IR power button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a0df832bd44a68ee898af2755b4523e7c}{irhandle\+\_\+digit}} (int digit)
+\begin{DoxyCompactList}\small\item\em Handler for IR digit button presses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_ab19eaf19f7eabee962b4d3cd620721c1}{irhandle\+\_\+skip}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a01deb756ae8a5e2c042ddd890859c635}{irhandle\+\_\+back}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a69a700509559ea4972b543716c199772}{irhandle\+\_\+volume\+\_\+up}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a821ef31c60eba8ea51d1a45476667efb}{irhandle\+\_\+volume\+\_\+down}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a2f4b0d57a7c883b0e0b10ce93b85817f}{irhandle\+\_\+channel\+\_\+up}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a5856816f8f862823ca6eaaa6dea519c9}{irhandle\+\_\+channel\+\_\+down}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a2a374c9704aa83a521fdc56460f67f1f}{irhandle\+\_\+play\+\_\+pause}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a4f5ef90afa9bf080aeb9440070a7dccb}{irhandle\+\_\+eq}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_a698cbb12b866b5551387528b3c1cd3b8}{irhandle\+\_\+repeat}} ()
+\item 
+void \mbox{\hyperlink{ir__handlers_8cpp_adf6e2a266ce635776151423b20ce7736}{irhandle\+\_\+func}} ()
+\begin{DoxyCompactList}\small\item\em Handler for the IR function button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{ir__handlers_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ir__handlers_8cpp_a01deb756ae8a5e2c042ddd890859c635}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_back@{irhandle\_back}}
+\index{irhandle\_back@{irhandle\_back}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_back()}{irhandle\_back()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a01deb756ae8a5e2c042ddd890859c635} 
+void irhandle\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_a5856816f8f862823ca6eaaa6dea519c9}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_channel\_down@{irhandle\_channel\_down}}
+\index{irhandle\_channel\_down@{irhandle\_channel\_down}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_channel\_down()}{irhandle\_channel\_down()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a5856816f8f862823ca6eaaa6dea519c9} 
+void irhandle\+\_\+channel\+\_\+down (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_a2f4b0d57a7c883b0e0b10ce93b85817f}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_channel\_up@{irhandle\_channel\_up}}
+\index{irhandle\_channel\_up@{irhandle\_channel\_up}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_channel\_up()}{irhandle\_channel\_up()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a2f4b0d57a7c883b0e0b10ce93b85817f} 
+void irhandle\+\_\+channel\+\_\+up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_a0df832bd44a68ee898af2755b4523e7c}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_digit@{irhandle\_digit}}
+\index{irhandle\_digit@{irhandle\_digit}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_digit()}{irhandle\_digit()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a0df832bd44a68ee898af2755b4523e7c} 
+void irhandle\+\_\+digit (\begin{DoxyParamCaption}\item[{int}]{digit}{}\end{DoxyParamCaption})}
+
+
+
+Handler for IR digit button presses. 
+
+If the current mode is MODE\+\_\+\+FUNC, performs an action based on the digit\+:
+\begin{DoxyItemize}
+\item 1\+: Toggle backlight and return to default mode.
+\item 2\+: Switch to device info mode.
+\item 3\+: Switch to climate mode.
+\item 4\+: Return to default mode. else does nothing
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em digit} & The digit button pressed (1-\/4). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ir__handlers_8cpp_a4f5ef90afa9bf080aeb9440070a7dccb}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_eq@{irhandle\_eq}}
+\index{irhandle\_eq@{irhandle\_eq}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_eq()}{irhandle\_eq()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a4f5ef90afa9bf080aeb9440070a7dccb} 
+void irhandle\+\_\+eq (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_adf6e2a266ce635776151423b20ce7736}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_func@{irhandle\_func}}
+\index{irhandle\_func@{irhandle\_func}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_func()}{irhandle\_func()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_adf6e2a266ce635776151423b20ce7736} 
+void irhandle\+\_\+func (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handler for the IR function button. 
+
+Switches the display to the function menu mode. \Hypertarget{ir__handlers_8cpp_a2a374c9704aa83a521fdc56460f67f1f}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_play\_pause@{irhandle\_play\_pause}}
+\index{irhandle\_play\_pause@{irhandle\_play\_pause}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_play\_pause()}{irhandle\_play\_pause()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a2a374c9704aa83a521fdc56460f67f1f} 
+void irhandle\+\_\+play\+\_\+pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_af458013126cd6262140bdbaee73ef7ed}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_power@{irhandle\_power}}
+\index{irhandle\_power@{irhandle\_power}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_power()}{irhandle\_power()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_af458013126cd6262140bdbaee73ef7ed} 
+void irhandle\+\_\+power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handler for the IR power button. 
+
+Toggles the LCD backlight and prints a message to the display and serial. \Hypertarget{ir__handlers_8cpp_a698cbb12b866b5551387528b3c1cd3b8}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_repeat@{irhandle\_repeat}}
+\index{irhandle\_repeat@{irhandle\_repeat}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_repeat()}{irhandle\_repeat()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a698cbb12b866b5551387528b3c1cd3b8} 
+void irhandle\+\_\+repeat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_ab19eaf19f7eabee962b4d3cd620721c1}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_skip@{irhandle\_skip}}
+\index{irhandle\_skip@{irhandle\_skip}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_skip()}{irhandle\_skip()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_ab19eaf19f7eabee962b4d3cd620721c1} 
+void irhandle\+\_\+skip (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_a821ef31c60eba8ea51d1a45476667efb}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_volume\_down@{irhandle\_volume\_down}}
+\index{irhandle\_volume\_down@{irhandle\_volume\_down}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_volume\_down()}{irhandle\_volume\_down()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a821ef31c60eba8ea51d1a45476667efb} 
+void irhandle\+\_\+volume\+\_\+down (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ir__handlers_8cpp_a69a700509559ea4972b543716c199772}\index{ir\_handlers.cpp@{ir\_handlers.cpp}!irhandle\_volume\_up@{irhandle\_volume\_up}}
+\index{irhandle\_volume\_up@{irhandle\_volume\_up}!ir\_handlers.cpp@{ir\_handlers.cpp}}
+\doxysubsubsection{\texorpdfstring{irhandle\_volume\_up()}{irhandle\_volume\_up()}}
+{\footnotesize\ttfamily \label{ir__handlers_8cpp_a69a700509559ea4972b543716c199772} 
+void irhandle\+\_\+volume\+\_\+up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
