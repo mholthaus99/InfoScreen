@@ -2,11 +2,14 @@
 
 This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and custom messages.
 
-
+<br>
 <p align="center">
   <img src="assets/front.jpg" width="600"/>
 </p>
 
+<br>
+<br>
+<br>
 ## 🔧 Features
 - Weather display using a public API
 - Local news via RSS
