@@ -6,8 +6,8 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
 ![Front view rendered](assets/body_render.jpg) -->
 
 <div style="display: flex; gap: 10px; align-items: flex-start;">
-  <img src="assets/front.jpg" alt="Image 1" style="height: 300px; object-fit: contain;">
-  <img src="assets/body_render.jpg" alt="Image 2" style="height: 300px; object-fit: contain;">
+  <img src="assets/front.jpg" alt="Image 1" style="height: 200px; object-fit: contain;">
+  <img src="assets/body_render.jpg" alt="Image 2" style="height: 200px; object-fit: contain;">
 </div>
 
 
