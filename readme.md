@@ -1,22 +1,16 @@
 # ESP8266 LCD Dashboard
 
-This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and custom messages.
+This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and much more.
 
 ![Front view of ESP8266 LCD Dashboard](assets/front.jpg)
 
 ## 🔧 Features
 
-- Weather display using a public API
+- Time from NIST
+- Weather display using a OpenWeatherAPI
 - Local news via RSS
 - DHT11 temperature and humidity readings
 - Remote control via infrared remote
-
-## 🧰 Tech Stack
-
-- C++ with Arduino framework
-- ESP8266 WiFi + SPI LCD
-- DHT sensor
-- IR remote
 
 ## Hardware Setup
 
@@ -27,22 +21,15 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
 
 ## External Libraries
 
-#### LCD I2C
-
-- duinowitchery/hd44780@^1.3.2
-
-#### IR Reciever
-
-- crankyoldgit/IRremoteESP8266@^2.8.6
-
-#### DHT11
-
-- adafruit/Adafruit Unified Sensor @ ^1.1.15
-- adafruit/DHT sensor library @ ^1.4.6
-
-#### Weather and News parsing
-
-- bblanchon/ArduinoJson @ ^7.4.2
+- LCD I2C
+  - duinowitchery/hd44780@^1.3.2
+- IR Reciever
+  - crankyoldgit/IRremoteESP8266@^2.8.6
+- DHT11
+  - adafruit/Adafruit Unified Sensor @ ^1.1.15
+  - adafruit/DHT sensor library @ ^1.4.6
+- Weather and News parsing
+  - bblanchon/ArduinoJson @ ^7.4.2
 
 ## TODO
 
