@@ -9,7 +9,7 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
 - Remote control via infrared remote
 
 <p align="center">
-  <img src="assets/front.jpg" width="300"/>
+  <img src="assets/front.jpg" width="600"/>
 </p>
 
 
