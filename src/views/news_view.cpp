@@ -1,42 +1,35 @@
 #include "news_view.h"
+
 #include "../network/rss_reader.h"
-#include "../system/display.h"
+#include "../system/display_instance.h"
 #include "../system/view_controller.h"
 
-namespace Views
-{
+namespace Views {
 
-    void NewsView::render()
-    {
-        if (millis() - timeOfLastTitleChange >= 5000)
-        {
-            const char *headline = RSS::getNextHeadline();
+  void NewsView::render() {
+    if (millis() - timeOfLastTitleChange >= 5000) {
+      const char* headline = RSS::getNextHeadline();
 
-            if (headline && headline[0] != '\0')
-            {
-                LCD::printWrapped(headline);
-            }
-            else
-            {
-                LCD::printAt("No headlines", 1);
-            }
+      if (headline && headline[0] != '\0') {
+        lcd.printWrapped(headline);
+      }
+      else {
+        lcd.printAt("No headlines", 1);
+      }
 
-            timeOfLastTitleChange = millis();
-        }
+      timeOfLastTitleChange = millis();
     }
+  }
 
-    void NewsView::onSkip()
-    {
-        const char *headline = RSS::getNextHeadline();
+  void NewsView::onSkip() {
+    const char* headline = RSS::getNextHeadline();
 
-        if (headline && headline[0] != '\0')
-        {
-            LCD::printWrapped(headline);
-        }
-        else
-        {
-            LCD::printAt("No headlines", 1);
-        }
+    if (headline && headline[0] != '\0') {
+      lcd.printWrapped(headline);
     }
+    else {
+      lcd.printAt("No headlines", 1);
+    }
+  }
 
-} // namespace Views
+}  // namespace Views

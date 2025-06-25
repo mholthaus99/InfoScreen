@@ -10,16 +10,16 @@ using namespace Views;
 namespace ViewController
 {
 
-  static View *currentView = nullptr;
+  static View* currentView = nullptr;
   static DisplayMode currentMode = MODE_DEFAULT;
 
   void switchView(DisplayMode mode)
   {
-    LCD::clear();
-    View *oldView = currentView; // Hold old pointer but don't delete yet. If deleted too early, functionview, will delete on its self before the callback completes.
+
+    View* oldView = currentView; // Hold old pointer but don't delete yet. If deleted too early, functionview, will delete on its self before the callback completes.
 
     // Create new view pointer, but don't assign to currentView yet
-    View *newView = nullptr;
+    View* newView = nullptr;
 
     currentMode = mode;
 
@@ -30,7 +30,7 @@ namespace ViewController
       break;
     case MODE_MENU:
     {
-      auto *menu = new FunctionView();
+      auto* menu = new FunctionView();
       menu->setSwitchViewCallback(ViewController::setMode); // set callback before swapping
       newView = menu;
       break;
@@ -58,11 +58,11 @@ namespace ViewController
     }
   }
 
-  void renderCurrentView()
-  {
-    if (currentView)
-      currentView->render();
-  }
+  // void renderCurrentView()
+  // {
+  //   if (currentView)
+  //     currentView->render();
+  // }
 
   void setMode(DisplayMode mode)
   {
@@ -74,7 +74,7 @@ namespace ViewController
     return currentMode;
   }
 
-  View *getCurrentView()
+  View* getCurrentView()
   {
     return currentView;
   }

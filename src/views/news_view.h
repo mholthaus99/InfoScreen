@@ -1,14 +1,12 @@
 #pragma once
 #include "view.h"
 
-namespace Views
-{
+namespace Views {
 
     /**
      * @brief View for displaying news headlines with timed updates.
      */
-    class NewsView : public View
-    {
+    class NewsView : public View {
     private:
         unsigned long timeOfLastTitleChange = 0;
 
@@ -22,8 +20,6 @@ namespace Views
          * @brief Handles IR "skip" event by advancing to next headline.
          */
         void onSkip() override;
-
-   
     };
 
-} // namespace Views
+}  // namespace Views

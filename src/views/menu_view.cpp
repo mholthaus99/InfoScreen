@@ -1,5 +1,5 @@
 #include "menu_view.h"
-#include "../system/display.h"
+#include "../system/display_instance.h"
 #include "../system/view_controller.h"
 #include <Arduino.h> // For Serial.printf
 #include <functional>
@@ -15,9 +15,9 @@ namespace Views
     void FunctionView::onEnter()
     {
 
-        LCD::printAt("1. Default", 0);
-        LCD::printAt("2. Local News", 1);
-        LCD::printAt("3. Network", 2);
+        lcd.printAt("1. Default", 0);
+        lcd.printAt("2. Local News", 1);
+        lcd.printAt("3. Network", 2);
     }
 
     void FunctionView::onBack()
@@ -60,7 +60,7 @@ namespace Views
         }
     }
 
-    void FunctionView::render(){
+    void FunctionView::render() {
         return;
     }
 

@@ -1,26 +1,26 @@
-/**
- * @file time_utils.h
- * @brief Utility functions for time initialization and formatting.
- *
- * This header provides functions to initialize the system time and retrieve
- * a formatted time string for display purposes.
- *
- * Namespace: TimeUtils
- *
- * Functions:
- * - void init(): Initializes the system time. Should be called once in setup.
- * - const char* getFormattedTime(): Returns the current time as a formatted string ("HH:MM:SS AM/PM").
- */
 #pragma once
+
 #include <Arduino.h>
+#include <time.h>
 
-namespace TimeUtils
-{
-
-    // Call this once in setup to initialize time
+class TimeUtils {
+public:
+    // TimeUtils(const char* ntpServer = "time.nist.gov", long timezoneOffset = 0,
+    // bool daylightSavingTime = false);
+    TimeUtils();
     void init();
+    const char* getFormattedTime();
 
-    // Returns formatted time string: "HH:MM:SS AM/PM"
-    const char *getFormattedTime();
+private:
+    bool syncWithNTP();
+    int getDSTOffset();
+    int getTimeZoneOffset();
 
-}
+    const char* ntpServer = "time.nist.gov";
+
+    time_t lastSyncEpoch;
+    unsigned long lastSyncMillis;
+    unsigned long lastNTPSyncMillis;
+
+    static constexpr unsigned long SYNC_INTERVAL = 10UL * 60UL * 1000UL;  // 10 minutes
+};

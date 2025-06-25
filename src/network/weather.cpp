@@ -37,7 +37,7 @@
  * 2. Use getter functions to retrieve weather information as needed.
  */
 
- 
+
 #include "weather.h"
 #include "secrets.h"
 
@@ -86,8 +86,8 @@ namespace Weather
       if (!error)
       {
         float temp = doc["main"]["temp"];
-        const char *description = doc["weather"][0]["description"];
-        const char *city = doc["name"];
+        const char* description = doc["weather"][0]["description"];
+        const char* city = doc["name"];
 
         cachedTemp = String(temp, 1) + "F";
         cachedDesc = String(description);
@@ -126,7 +126,7 @@ namespace Weather
     fetch(); // Fetch once at startup
   }
 
-  const char *getSummary()
+  const char* getSummary()
   {
     if (millis() - lastWeatherFetchMillis >= UPDATE_INTERVAL)
     {
@@ -135,17 +135,17 @@ namespace Weather
     return weatherSummary.c_str();
   }
 
-  const char *getDescription()
+  const char* getDescription()
   {
     return cachedDesc.c_str();
   }
 
-  const char *getLocation()
+  const char* getLocation()
   {
     return cachedLocation.c_str();
   }
 
-  const char *getTemperature()
+  const char* getTemperature()
   {
     return cachedTemp.c_str();
   }

@@ -1,36 +1,38 @@
 #pragma once
-
-/**
- * @brief Struct for IR input event callbacks.
- */
+#include <Arduino.h>
+#include <IRrecv.h>
+#include <IRremoteESP8266.h>
+#include <IRutils.h>
+#include "ir_codes.h"
 struct IRCallbacks {
-  void (*onPower)();       ///< Callback for power button press
-  void (*onDigit)(int);    ///< Callback for digit button press (0–9)
-  void (*onFunction)();    ///< Callback for function button press
-  void (*onSkip)();      ///< Callback for skip button press
-  void (*onBack)();      ///< Callback for back button press
-  void (*onVolumeUp)();  ///< Callback for volume up button press
-  void (*onVolumeDown)();///< Callback for volume down button press
-  void (*onChannelUp)(); ///< Callback for channel up button press
-  void (*onChannelDown)();///< Callback for channel down button press
-  void (*onPlayPause)(); ///< Callback for play/pause button press
-  void (*onEQ)();        ///< Callback for equalizer button press
-  void (*onRepeat)();    ///< Callback for repeat button press
+     void (*onPower)();
+     void (*onFunction)();
+     void (*onSkip)();
+     void (*onBack)();
+     void (*onPlayPause)();
+     void (*onVolumeUp)();
+     void (*onVolumeDown)();
+     void (*onChannelUp)();
+     void (*onChannelDown)();
+     void (*onEQ)();
+     void (*onRepeat)();
+     void (*onDigit)(int digit);
 };
+class IRReceiver {
+public:
+     explicit IRReceiver(uint16_t recvPin = D5);
+     void begin();
+     void poll();
+     void setCallbacks(const IRCallbacks& callbacks);
 
-/**
- * @brief Initializes the IR receiver.
- */
-void ir_init();
-
-/**
- * @brief Polls for new IR input; call this in the main loop.
- */
-void ir_poll();
-
-/**
- * @brief Registers all IR event callbacks.
- * 
- * @param callbacks Struct containing function pointers to assign.
- */
-void ir_setCallbacks(const IRCallbacks& callbacks);
+private:
+     void handleResultCode(uint32_t code);
+     struct IRAction {
+          uint32_t code;
+          const char* label;
+          void (**callbackField)();  // Pointer to a function pointer
+     };
+     IRrecv irrecv;
+     decode_results results;
+     IRCallbacks registeredCallbacks;
+};
