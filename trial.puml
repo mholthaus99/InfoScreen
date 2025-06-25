@@ -1,0 +1,72 @@
+@startuml
+title InfoScreen System Overview
+
+' ==== ENUMS ====
+enum DisplayMode {
+    MODE_DEFAULT
+    MODE_MENU
+    MODE_NEWS
+    MODE_NETWORK
+    MODE_COUNT
+}
+
+' ==== CONTROLLER LAYER ====
+class Controller {
+    +init()
+    +loop()
+}
+
+class ViewController {
+    +switchView(mode: DisplayMode)
+    +setMode(mode: DisplayMode)
+    +getMode(): DisplayMode
+    +getCurrentView(): View
+}
+
+' ==== VIEW LAYER ====
+namespace Views {
+    abstract class View
+    class DefaultView
+    class FunctionView
+    class NewsView
+
+    View <|-- DefaultView
+    View <|-- FunctionView
+    View <|-- NewsView
+}
+
+' ==== SYSTEM MODULES ====
+class IRReceiver
+class LCDDisplay
+class DHTSensor
+class Weather
+class TimeUtils
+class WiFiUtils
+class RSS
+
+' ==== RELATIONSHIPS ====
+Controller --> ViewController : manages
+Controller --> IRReceiver : uses
+Controller --> LCDDisplay : uses
+Controller --> DHTSensor : uses
+Controller --> Weather : uses
+Controller --> TimeUtils : uses
+Controller --> WiFiUtils : uses
+
+ViewController --> Views::View : manages
+ViewController --> Views::DefaultView : creates
+ViewController --> Views::FunctionView : creates
+ViewController --> Views::NewsView : creates
+
+Views::DefaultView ..> DHTSensor : uses
+Views::DefaultView ..> Weather : uses
+Views::DefaultView ..> TimeUtils : uses
+
+Views::NewsView ..> RSS : uses
+Views::NewsView ..> LCDDisplay : displays
+
+Views::FunctionView ..> ViewController : setSwitchViewCallback
+
+IRReceiver ..> ViewController : IR event callbacks
+
+LCDDisplay <.. Controller : global lcd instance
