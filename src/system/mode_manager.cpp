@@ -1,68 +1,74 @@
 #include "mode_manager.h"
 
-/// @brief Global display manager instance.
-ModeManager displayMgr;
+#include "../views/view.h"
+#include "../views/default_view.h"
+#include "../views/news_view.h"
+#include "../views/menu_view.h"
 
-/// @brief Tracks the current display mode.
-DisplayMode currentMode = MODE_DEFAULT;
 
-/**
- * @brief Marks the display as updated (no update needed).
- *
- * Sets the internal flag to indicate the display is up to date.
- */
-void ModeManager::markUpdated()
-{
-  needsUpdateFlag = false;
-}
+using namespace Views;
 
-/**
- * @brief Flags the display for update and records the new mode.
- *
- * Sets the internal flag to request a display update and stores the last mode.
- * Also clears the LCD display.
- *
- * @param mode The new display mode to set.
- */
-void ModeManager::flagForUpdate(DisplayMode mode)
-{
-  needsUpdateFlag = true;
-  lastMode = mode;
-  // lcd_clear();
-}
+namespace ModeManager {
 
-// void ModeManager::flagForSkip()
-// {
-//   needsUpdateFlag = true;
-//   // lastMode = MODE_COUNT; // Reset last mode to force update
-// }
+    static View* currentView = nullptr;
+    static DisplayMode currentMode = MODE_DEFAULT;
 
-/**
- * @brief Checks if the display should be updated for the given mode.
- *
- * Returns true if the display is flagged for update or if the mode has changed.
- * Special handling for the initial default mode.
- *
- * @param mode The display mode to check.
- * @return true if an update is needed, false otherwise.
- */
-bool ModeManager::shouldUpdate(DisplayMode mode)
-{
-  if (mode == MODE_DEFAULT && lastMode == MODE_COUNT)
-  {
-    lastMode = MODE_DEFAULT;
-    return true;
-  }
-  return needsUpdateFlag || mode != lastMode;
-}
+    void switchView(DisplayMode mode)
+    {
+        if (currentView)
+        {
+            currentView->onExit();
+            delete currentView;
+            currentView = nullptr;
+        }
 
-/**
- * @brief Sets the current display mode and flags the display for update.
- *
- * @param mode The new display mode to set.
- */
-void setMode(DisplayMode mode)
-{
-  currentMode = mode;
-  displayMgr.flagForUpdate(mode);
+        currentMode = mode;
+
+        switch (mode)
+        {
+        case MODE_DEFAULT:
+            currentView = new DefaultView();
+            break;
+        case MODE_MENU:
+        {
+            auto* menu = new FunctionView();
+            menu->setSwitchViewCallback(ModeManager::setMode);  // Allows menu to change mode
+            currentView = menu;
+            break;
+        }
+        case MODE_NEWS:
+            currentView = new NewsView();
+            break;
+        case MODE_NETWORK:
+            // TODO: Replace with NetworkView once implemented
+            currentView = new DefaultView();
+            break;
+        default:
+            currentView = new DefaultView();
+            break;
+        }
+
+        if (currentView)
+            currentView->onEnter();
+    }
+
+    void renderCurrentView()
+    {
+        if (currentView)
+            currentView->render();
+    }
+
+    void setMode(DisplayMode mode)
+    {
+        switchView(mode);
+    }
+
+    DisplayMode getMode()
+    {
+        return currentMode;
+    }
+
+    View* getCurrentView(){
+      return currentView;
+    }
 }

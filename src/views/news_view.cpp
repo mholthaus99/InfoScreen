@@ -5,26 +5,36 @@
 
 namespace Views
 {
+    
+
+
+
+
     void NewsView::render()
     {
-        if (displayMgr.shouldUpdate(MODE_NEWS))
-        {
-            LCD::printWrapped(RSS::getNextHeadline());
-            timeOfLastTitleChange = millis();
-            displayMgr.markUpdated();
-        }
-
         if (millis() - timeOfLastTitleChange >= 5000)
         {
+            const char* headline = RSS::getNextHeadline();
+
+            if (headline && headline[0] != '\0') {
+                LCD::printWrapped(headline);
+            } else {
+                LCD::printAt("No headlines", 1);
+            }
+
             timeOfLastTitleChange = millis();
-            LCD::printWrapped(RSS::getNextHeadline());
         }
     }
 
     void NewsView::onSkip()
     {
-        LCD::printWrapped(RSS::getNextHeadline());
-        displayMgr.markUpdated();
+        const char* headline = RSS::getNextHeadline();
+
+        if (headline && headline[0] != '\0') {
+            LCD::printWrapped(headline);
+        } else {
+            LCD::printAt("No headlines", 1);
+        }
     }
 
 } // namespace Views

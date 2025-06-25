@@ -23,7 +23,7 @@ namespace Views
          */
         void onSkip() override;
 
-
+   
     };
 
 } // namespace Views

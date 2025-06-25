@@ -1,31 +1,3 @@
-/**
- * @file rss_reader.cpp
- * @brief Implements RSS headline fetching and caching for ESP8266.
- *
- * This module provides functionality to fetch RSS headlines from a remote server,
- * cache them locally, and provide access to the headlines in a rotating manner.
- * Headlines are fetched as a JSON array of strings from a URL defined in `NEWS_URL`.
- * 
- * Features:
- * - Fetches up to MAX_HEADLINES headlines from a remote JSON RSS endpoint.
- * - Caches headlines in memory for efficient access.
- * - Automatically refreshes headlines every 15 minutes or when cache is empty.
- * - Provides a function to retrieve the next headline in a rotating fashion.
- * 
- * Dependencies:
- * - ESP8266WiFi.h
- * - WiFiClientSecure.h
- * - ESP8266HTTPClient.h
- * - ArduinoJson.h
- * - secrets.h (for NEWS_URL)
- * 
- * Namespace: RSS
- * 
- * Functions:
- * - void fetch(): Fetches and caches headlines from the RSS endpoint.
- * - const char* getNextHeadline(): Returns the next headline, refreshing cache if needed.
- */
-
 #include "rss_reader.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
@@ -35,7 +7,6 @@
 
 namespace RSS
 {
-
     static constexpr size_t MAX_HEADLINES = 10;
     static constexpr size_t MAX_TITLE_LEN = 100;
 
@@ -46,80 +17,161 @@ namespace RSS
 
     const char *url = NEWS_URL;
 
-     
-
     static void clearHeadlines()
     {
+        Serial.println("[RSS] Clearing headlines...");
         headlineCount = 0;
         currentHeadlineIndex = 0;
         for (size_t i = 0; i < MAX_HEADLINES; i++)
+        {
             cachedHeadlines[i][0] = '\0';
+        }
     }
 
-    void fetch()
+void fetch()
+{
+    Serial.printf("[RSS] Free heap before fetch: %lu bytes\n", ESP.getFreeHeap());
+
+    if (WiFi.status() != WL_CONNECTED)
     {
-        clearHeadlines();
-
-        if (WiFi.status() != WL_CONNECTED)
-            return;
-
-        WiFiClientSecure client;
-        client.setInsecure();
-
-        HTTPClient http;
-        http.setFollowRedirects(HTTPC_STRICT_FOLLOW_REDIRECTS);
-        http.addHeader("User-Agent", "ESP8266 JSON RSS Reader");
-        http.addHeader("Accept-Encoding", "identity");
-
-        if (!http.begin(client, url))
-            return;
-
-        int httpCode = http.GET();
-        if (httpCode != HTTP_CODE_OK)
-        {
-            http.end();
-            return;
-        }
-
-        String payload = http.getString();
-        http.end();
-
-        DynamicJsonDocument doc(2048);
-        if (deserializeJson(doc, payload))
-            return;
-        if (!doc.is<JsonArray>())
-            return;
-
-        JsonArray arr = doc.as<JsonArray>();
-        size_t count = 0;
-        for (const auto &item : arr)
-        {
-            if (!item.is<const char *>())
-                continue;
-            if (count >= MAX_HEADLINES)
-                break;
-
-            const char *title = item.as<const char *>();
-            strncpy(cachedHeadlines[count], title, MAX_TITLE_LEN - 1);
-            cachedHeadlines[count][MAX_TITLE_LEN - 1] = '\0';
-            count++;
-        }
-
-        headlineCount = count;
-        lastRSSUpdate = millis();
+        Serial.println("[RSS] WiFi not connected. Skipping fetch.");
+        return;
     }
+
+    WiFiClientSecure client;
+    client.setInsecure();
+
+    HTTPClient http;
+    http.setFollowRedirects(HTTPC_STRICT_FOLLOW_REDIRECTS);
+    http.addHeader("User-Agent", "ESP8266 JSON RSS Reader");
+    http.addHeader("Accept-Encoding", "identity");
+
+    Serial.printf("[RSS] Fetching headlines from: %s\n", url);
+
+    if (!http.begin(client, url))
+    {
+        Serial.println("[RSS] Failed to begin HTTP request.");
+        return;
+    }
+
+    int httpCode = http.GET();
+    yield(); // <-- Yield after blocking network call
+
+    if (httpCode != HTTP_CODE_OK)
+    {
+        Serial.printf("[RSS] HTTP error code: %d\n", httpCode);
+        http.end();
+        return;
+    }
+
+    String payload = http.getString();
+    http.end();
+    yield(); // <-- Yield after reading HTTP response
+
+    DynamicJsonDocument* doc = new DynamicJsonDocument(2048);
+    DeserializationError error = deserializeJson(*doc, payload);
+    yield(); // <-- Yield after JSON parsing
+
+    if (error)
+    {
+        Serial.printf("[RSS] JSON deserialization failed: %s\n", error.c_str());
+        delete doc;
+        return;
+    }
+
+    if (!doc->is<JsonArray>())
+    {
+        Serial.println("[RSS] JSON payload is not an array.");
+        delete doc;
+        return;
+    }
+
+    JsonArray arr = doc->as<JsonArray>();
+    size_t count = 0;
+
+    for (const auto &item : arr)
+    {
+        if (!item.is<const char *>()) continue;
+        const char* title = item.as<const char*>();
+        if (!title || title[0] == '\0') continue;
+        count++;
+        if (count >= MAX_HEADLINES) break;
+        yield(); // <-- Yield inside loop to avoid watchdog reset
+    }
+
+    if (count == 0)
+    {
+        Serial.println("[RSS] No valid headlines found.");
+        delete doc;
+        return;
+    }
+
+    clearHeadlines();
+
+    size_t index = 0;
+    for (const auto &item : arr)
+    {
+        if (!item.is<const char *>()) continue;
+        const char* title = item.as<const char*>();
+        if (!title || title[0] == '\0') continue;
+
+        strncpy(cachedHeadlines[index], title, MAX_TITLE_LEN - 1);
+        cachedHeadlines[index][MAX_TITLE_LEN - 1] = '\0';
+
+        Serial.printf("[RSS] Cached headline %d: %s\n", index, cachedHeadlines[index]);
+        index++;
+        if (index >= MAX_HEADLINES) break;
+        yield(); // <-- Yield here as well
+    }
+
+    headlineCount = index;
+    lastRSSUpdate = millis();
+
+    delete doc;
+
+    Serial.printf("[RSS] Successfully cached %d headlines\n", headlineCount);
+    Serial.printf("[RSS] Free heap after fetch: %lu bytes\n", ESP.getFreeHeap());
+}
+
 
     const char *getNextHeadline()
     {
+        Serial.println("[RSS] getNextHeadline() called");
+
         unsigned long now = millis();
-        if (now - lastRSSUpdate >= 15UL * 60UL * 1000UL || headlineCount == 0)
+
+        // Only fetch if the cache is empty or expired
+        if ((headlineCount == 0) || (now - lastRSSUpdate >= 15UL * 60UL * 1000UL))
+        {
+            Serial.println("[RSS] Cache empty or expired. Fetching...");
+            size_t previousCount = headlineCount;
             fetch();
 
+            // If fetch failed, don't wipe old cache
+            if (headlineCount == 0 && previousCount > 0)
+            {
+                Serial.println("[RSS] Fetch failed, keeping old cache.");
+                headlineCount = previousCount;
+            }
+        }
+
         if (headlineCount == 0)
+        {
+            Serial.println("[RSS] No headlines available.");
             return "No headlines available";
+        }
 
         const char *headline = cachedHeadlines[currentHeadlineIndex];
+        Serial.printf("[RSS] Returning headline %d: %s\n", currentHeadlineIndex, headline);
+
         currentHeadlineIndex = (currentHeadlineIndex + 1) % headlineCount;
+
+        if (!headline || headline[0] == '\0')
+        {
+            Serial.println("[RSS] Invalid or empty headline.");
+            return "No headlines available";
+        }
+
         return headline;
     }
 

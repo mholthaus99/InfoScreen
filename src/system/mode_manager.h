@@ -1,26 +1,26 @@
 #pragma once
-#include "display.h"
+#include "views/view.h"
 
-enum DisplayMode {
+
+enum DisplayMode
+{
   MODE_DEFAULT,
-  MODE_NETWORK,
   MODE_MENU,
   MODE_NEWS,
+  MODE_NETWORK,
   MODE_COUNT
 };
 
-class ModeManager {
-public:
-  void markUpdated();
-  void flagForUpdate(DisplayMode mode);
-  bool shouldUpdate(DisplayMode mode);
-  void flagForSkip();
+namespace Views{
+  class View;
+}
 
-  DisplayMode lastMode = MODE_COUNT;
-  bool needsUpdateFlag = true;
-};
-
-extern ModeManager displayMgr;
-extern DisplayMode currentMode;
-
-void setMode(DisplayMode mode);
+namespace ModeManager
+{
+  void switchView(DisplayMode mode);
+  void renderCurrentView();
+  void setMode(DisplayMode mode);
+  DisplayMode getMode();
+  Views::View* getCurrentView();
+  //View* getCurrentViewPointer(); // Renamed to avoid overloading by return type alone
+}

@@ -11,15 +11,10 @@
 namespace Views
 {
 
+ 
     void DefaultView::render()
     {
-        if (displayMgr.shouldUpdate(MODE_DEFAULT))
-        {
-            displayMgr.markUpdated();
-            showingClimate = false;
-            lastToggle = millis() - 5000;
-            LCD::clear();
-        }
+      
 
         LCD::printAt(TimeUtils::getFormattedTime(), 0, 9);
 

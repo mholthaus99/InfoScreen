@@ -3,37 +3,40 @@
 #include "../system/mode_manager.h"
 #include "../system/display.h"
 
-class View
+namespace Views
 {
-public:
-    virtual ~View() {}
-
-    // Called when the view is shown (optional)
-    virtual void onEnter() {}
-
-    // Called when the view is hidden (optional)
-    virtual void onExit() {}
-
-    // IR event handlers - override in subclasses
-    virtual void onPower()
+    class View
     {
-        LCD::toggleBacklight();
-    }
-    virtual void onDigit(int digit) {}
-    virtual void onFunction()
-    {
-        displayMgr.flagForUpdate(MODE_MENU); // Flag for function mode update
-    }
-    virtual void onSkip() {}
-    virtual void onBack() {}
-    virtual void onVolumeUp() {}
-    virtual void onVolumeDown() {}
-    virtual void onChannelUp() {}
-    virtual void onChannelDown() {}
-    virtual void onPlayPause() {}
-    virtual void onEQ() {}
-    virtual void onRepeat() {}
+    public:
+        virtual ~View() {}
 
-    // Render the view
-    virtual void render() = 0;
-};
+        // Called when the view is shown (optional)
+        virtual void onEnter() {}
+
+        // Called when the view is hidden (optional)
+        virtual void onExit() {}
+
+        // IR event handlers - override in subclasses
+        virtual void onPower()
+        {
+            LCD::toggleBacklight();
+        }
+        virtual void onDigit(int digit) {}
+        virtual void onFunction()
+        {
+           // ModeManager::setMode(MODE_DEFAULT);
+        }
+        virtual void onSkip() {}
+        virtual void onBack() {}
+        virtual void onVolumeUp() {}
+        virtual void onVolumeDown() {}
+        virtual void onChannelUp() {}
+        virtual void onChannelDown() {}
+        virtual void onPlayPause() {}
+        virtual void onEQ() {}
+        virtual void onRepeat() {}
+
+        // Render the view
+        virtual void render() = 0;
+    };
+}

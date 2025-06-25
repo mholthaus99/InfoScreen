@@ -9,7 +9,7 @@ namespace Views {
 class FunctionView : public View
 {
 public:
-    using SwitchViewCallback = void (*)(int); ///< Function pointer type for view switching
+    using SwitchViewCallback = void (*)(DisplayMode); ///< Function pointer type for view switching
 
     /**
      * @brief Set a callback function to be called when the view changes.
@@ -18,9 +18,9 @@ public:
     void setSwitchViewCallback(SwitchViewCallback cb);
 
     /**
-     * @brief Render the function menu options.
+     * @brief Draw the view upon entering the menu.
      */
-    void render() override;
+    void onEnter() override;
 
     /**
      * @brief Handle IR back button by switching to default view.
@@ -31,6 +31,15 @@ public:
      * @brief Handle digit presses to navigate to different views.
      */
     void onDigit(int digit) override;
+
+    /**
+     * @brief overridding on function while in the menu to close the menu.
+     */
+    void onFunction() override;
+
+    void render() override;
+
+
 
 private:
     SwitchViewCallback switchViewCallback = nullptr;

@@ -9,7 +9,7 @@
 void app_init();
 
 /// @brief Switch to the given view mode.
-void switchView(int mode);
+//void switchView(int mode);
 
 /// @brief Render the currently active view (call in `loop()`).
 void renderCurrentMode();
