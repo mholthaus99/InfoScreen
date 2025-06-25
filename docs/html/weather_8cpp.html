@@ -91,6 +91,9 @@ $(function(){initNavTree('weather_8cpp.html','',''); });
   <div class="headertitle"><div class="title">weather.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements weather data fetching and caching for an ESP8266-based project.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="weather_8h_source.html">weather.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="secrets_8h_source.html">secrets.h</a>&quot;</code><br />
 <code>#include &lt;ArduinoJson.h&gt;</code><br />
@@ -127,7 +130,39 @@ Variables</h2></td></tr>
 <tr class="memitem:a21e4b3ef7fa9b5827faf9653d7f0a8c9" id="r_a21e4b3ef7fa9b5827faf9653d7f0a8c9"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a21e4b3ef7fa9b5827faf9653d7f0a8c9">Weather::lastWeatherFetchMillis</a> = 0</td></tr>
 <tr class="memitem:a87df8c0b2b7166ee1e1951039a9b4a06" id="r_a87df8c0b2b7166ee1e1951039a9b4a06"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a87df8c0b2b7166ee1e1951039a9b4a06">Weather::UPDATE_INTERVAL</a> = 10UL * 60UL * 1000UL</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements weather data fetching and caching for an ESP8266-based project. </p>
+<p>This module provides functions to fetch current weather data from the OpenWeatherMap API, cache the results, and provide access to weather summary, description, location, and temperature. The data is refreshed at a configurable interval (default: 10 minutes).</p>
+<p>Dependencies:</p><ul>
+<li>ArduinoJson for JSON parsing</li>
+<li>ESP8266HTTPClient and WiFiClientSecure for HTTPS requests</li>
+<li>ESP8266WiFi for WiFi connectivity</li>
+</ul>
+<p>Namespace: <a class="el" href="namespace_weather.html" title="Weather namespace for fetching and accessing weather data.">Weather</a></p>
+<p>Static Variables:</p><ul>
+<li>weatherSummary: Cached summary string of the latest weather data.</li>
+<li>cachedLocation: Cached city/location name.</li>
+<li>cachedTemp: Cached temperature string.</li>
+<li>cachedDesc: Cached weather description.</li>
+<li>lastWeatherFetchMillis: Timestamp of the last successful fetch.</li>
+<li>UPDATE_INTERVAL: Interval (ms) between automatic weather data refreshes.</li>
+</ul>
+<p>Functions:</p><ul>
+<li>bool fetch(): Fetches weather data from the API, updates caches, and returns success status.</li>
+<li>void init(): Initializes the weather module and performs an initial fetch.</li>
+<li>const char* getSummary(): Returns a summary string, refreshing data if needed.</li>
+<li>const char* getDescription(): Returns the cached weather description.</li>
+<li>const char* getLocation(): Returns the cached location/city name.</li>
+<li>const char* getTemperature(): Returns the cached temperature string.</li>
+</ul>
+<p>Error Handling:</p><ul>
+<li>Handles WiFi disconnection, HTTP errors, and JSON parsing errors with appropriate cache updates.</li>
+</ul>
+<p>Usage:</p><ol type="1">
+<li>Call <a class="el" href="namespace_weather.html#a488f1e02bc098cfd852b4c4fe8ffd589" title="Initializes the weather module and fetches initial weather data.">Weather::init()</a> at startup.</li>
+<li>Use getter functions to retrieve weather information as needed. </li>
+</ol>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

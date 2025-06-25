@@ -91,6 +91,9 @@ $(function(){initNavTree('rss__reader_8cpp.html','',''); });
   <div class="headertitle"><div class="title">rss_reader.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements <a class="el" href="namespace_r_s_s.html">RSS</a> headline fetching and caching for ESP8266.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="rss__reader_8h_source.html">rss_reader.h</a>&quot;</code><br />
 <code>#include &lt;ESP8266WiFi.h&gt;</code><br />
 <code>#include &lt;WiFiClientSecure.h&gt;</code><br />
@@ -120,7 +123,28 @@ Variables</h2></td></tr>
 <tr class="memitem:a3e865738a4f343a96f7d2e771db28410" id="r_a3e865738a4f343a96f7d2e771db28410"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a3e865738a4f343a96f7d2e771db28410">RSS::lastRSSUpdate</a> = 0</td></tr>
 <tr class="memitem:a88edc0a00dcdcb274ab95e10fc303444" id="r_a88edc0a00dcdcb274ab95e10fc303444"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a88edc0a00dcdcb274ab95e10fc303444">RSS::url</a> = <a class="el" href="secrets_8h.html#aee649fe2db96286426370c6972716e09">NEWS_URL</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements <a class="el" href="namespace_r_s_s.html">RSS</a> headline fetching and caching for ESP8266. </p>
+<p>This module provides functionality to fetch <a class="el" href="namespace_r_s_s.html">RSS</a> headlines from a remote server, cache them locally, and provide access to the headlines in a rotating manner. Headlines are fetched as a JSON array of strings from a URL defined in <span class="tt">NEWS_URL</span>.</p>
+<p>Features:</p><ul>
+<li>Fetches up to MAX_HEADLINES headlines from a remote JSON <a class="el" href="namespace_r_s_s.html">RSS</a> endpoint.</li>
+<li>Caches headlines in memory for efficient access.</li>
+<li>Automatically refreshes headlines every 15 minutes or when cache is empty.</li>
+<li>Provides a function to retrieve the next headline in a rotating fashion.</li>
+</ul>
+<p>Dependencies:</p><ul>
+<li>ESP8266WiFi.h</li>
+<li>WiFiClientSecure.h</li>
+<li>ESP8266HTTPClient.h</li>
+<li>ArduinoJson.h</li>
+<li><a class="el" href="secrets_8h.html">secrets.h</a> (for NEWS_URL)</li>
+</ul>
+<p>Namespace: <a class="el" href="namespace_r_s_s.html">RSS</a></p>
+<p>Functions:</p><ul>
+<li>void fetch(): Fetches and caches headlines from the <a class="el" href="namespace_r_s_s.html">RSS</a> endpoint.</li>
+<li>const char* getNextHeadline(): Returns the next headline, refreshing cache if needed. </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

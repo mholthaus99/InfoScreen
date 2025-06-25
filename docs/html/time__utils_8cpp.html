@@ -92,7 +92,7 @@ $(function(){initNavTree('time__utils_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Time synchronization and formatting utilities using NTP.  
+<p>Provides utilities for time synchronization and formatting using NTP.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="time__utils_8h_source.html">time_utils.h</a>&quot;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
@@ -104,22 +104,44 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7d9cf7c42f64de31ded050f372226229" id="r_a7d9cf7c42f64de31ded050f372226229"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a7d9cf7c42f64de31ded050f372226229">TimeUtils::getDaylightOffset_sec</a> ()</td></tr>
-<tr class="memitem:aafb4546d75c80d6c7a26a78c40580edc" id="r_aafb4546d75c80d6c7a26a78c40580edc"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#aafb4546d75c80d6c7a26a78c40580edc">TimeUtils::fetchNTP</a> ()</td></tr>
-<tr class="memdesc:aafb4546d75c80d6c7a26a78c40580edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes system time using NTP.  <br /></td></tr>
+<tr class="memitem:a68ed6e44922f46491b6138fff982ac42" id="r_a68ed6e44922f46491b6138fff982ac42"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a68ed6e44922f46491b6138fff982ac42">TimeUtils::getDSTOffset</a> ()</td></tr>
+<tr class="memitem:abe53d094ef43531920daae760ca39f3a" id="r_abe53d094ef43531920daae760ca39f3a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#abe53d094ef43531920daae760ca39f3a">TimeUtils::syncWithNTP</a> ()</td></tr>
+<tr class="memdesc:abe53d094ef43531920daae760ca39f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes system time using NTP.  <br /></td></tr>
 <tr class="memitem:a41b989ac54b5a8a670078bfdca6aa482" id="r_a41b989ac54b5a8a670078bfdca6aa482"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a41b989ac54b5a8a670078bfdca6aa482">TimeUtils::init</a> ()</td></tr>
 <tr class="memitem:a72edd780e97b4fd2b55837477de1d821" id="r_a72edd780e97b4fd2b55837477de1d821"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a72edd780e97b4fd2b55837477de1d821">TimeUtils::getFormattedTime</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac681f11a930d6c4a1dcbb7a3f822936a" id="r_ac681f11a930d6c4a1dcbb7a3f822936a"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#ac681f11a930d6c4a1dcbb7a3f822936a">TimeUtils::ntpServer</a> = &quot;time.nist.gov&quot;</td></tr>
-<tr class="memitem:a179af32c2a87321bd703f1c0620fa2f3" id="r_a179af32c2a87321bd703f1c0620fa2f3"><td class="memItemLeft" align="right" valign="top">static time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a179af32c2a87321bd703f1c0620fa2f3">TimeUtils::baseTime</a> = 0</td></tr>
-<tr class="memitem:aa102976a154e835993fc2106f6e2f010" id="r_aa102976a154e835993fc2106f6e2f010"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#aa102976a154e835993fc2106f6e2f010">TimeUtils::baseMillis</a> = 0</td></tr>
-<tr class="memitem:ac84a1d7aa2a25a3c994379159cd3de44" id="r_ac84a1d7aa2a25a3c994379159cd3de44"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#ac84a1d7aa2a25a3c994379159cd3de44">TimeUtils::lastSyncMillis</a> = 0</td></tr>
+<tr class="memitem:ac95a3f95fa500e317ea2dab2f55d2d4b" id="r_ac95a3f95fa500e317ea2dab2f55d2d4b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#ac95a3f95fa500e317ea2dab2f55d2d4b">TimeUtils::NTP_SERVER</a> = &quot;time.nist.gov&quot;</td></tr>
+<tr class="memitem:a3912f8afc153aef2b8efb29184233039" id="r_a3912f8afc153aef2b8efb29184233039"><td class="memItemLeft" align="right" valign="top">static time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a3912f8afc153aef2b8efb29184233039">TimeUtils::lastSyncEpoch</a> = 0</td></tr>
+<tr class="memdesc:a3912f8afc153aef2b8efb29184233039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last synchronized epoch time (seconds since Jan 1, 1970 UTC).  <br /></td></tr>
+<tr class="memitem:a363d901fff1d0bbc7e26f80f1a804b51" id="r_a363d901fff1d0bbc7e26f80f1a804b51"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a363d901fff1d0bbc7e26f80f1a804b51">TimeUtils::lastSync</a> = 0</td></tr>
+<tr class="memdesc:a363d901fff1d0bbc7e26f80f1a804b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of millis() at the last successful NTP synchronization.  <br /></td></tr>
+<tr class="memitem:a57552c15321cbae73a1b6518ad91894c" id="r_a57552c15321cbae73a1b6518ad91894c"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a57552c15321cbae73a1b6518ad91894c">TimeUtils::lastNTPSync</a> = 0</td></tr>
+<tr class="memdesc:a57552c15321cbae73a1b6518ad91894c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of millis() at the last NTP synchronization attempt.  <br /></td></tr>
 <tr class="memitem:a02ae3c081bb8ff0125a9def0dbb55f56" id="r_a02ae3c081bb8ff0125a9def0dbb55f56"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_time_utils.html#a02ae3c081bb8ff0125a9def0dbb55f56">TimeUtils::SYNC_INTERVAL</a> = 10UL * 60UL * 1000UL</td></tr>
+<tr class="memdesc:a02ae3c081bb8ff0125a9def0dbb55f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interval in milliseconds between automatic NTP synchronizations.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Time synchronization and formatting utilities using NTP. </p>
+<div class="textblock"><p>Provides utilities for time synchronization and formatting using NTP. </p>
+<p>This module handles NTP synchronization, tracks system uptime for accurate timekeeping between syncs, and provides human-readable formatted time strings.</p>
+<p>Public Functions:</p><ul>
+<li>void initTime(): Initializes NTP synchronization.</li>
+<li>const char* getFormattedTime(): Returns current time as a string (HH:MM:SS AM/PM).</li>
+</ul>
+<p>Internal Functions:</p><ul>
+<li>bool syncWithNTP(): Synchronizes system time with the NTP server.</li>
+<li>int getDaylightOffsetSec(): Returns daylight saving offset in seconds.</li>
+</ul>
+<p>Constants:</p><ul>
+<li>const char* ntpServer: NTP server address.</li>
+<li>const unsigned long SYNC_INTERVAL: Interval between NTP synchronizations.</li>
+</ul>
+<p>Internal State:</p><ul>
+<li>time_t lastSyncEpoch: Epoch time of last successful NTP sync.</li>
+<li>unsigned long lastSyncMillis: millis() value when last NTP sync occurred.</li>
+<li>unsigned long lastNTPUpdateMillis: Timestamp for next scheduled sync. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

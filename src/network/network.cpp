@@ -1,3 +1,30 @@
+
+/**
+ * @file network.cpp
+ * @brief WiFi utility functions for ESP8266.
+ *
+ * This file provides a set of utility functions within the WiFiUtils namespace
+ * to manage WiFi connectivity on the ESP8266 platform. It includes functions
+ * for connecting to a WiFi network, checking connection status, and retrieving
+ * network information such as SSID, password, IP address, DNS, gateway, and subnet.
+ *
+ * Dependencies:
+ * - ESP8266WiFi.h: ESP8266 WiFi library.
+ * - secrets.h: Header file containing WiFi credentials (WIFI_SSID, WIFI_PASS).
+ * - network.h: Header file for this module.
+ *
+ * Functions:
+ * - void wifi_connect(void (*statusCallback)(const char *)): Connects to WiFi and provides status updates via callback.
+ * - bool wifi_isConnected(): Checks if the device is connected to WiFi.
+ * - const char *getprint_wifi_ssid(): Returns the configured WiFi SSID.
+ * - const char *getprint_wifi_password(): Returns the configured WiFi password.
+ * - const char *getprint_wifi_ip(): Returns the current local IP address as a string.
+ * - const char *getprint_wifi_dns(): Returns the current DNS server IP as a string.
+ * - const char *getprint_wifi_gateway(): Returns the current gateway IP as a string.
+ * - const char *getprint_wifi_subnet(): Returns the current subnet mask as a string.
+ *
+ * @namespace WiFiUtils
+ */
 #include <ESP8266WiFi.h>
 #include "secrets.h"
 #include "network.h"

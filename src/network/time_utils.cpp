@@ -2,26 +2,25 @@
  * @file time_utils.cpp
  * @brief Provides utilities for time synchronization and formatting using NTP.
  *
- * This module handles NTP time synchronization, tracks internal system time,
- * and provides formatted time strings for display. It automatically resynchronizes
- * with the NTP server at a defined interval and accounts for daylight saving time.
+ * This module handles NTP synchronization, tracks system uptime for accurate
+ * timekeeping between syncs, and provides human-readable formatted time strings.
  *
- * Functions:
- * - init(): Initializes time synchronization with the NTP server.
- * - getFormattedTime(): Returns the current time as a formatted string (HH:MM:SS AM/PM).
+ * Public Functions:
+ * - void init(): Initializes NTP synchronization.
+ * - const char* getFormattedTime(): Returns current time as a string (HH:MM:SS AM/PM).
  *
  * Internal Functions:
- * - fetchNTP(): Synchronizes system time using NTP and updates internal time tracking.
- * - getDaylightOffset_sec(): Returns the daylight saving time offset in seconds.
+ * - bool syncWithNTP(): Synchronizes system time with the NTP server.
+ * - int getDaylightOffset(): Returns daylight saving offset in seconds.
  *
  * Constants:
- * - ntpServer: The NTP server address used for synchronization.
- * - SYNC_INTERVAL: Interval in milliseconds between automatic NTP synchronizations.
+ * - const char* ntpServer: NTP server address.
+ * - const unsigned long SYNC_INTERVAL: Interval between NTP synchronizations.
  *
  * Internal State:
- * - baseTime: The last synchronized epoch time.
- * - baseMillis: The millis() value at the last synchronization.
- * - lastSyncMillis: The millis() value at the last NTP sync.
+ * - time_t lastSyncEpoch: Epoch time of last successful NTP sync.
+ * - unsigned long lastSyncMillis: millis() value when last NTP sync occurred.
+ * - unsigned long lastNTPUpdateMillis: Timestamp for next scheduled sync.
  */
 
 #include "time_utils.h"
@@ -32,29 +31,29 @@ namespace TimeUtils
 {
 
   // === NTP Configuration ===
-  const char *ntpServer = "time.nist.gov";
+  const char *NTP_SERVER = "time.nist.gov";
 
   /**
    * @brief Last synchronized epoch time (seconds since Jan 1, 1970 UTC).
    */
-  static time_t baseTime = 0;
+  static time_t lastSyncEpoch = 0;
 
   /**
    * @brief Value of millis() at the last successful NTP synchronization.
    */
-  static unsigned long baseMillis = 0;
+  static unsigned long lastSync = 0;
 
   /**
    * @brief Value of millis() at the last NTP synchronization attempt.
    */
-  static unsigned long lastSyncMillis = 0;
+  static unsigned long lastNTPSync = 0;
 
   /**
    * @brief Interval in milliseconds between automatic NTP synchronizations.
    */
   const unsigned long SYNC_INTERVAL = 10UL * 60UL * 1000UL; // 10 minutes
 
-  static int getDaylightOffset_sec()
+  static int getDSTOffset()
   {
     return DAYLIGHT_SAVING_TIME ? 3600 : 0; // 1 hour if DST is enabled
   }
@@ -64,9 +63,9 @@ namespace TimeUtils
    *
    * @return true if synchronization was successful, false otherwise.
    */
-  static bool fetchNTP()
+  static bool syncWithNTP()
   {
-    configTime(TIMEZONE_OFFSET, getDaylightOffset_sec(), ntpServer);
+    configTime(TIMEZONE_OFFSET, getDSTOffset(), NTP_SERVER);
 
     struct tm timeinfo;
     int retry = 0;
@@ -81,9 +80,9 @@ namespace TimeUtils
 
     if (retry < retry_count)
     {
-      baseTime = mktime(&timeinfo);
-      baseMillis = millis();
-      lastSyncMillis = baseMillis;
+      lastSyncEpoch = mktime(&timeinfo);
+      lastSync = millis();
+      lastNTPSync = lastSync;
 
       char timeStr[64];
       strftime(timeStr, sizeof(timeStr), "%A, %B %d %Y %H:%M:%S", &timeinfo);
@@ -100,7 +99,7 @@ namespace TimeUtils
 
   void init()
   {
-    fetchNTP();
+    syncWithNTP();
   }
 
   const char *getFormattedTime()
@@ -110,13 +109,13 @@ namespace TimeUtils
     unsigned long nowMillis = millis();
 
     // Auto-resync if needed
-    if (nowMillis - lastSyncMillis >= SYNC_INTERVAL)
+    if (nowMillis - lastNTPSync >= SYNC_INTERVAL)
     {
-      fetchNTP();
+      syncWithNTP();
       nowMillis = millis(); // update after resync
     }
 
-    time_t now = baseTime + (nowMillis - baseMillis) / 1000;
+    time_t now = lastSyncEpoch + (nowMillis - lastSync) / 1000;
     struct tm *timeinfo = localtime(&now);
 
     if (timeinfo)

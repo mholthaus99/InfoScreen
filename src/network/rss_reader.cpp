@@ -1,3 +1,31 @@
+/**
+ * @file rss_reader.cpp
+ * @brief Implements RSS headline fetching and caching for ESP8266.
+ *
+ * This module provides functionality to fetch RSS headlines from a remote server,
+ * cache them locally, and provide access to the headlines in a rotating manner.
+ * Headlines are fetched as a JSON array of strings from a URL defined in `NEWS_URL`.
+ * 
+ * Features:
+ * - Fetches up to MAX_HEADLINES headlines from a remote JSON RSS endpoint.
+ * - Caches headlines in memory for efficient access.
+ * - Automatically refreshes headlines every 15 minutes or when cache is empty.
+ * - Provides a function to retrieve the next headline in a rotating fashion.
+ * 
+ * Dependencies:
+ * - ESP8266WiFi.h
+ * - WiFiClientSecure.h
+ * - ESP8266HTTPClient.h
+ * - ArduinoJson.h
+ * - secrets.h (for NEWS_URL)
+ * 
+ * Namespace: RSS
+ * 
+ * Functions:
+ * - void fetch(): Fetches and caches headlines from the RSS endpoint.
+ * - const char* getNextHeadline(): Returns the next headline, refreshing cache if needed.
+ */
+
 #include "rss_reader.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
@@ -17,6 +45,8 @@ namespace RSS
     static unsigned long lastRSSUpdate = 0;
 
     const char *url = NEWS_URL;
+
+     
 
     static void clearHeadlines()
     {

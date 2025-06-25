@@ -7,5 +7,5 @@ var searchData=
   ['news_5fview_2ecpp_4',['news_view.cpp',['../news__view_8cpp.html',1,'']]],
   ['news_5fview_2eh_5',['news_view.h',['../news__view_8h.html',1,'']]],
   ['newsview_6',['NewsView',['../class_views_1_1_news_view.html',1,'Views']]],
-  ['ntpserver_7',['ntpServer',['../namespace_time_utils.html#ac681f11a930d6c4a1dcbb7a3f822936a',1,'TimeUtils']]]
+  ['ntp_5fserver_7',['NTP_SERVER',['../namespace_time_utils.html#ac95a3f95fa500e317ea2dab2f55d2d4b',1,'TimeUtils']]]
 ];

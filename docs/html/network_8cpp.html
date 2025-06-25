@@ -91,6 +91,9 @@ $(function(){initNavTree('network_8cpp.html','',''); });
   <div class="headertitle"><div class="title">network.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>WiFi utility functions for ESP8266.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;ESP8266WiFi.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="secrets_8h_source.html">secrets.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="network_8h_source.html">network.h</a>&quot;</code><br />
@@ -123,7 +126,25 @@ Variables</h2></td></tr>
 <tr class="memitem:ab3ed17324e346c382f95914caf528072" id="r_ab3ed17324e346c382f95914caf528072"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#ab3ed17324e346c382f95914caf528072">WiFiUtils::ssid</a> = <a class="el" href="secrets_8h.html#a586542b79d00e4db7e1d5a667ae83a2b">WIFI_SSID</a></td></tr>
 <tr class="memitem:a8406f582dc9c103acf1d502a0197d77c" id="r_a8406f582dc9c103acf1d502a0197d77c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a8406f582dc9c103acf1d502a0197d77c">WiFiUtils::password</a> = <a class="el" href="secrets_8h.html#a3c95561b03d0fcf9048b231ae2ba90fb">WIFI_PASS</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>WiFi utility functions for ESP8266. </p>
+<p>This file provides a set of utility functions within the <a class="el" href="namespace_wi_fi_utils.html">WiFiUtils</a> namespace to manage WiFi connectivity on the ESP8266 platform. It includes functions for connecting to a WiFi network, checking connection status, and retrieving network information such as SSID, password, IP address, DNS, gateway, and subnet.</p>
+<p>Dependencies:</p><ul>
+<li>ESP8266WiFi.h: ESP8266 WiFi library.</li>
+<li><a class="el" href="secrets_8h.html">secrets.h</a>: Header file containing WiFi credentials (WIFI_SSID, WIFI_PASS).</li>
+<li><a class="el" href="network_8h.html" title="Wi-Fi connection utilities for ESP8266.">network.h</a>: Header file for this module.</li>
+</ul>
+<p>Functions:</p><ul>
+<li>void wifi_connect(void (*statusCallback)(const char *)): Connects to WiFi and provides status updates via callback.</li>
+<li>bool wifi_isConnected(): Checks if the device is connected to WiFi.</li>
+<li>const char *getprint_wifi_ssid(): Returns the configured WiFi SSID.</li>
+<li>const char *getprint_wifi_password(): Returns the configured WiFi password.</li>
+<li>const char *getprint_wifi_ip(): Returns the current local IP address as a string.</li>
+<li>const char *getprint_wifi_dns(): Returns the current DNS server IP as a string.</li>
+<li>const char *getprint_wifi_gateway(): Returns the current gateway IP as a string.</li>
+<li>const char *getprint_wifi_subnet(): Returns the current subnet mask as a string. </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

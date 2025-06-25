@@ -1,3 +1,43 @@
+/**
+ * @file weather.cpp
+ * @brief Implements weather data fetching and caching for an ESP8266-based project.
+ *
+ * This module provides functions to fetch current weather data from the OpenWeatherMap API,
+ * cache the results, and provide access to weather summary, description, location, and temperature.
+ * The data is refreshed at a configurable interval (default: 10 minutes).
+ *
+ * Dependencies:
+ * - ArduinoJson for JSON parsing
+ * - ESP8266HTTPClient and WiFiClientSecure for HTTPS requests
+ * - ESP8266WiFi for WiFi connectivity
+ *
+ * Namespace: Weather
+ *
+ * Static Variables:
+ * - weatherSummary: Cached summary string of the latest weather data.
+ * - cachedLocation: Cached city/location name.
+ * - cachedTemp: Cached temperature string.
+ * - cachedDesc: Cached weather description.
+ * - lastWeatherFetchMillis: Timestamp of the last successful fetch.
+ * - UPDATE_INTERVAL: Interval (ms) between automatic weather data refreshes.
+ *
+ * Functions:
+ * - bool fetch(): Fetches weather data from the API, updates caches, and returns success status.
+ * - void init(): Initializes the weather module and performs an initial fetch.
+ * - const char* getSummary(): Returns a summary string, refreshing data if needed.
+ * - const char* getDescription(): Returns the cached weather description.
+ * - const char* getLocation(): Returns the cached location/city name.
+ * - const char* getTemperature(): Returns the cached temperature string.
+ *
+ * Error Handling:
+ * - Handles WiFi disconnection, HTTP errors, and JSON parsing errors with appropriate cache updates.
+ *
+ * Usage:
+ * 1. Call Weather::init() at startup.
+ * 2. Use getter functions to retrieve weather information as needed.
+ */
+
+ 
 #include "weather.h"
 #include "secrets.h"
 

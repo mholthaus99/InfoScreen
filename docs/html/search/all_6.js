@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['getdaylightoffset_5fsec_0',['getDaylightOffset_sec',['../namespace_time_utils.html#a7d9cf7c42f64de31ded050f372226229',1,'TimeUtils']]],
-  ['getdescription_1',['getDescription',['../namespace_weather.html#ae3ad8f633ca9dff20651a5a7ccfc84bf',1,'Weather']]],
+  ['getdescription_0',['getDescription',['../namespace_weather.html#ae3ad8f633ca9dff20651a5a7ccfc84bf',1,'Weather']]],
+  ['getdstoffset_1',['getDSTOffset',['../namespace_time_utils.html#a68ed6e44922f46491b6138fff982ac42',1,'TimeUtils']]],
   ['getformattedhumidity_2',['getFormattedHumidity',['../namespace_d_h_t_sensor.html#adf22607ccf4206a9cc7e26e73389e2b2',1,'DHTSensor']]],
   ['getformattedtemperature_3',['getFormattedTemperature',['../namespace_d_h_t_sensor.html#a010ab695e6e0d28aea30f35d71639d26',1,'DHTSensor']]],
   ['getformattedtime_4',['getFormattedTime',['../namespace_time_utils.html#a72edd780e97b4fd2b55837477de1d821',1,'TimeUtils']]],
