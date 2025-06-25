@@ -31,7 +31,7 @@ void app_init()
     LCD::printAt("Starting IR...", 2);
 
     ir_init();
-    ir_registerCallbacks({.onPower = irhandle_power,
+    ir_setCallbacks({.onPower = irhandle_power,
                           .onDigit = irhandle_digit,
                           .onFunction = irhandle_func,
                           .onSkip = irhandle_skip,

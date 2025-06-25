@@ -107,7 +107,7 @@ void ir_poll()
  *
  * @param callbacks Struct containing the callbacks for power, digits, and function buttons.
  */
-void ir_registerCallbacks(const IRCallbacks &callbacks)
+void ir_setCallbacks(const IRCallbacks &callbacks)
 {
   registeredCallbacks = callbacks;
 }

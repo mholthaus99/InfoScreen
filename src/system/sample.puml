@@ -1,0 +1,225 @@
+@startuml
+
+class IRrecv {
+  +IRrecv(uint16_t pin)
+  +void enableIRIn()
+  +bool decode(decode_results* results)
+  +void resume()
+}
+
+class decode_results {
+  +uint64_t value
+}
+
+struct IRCallbacks {
+  +void (*onPower)()
+  +void (*onFunction)()
+  +void (*onSkip)()
+  +void (*onBack)()
+  +void (*onPlayPause)()
+  +void (*onVolumeUp)()
+  +void (*onVolumeDown)()
+  +void (*onChannelUp)()
+  +void (*onChannelDown)()
+  +void (*onEQ)()
+  +void (*onRepeat)()
+  +void (*onDigit)(int)
+}
+
+struct IRAction {
+  +uint32_t code
+  +const char* label
+  +void (**callbackField)()
+}
+
+class IRReceiverModule {
+  -static constexpr uint16_t IR_RECV_PIN
+  -static IRrecv irrecv
+  -static decode_results results
+  -static IRCallbacks registeredCallbacks
+  -static const IRAction[] irActions
+
+  +static void handleResultCode(uint32_t code)
+  +static void ir_init()
+  +static void ir_poll()
+  +static void ir_setCallbacks(const IRCallbacks &callbacks)
+}
+
+' Relationships
+IRReceiverModule "1" *-- "1" IRrecv : uses
+IRReceiverModule "1" *-- "*" IRAction : contains
+IRReceiverModule "1" *-- "1" decode_results : uses
+IRReceiverModule "1" *-- "1" IRCallbacks : uses
+
+
+package Views {
+  class View {
+    +onEnter()
+    +onExit()
+    +render()
+  }
+
+  class DefaultView {
+    +onEnter()
+    +onExit()
+    +render()
+  }
+
+  class NewsView {
+    +onEnter()
+    +onExit()
+    +render()
+  }
+
+  class MenuView {
+    +onEnter()
+    +onExit()
+    +render()
+  }
+
+  class FunctionView {
+    +setSwitchViewCallback(callback)
+    +onEnter()
+    +onExit()
+    +render()
+  }
+
+  DefaultView --|> View
+  NewsView --|> View
+  MenuView --|> View
+  FunctionView --|> View
+}
+
+package ViewController {
+  class ViewController {
+    -currentView : View*
+    -currentMode : DisplayMode
+    +switchView(mode : DisplayMode)
+    +renderCurrentView()
+    +setMode(mode : DisplayMode)
+    +getMode() : DisplayMode
+    +getCurrentView() : View*
+  }
+}
+
+ViewController.ViewController --> Views.View : currentView
+
+
+skinparam classAttributeIconSize 0
+
+package Controller {
+
+  class Controller {
+    +void app_init()
+    +void renderCurrentMode()
+    +void irhandle_power()
+    +void irhandle_func()
+    +void irhandle_digit(int d)
+    +void irhandle_skip()
+    +void irhandle_back()
+    +void irhandle_volume_up()
+    +void irhandle_volume_down()
+    +void irhandle_channel_up()
+    +void irhandle_channel_down()
+    +void irhandle_play_pause()
+    +void irhandle_eq()
+    +void irhandle_repeat()
+  }
+}
+
+package Views {
+  class View {
+    +void render()
+    +void onPower()
+    +void onFunction()
+    +void onDigit(int d)
+    +void onSkip()
+    +void onBack()
+    +void onVolumeUp()
+    +void onVolumeDown()
+    +void onChannelUp()
+    +void onChannelDown()
+    +void onPlayPause()
+    +void onEQ()
+    +void onRepeat()
+  }
+  
+  class DefaultView
+  class MenuView
+  class NewsView
+
+  View <|-- DefaultView
+  View <|-- MenuView
+  View <|-- NewsView
+}
+
+' class ViewController {
+'   +static View* getCurrentView()
+'   +static void setMode(DisplayMode mode)
+' }
+
+' class IRReceiver {
+'   +static void ir_init()
+'   +static void ir_setCallbacks(IRCallbacks callbacks)
+' }
+
+class LCD {
+  +static void init()
+  +static void clear()
+  +static void print(string text)
+  +static void printMultiLine(string text)
+  +static void printAt(string text, int line)
+}
+
+class WiFiUtils {
+  +static void wifi_connect(void (*callback)(const char* status))
+}
+
+class TimeUtils {
+  +static void init()
+}
+
+class DHTSensor {
+  +static void init()
+}
+
+class Weather {
+  +static void init()
+}
+
+Controller ..> ViewController : uses
+Controller ..> IRReceiver : uses
+Controller ..> LCD : uses
+Controller ..> WiFiUtils : uses
+Controller ..> TimeUtils : uses
+Controller ..> DHTSensor : uses
+Controller ..> Weather : uses
+
+ViewController --> View : manages
+
+
+  class main {
+    +setup()
+    +loop()
+  }
+
+  ' class ViewController
+  ' class Controller
+  ' class IRReceiver
+
+  main ..> ViewController : includes
+  main ..> Controller : includes
+  main ..> IRReceiverModule : includes
+}
+
+' note right of main::setup
+'   - calls app_init()
+'   - initializes hardware and software
+' end note
+
+' note right of main::loop
+'   - calls ir_poll()
+'   - calls renderCurrentMode()
+' end note
+@enduml
+

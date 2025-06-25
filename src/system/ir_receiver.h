@@ -33,4 +33,4 @@ void ir_poll();
  * 
  * @param callbacks Struct containing function pointers to assign.
  */
-void ir_registerCallbacks(const IRCallbacks& callbacks);
+void ir_setCallbacks(const IRCallbacks& callbacks);
