@@ -1,8 +1,8 @@
-# InfoScreen
+# DisplayGadget
 
-**InfoScreen** is a modular, extensible dashboard for ESP8266-based microcontrollers with a 20x4 I2C LCD display. It provides real-time data such as weather, time, Wi-Fi status, news headlines, and indoor climate. Users can navigate views and trigger actions using an infrared (IR) remote.
+**DisplayGadget** is a modular, extensible dashboard for ESP8266-based microcontrollers with a 20x4 I2C LCD display. It provides real-time data such as weather, time, Wi-Fi status, news headlines, and indoor climate. Users can navigate views and trigger actions using an infrared (IR) remote.
 
-<!-- ![Front view of InfoScreen](assets/front.jpg)
+<!-- ![Front view of DisplayGadget](assets/front.jpg)
 ![Body render](assets/body_render.jpg) -->
 
 <div style="display: flex; justify-content: center; gap: 20px; align-items: flex-start;">
@@ -44,7 +44,7 @@ Supported boards include NodeMCU, Wemos D1 mini, and other ESP8266 variants.
 ## 🧱 Project Structure
 
 ```plaintext
-InfoScreen/
+DisplayGadget/
 ├── src/                        # Source code
 │   ├── main.cpp                # Arduino entry point
 │   ├── system/                 # Core system logic
