@@ -83,7 +83,7 @@ DisplayGadget/
     #define WIFI_PASS "your-password"
     #define OPENWEATHERMAP_API_KEY "your-api-key"
     #define NEWS_URL "your-rss-url"
-    #define TIMEZONE_OFFSET -5 // e.g., CST
+    #define TIMEZONE_OFFSET -6 // e.g., CST
     #define DAYLIGHT_SAVING_TIME 1
     ```
 
