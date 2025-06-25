@@ -16,12 +16,12 @@ public:
 
     void render() override
     {
-        if (displayMgr.shouldUpdate(MODE_FUNC))
+        if (displayMgr.shouldUpdate(MODE_MENU))
         {
-            printAt("1. Toggle Power", 0);
-            printAt("2. Internet Settings", 1);
-            printAt("3. News", 2);
-            printAt("4. Default", 3);
+            printAt("1. Default", 0);
+            printAt("2. Local News", 1);
+            printAt("3. Network", 2);
+            //printAt("4. ", 3);
             displayMgr.markUpdated();
         }
     }
@@ -29,6 +29,8 @@ public:
     void onBack() override
     {
         setMode(MODE_DEFAULT);
+        if(switchViewCallback)
+            switchViewCallback(MODE_DEFAULT); // Call the callback instead of controller directly
     }
 
     void onDigit(int digit) override
@@ -37,20 +39,22 @@ public:
         switch (digit)
         {
         case 1:
-            lcd_toggleBacklight();
+          
             setMode(MODE_DEFAULT);
+            if (switchViewCallback)
+                switchViewCallback(MODE_DEFAULT); // Call the callback instead of controller directly
             break;
         case 2:
-            setMode(MODE_INFO);
-            break;
-        case 3:
             setMode(MODE_NEWS);
             if (switchViewCallback)
                 switchViewCallback(MODE_NEWS); // Call the callback instead of controller directly
             break;
-        case 4:
+        case 3:
             setMode(MODE_DEFAULT);
+            if (switchViewCallback)
+                switchViewCallback(MODE_DEFAULT); // Call the callback instead of controller directly
             break;
+      
         default:
             Serial.println("Invalid digit in FunctionView");
             break;

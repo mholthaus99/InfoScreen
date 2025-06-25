@@ -96,7 +96,7 @@ void switchView(int mode)
     case MODE_DEFAULT:
         currentView = new DefaultView();
         break;
-    case MODE_FUNC:
+    case MODE_MENU:
     {
         auto *menuView = new FunctionView();
         menuView->setSwitchViewCallback(switchView);
@@ -105,6 +105,10 @@ void switchView(int mode)
     }
     case MODE_NEWS:
         currentView = new NewsView();
+        break;
+    case MODE_NETWORK:
+        currentView = new DefaultView();
+       // displayMgr.markUpdated();
         break;
     default:
         currentView = new DefaultView();
@@ -131,7 +135,7 @@ void irhandle_power()
  */
 void irhandle_func()
 {
-    switchView(MODE_FUNC);
+    switchView(MODE_MENU);
 }
 
 /**

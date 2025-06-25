@@ -11,12 +11,12 @@ private:
     unsigned long lastToggle = 0;
 
 public:
-    void onEnter() override {
-        displayMgr.markUpdated();
-        showingClimate = false;
-        lastToggle = millis() - 5000;  // Force immediate update
-        lcd_clear();
-    }
+    // void onEnter() override {
+    //     displayMgr.markUpdated();
+    //     showingClimate = false;
+    //     lastToggle = millis() - 5000;  // Force immediate update
+    //     lcd_clear();
+    // }
 
     void render() override {
         if (displayMgr.shouldUpdate(MODE_DEFAULT)) {

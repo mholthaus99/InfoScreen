@@ -20,7 +20,7 @@ public:
     }
     virtual void onDigit(int digit) {}
     virtual void onFunction() {
-        displayMgr.flagForUpdate(MODE_FUNC); // Flag for function mode update
+        displayMgr.flagForUpdate(MODE_MENU); // Flag for function mode update
     }
     virtual void onSkip() {}
     virtual void onBack() {}

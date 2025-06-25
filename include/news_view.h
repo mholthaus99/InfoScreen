@@ -29,6 +29,14 @@ public:
         }
     }
 
+    void onSkip() override
+    {
+        // Logic specific to the news view when skip is pressed
+        // For example, navigate to the next news item
+        printWrapped(rss_getprint_headline()); // Assuming you have a function to get the next headline
+        displayMgr.markUpdated();
+    }
+
     void onBack() override
     {
         // Logic specific to the weather view when back is pressed
