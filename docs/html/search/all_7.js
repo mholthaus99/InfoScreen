@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['network_2ecpp_0',['network.cpp',['../network_8cpp.html',1,'']]],
-  ['ntpserver_1',['ntpServer',['../time__utils_8cpp.html#a6bd950625db0f240acc63a9cb41873f6',1,'time_utils.cpp']]]
+  ['handleresultcode_0',['handleResultCode',['../ir__receiver_8cpp.html#ae17403c8dcbb9f2176650a4d8eb15ccf',1,'ir_receiver.cpp']]],
+  ['hardware_20setup_1',['Hardware Setup',['../md_readme.html#autotoc_md2',1,'']]],
+  ['headlinecount_2',['headlineCount',['../namespace_r_s_s.html#a6037f079cb7b2dc81c08afacc22a72de',1,'RSS']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ntpserver_0',['ntpServer',['../time__utils_8cpp.html#a6bd950625db0f240acc63a9cb41873f6',1,'time_utils.cpp']]]
+  ['headlinecount_0',['headlineCount',['../namespace_r_s_s.html#a6037f079cb7b2dc81c08afacc22a72de',1,'RSS']]]
 ];

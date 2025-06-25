@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['daylightoffset_5fsec_0',['daylightOffset_sec',['../time__utils_8cpp.html#abcecff6206d272c30174ca268e2e6f0a',1,'time_utils.cpp']]],
-  ['dhthumbuf_1',['dhtHumBuf',['../dht__sensor_8cpp.html#adbd95db45284ac284e2e7240f8225132',1,'dht_sensor.cpp']]],
-  ['dhtpin_2',['DHTPIN',['../dht__sensor_8cpp.html#a3ef103f04b847f81938f2aa7ab9397dc',1,'dht_sensor.cpp']]],
-  ['dhttempbuf_3',['dhtTempBuf',['../dht__sensor_8cpp.html#aba39eec34015ac66b542ff1d87541154',1,'dht_sensor.cpp']]],
-  ['displaymgr_4',['displayMgr',['../mode__manager_8cpp.html#ad87c67e87b81d5aefb00a7ae8bd24ab0',1,'mode_manager.cpp']]]
+  ['cacheddesc_0',['cachedDesc',['../namespace_weather.html#a1002a1e4f6a6edc9004c2fac00012183',1,'Weather']]],
+  ['cachedheadlines_1',['cachedHeadlines',['../namespace_r_s_s.html#a1f711587991167a0ab9b32e1235f8731',1,'RSS']]],
+  ['cachedlocation_2',['cachedLocation',['../namespace_weather.html#a59a7127c54d5f68ef743c187b7493404',1,'Weather']]],
+  ['cachedtemp_3',['cachedTemp',['../namespace_weather.html#ad2294c8097c6e3055b78670175d3a0fb',1,'Weather']]],
+  ['callbackfield_4',['callbackField',['../struct_i_r_action.html#aebbe8f9b70452d38a34181ac3300652b',1,'IRAction']]],
+  ['channel_5fdown_5',['CHANNEL_DOWN',['../namespace_i_r_codes.html#a49d52b136bb06aaf057e75e37795955d',1,'IRCodes']]],
+  ['channel_5fup_6',['CHANNEL_UP',['../namespace_i_r_codes.html#a8e2ba9d4080dbde19c8f5bfba807e5a6',1,'IRCodes']]],
+  ['code_7',['code',['../struct_i_r_action.html#ae8fbed7e1ec6d56398afc8b4b2ed93d6',1,'IRAction']]],
+  ['currentheadlineindex_8',['currentHeadlineIndex',['../namespace_r_s_s.html#a4c5fe77ba190ec1011d0a2e2e6130d72',1,'RSS']]],
+  ['currentmode_9',['currentMode',['../mode__manager_8cpp.html#a7524b3b0bb656c504e310452032ece74',1,'currentMode:&#160;mode_manager.cpp'],['../mode__manager_8h.html#a7524b3b0bb656c504e310452032ece74',1,'currentMode:&#160;mode_manager.cpp']]],
+  ['currentview_10',['currentView',['../controller_8cpp.html#aa14b7b576a24b984b57b766d15316b58',1,'controller.cpp']]],
+  ['cursorline_11',['cursorLine',['../namespace_l_c_d.html#ab4d5e2cb754c962fab1a59515f1304cb',1,'LCD']]]
 ];

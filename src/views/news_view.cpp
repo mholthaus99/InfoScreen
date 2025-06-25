@@ -9,7 +9,7 @@ namespace Views
     {
         if (displayMgr.shouldUpdate(MODE_NEWS))
         {
-            LCD::printWrapped(rss_getprint_headline());
+            LCD::printWrapped(RSS::getNextHeadline());
             timeOfLastTitleChange = millis();
             displayMgr.markUpdated();
         }
@@ -17,13 +17,13 @@ namespace Views
         if (millis() - timeOfLastTitleChange >= 5000)
         {
             timeOfLastTitleChange = millis();
-            LCD::printWrapped(rss_getprint_headline());
+            LCD::printWrapped(RSS::getNextHeadline());
         }
     }
 
     void NewsView::onSkip()
     {
-        LCD::printWrapped(rss_getprint_headline());
+        LCD::printWrapped(RSS::getNextHeadline());
         displayMgr.markUpdated();
     }
 

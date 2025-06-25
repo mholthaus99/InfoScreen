@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/rss_reader.cpp File Reference</title>
+<title>My Project: src/network/rss_reader.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,83 +91,35 @@ $(function(){initNavTree('rss__reader_8cpp.html','',''); });
   <div class="headertitle"><div class="title">rss_reader.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;rss_reader.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="rss__reader_8h_source.html">rss_reader.h</a>&quot;</code><br />
 <code>#include &lt;ESP8266WiFi.h&gt;</code><br />
 <code>#include &lt;WiFiClientSecure.h&gt;</code><br />
 <code>#include &lt;ESP8266HTTPClient.h&gt;</code><br />
 <code>#include &lt;ArduinoJson.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="secrets_8h_source.html">../secrets.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:RSS" id="r_RSS"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html">RSS</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae3fbe816e32d960304f4c26aa40abc4f" id="r_ae3fbe816e32d960304f4c26aa40abc4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3fbe816e32d960304f4c26aa40abc4f">rss_fetch</a> ()</td></tr>
-<tr class="memdesc:ae3fbe816e32d960304f4c26aa40abc4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches and parses RSS headlines from the JSON feed URL.  <br /></td></tr>
-<tr class="memitem:a5b8172a3ace43a883b860dbc9b5fd7f6" id="r_a5b8172a3ace43a883b860dbc9b5fd7f6"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b8172a3ace43a883b860dbc9b5fd7f6">rss_getprint_headline</a> ()</td></tr>
-<tr class="memdesc:a5b8172a3ace43a883b860dbc9b5fd7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next cached headline.  <br /></td></tr>
+<tr class="memitem:a307f8c14e9b299a263d1a66abfdff4c2" id="r_a307f8c14e9b299a263d1a66abfdff4c2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a307f8c14e9b299a263d1a66abfdff4c2">RSS::clearHeadlines</a> ()</td></tr>
+<tr class="memitem:a874f8d59c5f89636d21e89b946df42ab" id="r_a874f8d59c5f89636d21e89b946df42ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a874f8d59c5f89636d21e89b946df42ab">RSS::fetch</a> ()</td></tr>
+<tr class="memdesc:a874f8d59c5f89636d21e89b946df42ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches and caches <a class="el" href="namespace_r_s_s.html">RSS</a> headlines from the server.  <br /></td></tr>
+<tr class="memitem:afa9344cc46605cf0f6aa696aab285977" id="r_afa9344cc46605cf0f6aa696aab285977"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#afa9344cc46605cf0f6aa696aab285977">RSS::getNextHeadline</a> ()</td></tr>
+<tr class="memdesc:afa9344cc46605cf0f6aa696aab285977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next cached headline, refreshing if needed.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aec657bef26e5ff27b9442563a591d9ec" id="r_aec657bef26e5ff27b9442563a591d9ec"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec657bef26e5ff27b9442563a591d9ec">url</a> = &quot;https://maxholthaus.com/ssr&quot;</td></tr>
-<tr class="memdesc:aec657bef26e5ff27b9442563a591d9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL of the JSON RSS feed to fetch.  <br /></td></tr>
+<tr class="memitem:a0ec3f6b39c7c7bf88057fe4c31fcab3b" id="r_a0ec3f6b39c7c7bf88057fe4c31fcab3b"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a0ec3f6b39c7c7bf88057fe4c31fcab3b">RSS::MAX_HEADLINES</a> = 10</td></tr>
+<tr class="memitem:a6ad793bc6c521addf31634be433b7292" id="r_a6ad793bc6c521addf31634be433b7292"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a6ad793bc6c521addf31634be433b7292">RSS::MAX_TITLE_LEN</a> = 100</td></tr>
+<tr class="memitem:a1f711587991167a0ab9b32e1235f8731" id="r_a1f711587991167a0ab9b32e1235f8731"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a1f711587991167a0ab9b32e1235f8731">RSS::cachedHeadlines</a> [<a class="el" href="namespace_r_s_s.html#a0ec3f6b39c7c7bf88057fe4c31fcab3b">MAX_HEADLINES</a>][<a class="el" href="namespace_r_s_s.html#a6ad793bc6c521addf31634be433b7292">MAX_TITLE_LEN</a>]</td></tr>
+<tr class="memitem:a6037f079cb7b2dc81c08afacc22a72de" id="r_a6037f079cb7b2dc81c08afacc22a72de"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a6037f079cb7b2dc81c08afacc22a72de">RSS::headlineCount</a> = 0</td></tr>
+<tr class="memitem:a4c5fe77ba190ec1011d0a2e2e6130d72" id="r_a4c5fe77ba190ec1011d0a2e2e6130d72"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a4c5fe77ba190ec1011d0a2e2e6130d72">RSS::currentHeadlineIndex</a> = 0</td></tr>
+<tr class="memitem:a3e865738a4f343a96f7d2e771db28410" id="r_a3e865738a4f343a96f7d2e771db28410"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a3e865738a4f343a96f7d2e771db28410">RSS::lastRSSUpdate</a> = 0</td></tr>
+<tr class="memitem:a88edc0a00dcdcb274ab95e10fc303444" id="r_a88edc0a00dcdcb274ab95e10fc303444"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_r_s_s.html#a88edc0a00dcdcb274ab95e10fc303444">RSS::url</a> = <a class="el" href="secrets_8h.html#aee649fe2db96286426370c6972716e09">NEWS_URL</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="ae3fbe816e32d960304f4c26aa40abc4f" name="ae3fbe816e32d960304f4c26aa40abc4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3fbe816e32d960304f4c26aa40abc4f">&#9670;&#160;</a></span>rss_fetch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rss_fetch </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fetches and parses RSS headlines from the JSON feed URL. </p>
-<p>Clears any previously cached headlines before fetching. Uses WiFiClientSecure with insecure mode (for testing). Stores up to MAX_HEADLINES headlines in the cache. Does nothing if Wi-Fi is not connected or fetch fails. </p>
-
-</div>
-</div>
-<a id="a5b8172a3ace43a883b860dbc9b5fd7f6" name="a5b8172a3ace43a883b860dbc9b5fd7f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b8172a3ace43a883b860dbc9b5fd7f6">&#9670;&#160;</a></span>rss_getprint_headline()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * rss_getprint_headline </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the next cached headline. </p>
-<p>Automatically refreshes the headlines by calling <a class="el" href="#ae3fbe816e32d960304f4c26aa40abc4f" title="Fetches and parses RSS headlines from the JSON feed URL.">rss_fetch()</a> if more than 15 minutes have elapsed since last update or if no headlines are cached.</p>
-<dl class="section return"><dt>Returns</dt><dd>const char* Pointer to the current headline string. Returns "No headlines available" if cache is empty. </dd></dl>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="aec657bef26e5ff27b9442563a591d9ec" name="aec657bef26e5ff27b9442563a591d9ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec657bef26e5ff27b9442563a591d9ec">&#9670;&#160;</a></span>url</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* url = &quot;https://maxholthaus.com/ssr&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>URL of the JSON RSS feed to fetch. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -181,7 +133,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="rss__reader_8cpp.html">rss_reader.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_fc4c7f03e1a69a98c370fae55a743828.html">network</a></li><li class="navelem"><a href="rss__reader_8cpp.html">rss_reader.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['time_5ffetchntp_0',['time_fetchNTP',['../time__utils_8cpp.html#a2628481180bb5d52def509e29a167f2b',1,'time_utils.cpp']]],
-  ['time_5fgetprint_1',['time_getprint',['../time__utils_8cpp.html#a48d87ade571e5f820fe4bc0ef85b5e10',1,'time_utils.cpp']]],
-  ['time_5finit_2',['time_init',['../time__utils_8cpp.html#a04352ea8ee003992baa1d4e993b50dae',1,'time_utils.cpp']]],
-  ['time_5futils_2ecpp_3',['time_utils.cpp',['../time__utils_8cpp.html',1,'']]]
+  ['needsupdateflag_0',['needsUpdateFlag',['../class_mode_manager.html#ac5fb2fec9b00fbc60de58690ebcfc98c',1,'ModeManager']]],
+  ['network_2ecpp_1',['network.cpp',['../network_8cpp.html',1,'']]],
+  ['network_2eh_2',['network.h',['../network_8h.html',1,'']]],
+  ['news_5furl_3',['NEWS_URL',['../secrets_8h.html#aee649fe2db96286426370c6972716e09',1,'secrets.h']]],
+  ['news_5fview_2ecpp_4',['news_view.cpp',['../news__view_8cpp.html',1,'']]],
+  ['news_5fview_2eh_5',['news_view.h',['../news__view_8h.html',1,'']]],
+  ['newsview_6',['NewsView',['../class_views_1_1_news_view.html',1,'Views']]],
+  ['ntpserver_7',['ntpServer',['../namespace_time_utils.html#ac681f11a930d6c4a1dcbb7a3f822936a',1,'TimeUtils']]]
 ];

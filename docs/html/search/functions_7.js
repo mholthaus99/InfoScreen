@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['setmode_0',['setMode',['../mode__manager_8cpp.html#a241f9468e9470cec2dc273d424069caa',1,'mode_manager.cpp']]],
-  ['setup_1',['setup',['../main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]],
-  ['switchview_2',['switchView',['../controller_8cpp.html#aafe3dcb1a4e6da6b5956c570591a06fc',1,'controller.cpp']]]
+  ['lcd_0',['lcd',['../namespace_l_c_d.html#a249f43c73b36265375e2dc9b1636c786',1,'LCD']]],
+  ['loop_1',['loop',['../main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
 ];

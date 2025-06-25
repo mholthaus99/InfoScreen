@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/display.cpp File Reference</title>
+<title>My Project: src/system/display.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,267 +91,40 @@ $(function(){initNavTree('display_8cpp.html','',''); });
   <div class="headertitle"><div class="title">display.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;Wire.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="display_8h_source.html">display.h</a>&quot;</code><br />
+<code>#include &lt;Wire.h&gt;</code><br />
 <code>#include &lt;hd44780.h&gt;</code><br />
 <code>#include &lt;hd44780ioClass/hd44780_I2Cexp.h&gt;</code><br />
-<code>#include &quot;display.h&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:LCD" id="r_LCD"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html">LCD</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a89f3415fca461331cb078e2b6f21314d" id="r_a89f3415fca461331cb078e2b6f21314d"><td class="memItemLeft" align="right" valign="top">hd44780_I2Cexp&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89f3415fca461331cb078e2b6f21314d">lcd</a> (0x27, 20, 4)</td></tr>
-<tr class="memdesc:a89f3415fca461331cb078e2b6f21314d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD display object for 20x4 I2C display at address 0x27.  <br /></td></tr>
-<tr class="memitem:ac23e73124dc9fabae95671fe71d074a6" id="r_ac23e73124dc9fabae95671fe71d074a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac23e73124dc9fabae95671fe71d074a6">lcd_init</a> ()</td></tr>
-<tr class="memdesc:ac23e73124dc9fabae95671fe71d074a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the LCD display.  <br /></td></tr>
-<tr class="memitem:a35c08b1fa742e650f4873939707b893b" id="r_a35c08b1fa742e650f4873939707b893b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35c08b1fa742e650f4873939707b893b">lcd_clear</a> ()</td></tr>
-<tr class="memdesc:a35c08b1fa742e650f4873939707b893b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display and reset the cursor.  <br /></td></tr>
-<tr class="memitem:a04e710ba4fe70cc543934924c81e6f86" id="r_a04e710ba4fe70cc543934924c81e6f86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04e710ba4fe70cc543934924c81e6f86">print</a> (const char *message)</td></tr>
-<tr class="memdesc:a04e710ba4fe70cc543934924c81e6f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at the current cursor line and advance to the next line.  <br /></td></tr>
-<tr class="memitem:ad92ce83975056b034ac81e2420acb0b6" id="r_ad92ce83975056b034ac81e2420acb0b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad92ce83975056b034ac81e2420acb0b6">printAt</a> (const char *message, byte line)</td></tr>
-<tr class="memdesc:ad92ce83975056b034ac81e2420acb0b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at a specific line (column 0).  <br /></td></tr>
-<tr class="memitem:ae2ba1dd1c8fe02eb79eee5da151da13d" id="r_ae2ba1dd1c8fe02eb79eee5da151da13d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ba1dd1c8fe02eb79eee5da151da13d">printAt</a> (const char *message, byte line, byte col)</td></tr>
-<tr class="memdesc:ae2ba1dd1c8fe02eb79eee5da151da13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at a specific line and column.  <br /></td></tr>
-<tr class="memitem:af15341b7d7fb3b40001a9cee284e1eb2" id="r_af15341b7d7fb3b40001a9cee284e1eb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af15341b7d7fb3b40001a9cee284e1eb2">printMultiLine</a> (const char *message)</td></tr>
-<tr class="memdesc:af15341b7d7fb3b40001a9cee284e1eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a multi-line message, splitting on '<br  />
+<tr class="memitem:a249f43c73b36265375e2dc9b1636c786" id="r_a249f43c73b36265375e2dc9b1636c786"><td class="memItemLeft" align="right" valign="top">hd44780_I2Cexp&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a249f43c73b36265375e2dc9b1636c786">LCD::lcd</a> (0x27, 20, 4)</td></tr>
+<tr class="memitem:a1c9a188830514801292eb9972ef5ef36" id="r_a1c9a188830514801292eb9972ef5ef36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a1c9a188830514801292eb9972ef5ef36">LCD::init</a> ()</td></tr>
+<tr class="memdesc:a1c9a188830514801292eb9972ef5ef36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the <a class="el" href="namespace_l_c_d.html">LCD</a> display.  <br /></td></tr>
+<tr class="memitem:afa699e0beeeee03cce8cef87eba81c4a" id="r_afa699e0beeeee03cce8cef87eba81c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#afa699e0beeeee03cce8cef87eba81c4a">LCD::clear</a> ()</td></tr>
+<tr class="memdesc:afa699e0beeeee03cce8cef87eba81c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display and reset the cursor.  <br /></td></tr>
+<tr class="memitem:a92a35066bf0eade117d7ebaaf042846f" id="r_a92a35066bf0eade117d7ebaaf042846f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a92a35066bf0eade117d7ebaaf042846f">LCD::print</a> (const char *message)</td></tr>
+<tr class="memdesc:a92a35066bf0eade117d7ebaaf042846f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at the next available line and auto-advance.  <br /></td></tr>
+<tr class="memitem:a5176e9a8f6adfed25f30f8f6b276c085" id="r_a5176e9a8f6adfed25f30f8f6b276c085"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a5176e9a8f6adfed25f30f8f6b276c085">LCD::printAt</a> (const char *message, byte line)</td></tr>
+<tr class="memdesc:a5176e9a8f6adfed25f30f8f6b276c085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at a specific line (column 0).  <br /></td></tr>
+<tr class="memitem:a4b978c129ac6672b288d63fa9d759772" id="r_a4b978c129ac6672b288d63fa9d759772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a4b978c129ac6672b288d63fa9d759772">LCD::printAt</a> (const char *message, byte line, byte col)</td></tr>
+<tr class="memdesc:a4b978c129ac6672b288d63fa9d759772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a message at a specific line and column.  <br /></td></tr>
+<tr class="memitem:aedbeeee1c178c028febad0499d16b0bc" id="r_aedbeeee1c178c028febad0499d16b0bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#aedbeeee1c178c028febad0499d16b0bc">LCD::printMultiLine</a> (const char *message)</td></tr>
+<tr class="memdesc:aedbeeee1c178c028febad0499d16b0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a multi-line message, splitting on '<br  />
 '.  <br /></td></tr>
-<tr class="memitem:aea7c2414a848256669321af7f195ec75" id="r_aea7c2414a848256669321af7f195ec75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea7c2414a848256669321af7f195ec75">lcd_toggleBacklight</a> ()</td></tr>
-<tr class="memdesc:aea7c2414a848256669321af7f195ec75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the display backlight on or off.  <br /></td></tr>
-<tr class="memitem:aaabe17b0b798c8810b01b083f2855608" id="r_aaabe17b0b798c8810b01b083f2855608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaabe17b0b798c8810b01b083f2855608">printWrapped</a> (const char *message)</td></tr>
-<tr class="memdesc:aaabe17b0b798c8810b01b083f2855608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a long message across all 4 lines of the display, word-wrapping intelligently.  <br /></td></tr>
+<tr class="memitem:a446cb72358bb1328261c0f58972fc3ee" id="r_a446cb72358bb1328261c0f58972fc3ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a446cb72358bb1328261c0f58972fc3ee">LCD::toggleBacklight</a> ()</td></tr>
+<tr class="memdesc:a446cb72358bb1328261c0f58972fc3ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the display backlight on or off.  <br /></td></tr>
+<tr class="memitem:a4385485ad56b530afc2dab904d333a1e" id="r_a4385485ad56b530afc2dab904d333a1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#a4385485ad56b530afc2dab904d333a1e">LCD::printWrapped</a> (const char *message)</td></tr>
+<tr class="memdesc:a4385485ad56b530afc2dab904d333a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a long message across all 4 lines with word wrapping.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab4d5e2cb754c962fab1a59515f1304cb" id="r_ab4d5e2cb754c962fab1a59515f1304cb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_c_d.html#ab4d5e2cb754c962fab1a59515f1304cb">LCD::cursorLine</a> = 0</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a89f3415fca461331cb078e2b6f21314d" name="a89f3415fca461331cb078e2b6f21314d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89f3415fca461331cb078e2b6f21314d">&#9670;&#160;</a></span>lcd()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">hd44780_I2Cexp lcd </td>
-          <td>(</td>
-          <td class="paramtype">0x27</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">20</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>LCD display object for 20x4 I2C display at address 0x27. </p>
-
-</div>
-</div>
-<a id="a35c08b1fa742e650f4873939707b893b" name="a35c08b1fa742e650f4873939707b893b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35c08b1fa742e650f4873939707b893b">&#9670;&#160;</a></span>lcd_clear()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_clear </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clear the display and reset the cursor. </p>
-<p>Clears all content and homes the cursor to the top left. </p>
-
-</div>
-</div>
-<a id="ac23e73124dc9fabae95671fe71d074a6" name="ac23e73124dc9fabae95671fe71d074a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac23e73124dc9fabae95671fe71d074a6">&#9670;&#160;</a></span>lcd_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_init </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the LCD display. </p>
-<p>Sets up the display, clears the screen, and homes the cursor. Prints an error to Serial if initialization fails. </p>
-
-</div>
-</div>
-<a id="aea7c2414a848256669321af7f195ec75" name="aea7c2414a848256669321af7f195ec75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea7c2414a848256669321af7f195ec75">&#9670;&#160;</a></span>lcd_toggleBacklight()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_toggleBacklight </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Toggle the display backlight on or off. </p>
-<p>Remembers the current state and toggles it each call. </p>
-
-</div>
-</div>
-<a id="a04e710ba4fe70cc543934924c81e6f86" name="a04e710ba4fe70cc543934924c81e6f86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04e710ba4fe70cc543934924c81e6f86">&#9670;&#160;</a></span>print()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void print </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a message at the current cursor line and advance to the next line. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Null-terminated string to print.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Prints the message left-aligned and wraps to the top after the last line. </p>
-
-</div>
-</div>
-<a id="ad92ce83975056b034ac81e2420acb0b6" name="ad92ce83975056b034ac81e2420acb0b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92ce83975056b034ac81e2420acb0b6">&#9670;&#160;</a></span>printAt() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printAt </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>line</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a message at a specific line (column 0). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Null-terminated string to print. </td></tr>
-    <tr><td class="paramname">line</td><td>Line number (0-3). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae2ba1dd1c8fe02eb79eee5da151da13d" name="ae2ba1dd1c8fe02eb79eee5da151da13d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2ba1dd1c8fe02eb79eee5da151da13d">&#9670;&#160;</a></span>printAt() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printAt </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>col</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a message at a specific line and column. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Null-terminated string to print. </td></tr>
-    <tr><td class="paramname">line</td><td>Line number (0-3). </td></tr>
-    <tr><td class="paramname">col</td><td>Column number (0-19). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af15341b7d7fb3b40001a9cee284e1eb2" name="af15341b7d7fb3b40001a9cee284e1eb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af15341b7d7fb3b40001a9cee284e1eb2">&#9670;&#160;</a></span>printMultiLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printMultiLine </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a multi-line message, splitting on '<br  />
-'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Null-terminated string with optional newline characters.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Each line is printed on a separate LCD row. Remaining lines are cleared. </p>
-
-</div>
-</div>
-<a id="aaabe17b0b798c8810b01b083f2855608" name="aaabe17b0b798c8810b01b083f2855608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaabe17b0b798c8810b01b083f2855608">&#9670;&#160;</a></span>printWrapped()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printWrapped </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a long message across all 4 lines of the display, word-wrapping intelligently. </p>
-<p>Words will wrap to the next line when reaching the edge of the display. If a word is longer than 20 characters, it will be force-split.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Null-terminated string to display. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -365,7 +138,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="display_8cpp.html">display.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li><li class="navelem"><a href="display_8cpp.html">display.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

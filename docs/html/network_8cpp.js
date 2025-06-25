@@ -1,13 +1,13 @@
 var network_8cpp =
 [
-    [ "getprint_wifi_dns", "network_8cpp.html#a2b79ce4ddba51d8ec45d1d294653183f", null ],
-    [ "getprint_wifi_gateway", "network_8cpp.html#a5385e16342e889c99e6b9b6cc6e30989", null ],
-    [ "getprint_wifi_ip", "network_8cpp.html#a144aacd4db9772f800bf14c78cbd9add", null ],
-    [ "getprint_wifi_password", "network_8cpp.html#af25b46c6936b693244f459be26fe3fb0", null ],
-    [ "getprint_wifi_ssid", "network_8cpp.html#a5e788c2e336d80bb309417043ae200d1", null ],
-    [ "getprint_wifi_subnet", "network_8cpp.html#ad1eee5f099a1e1f3339334e146bb1c98", null ],
-    [ "wifi_connect", "network_8cpp.html#a3fcec2d93a0bcb6e99ed8457fd0faa5b", null ],
-    [ "wifi_isConnected", "network_8cpp.html#ac2af562ded7ab218b0c09122db4fbd06", null ],
-    [ "password", "network_8cpp.html#aa4a2ebcb494493f648ae1e6975672575", null ],
-    [ "ssid", "network_8cpp.html#a587ba0cb07f02913598610049a3bbb79", null ]
+    [ "WiFiUtils::getprint_wifi_dns", "namespace_wi_fi_utils.html#a76ea7622073ec2ff116a668a57dafc1f", null ],
+    [ "WiFiUtils::getprint_wifi_gateway", "namespace_wi_fi_utils.html#abed1d6269fbddf85ae7f6acd9a08b58b", null ],
+    [ "WiFiUtils::getprint_wifi_ip", "namespace_wi_fi_utils.html#a74d9888a127258f5fb15d1cf56b8330c", null ],
+    [ "WiFiUtils::getprint_wifi_password", "namespace_wi_fi_utils.html#a9b36d6642aa939e163cd6b854b22c565", null ],
+    [ "WiFiUtils::getprint_wifi_ssid", "namespace_wi_fi_utils.html#a0509aad372b35cefc9ced3bc805bc286", null ],
+    [ "WiFiUtils::getprint_wifi_subnet", "namespace_wi_fi_utils.html#a2ae8aaecddc513a7837a6930060e9ed8", null ],
+    [ "WiFiUtils::wifi_connect", "namespace_wi_fi_utils.html#a400c2b7ae450f4a618b2c563da4aa59c", null ],
+    [ "WiFiUtils::wifi_isConnected", "namespace_wi_fi_utils.html#a873d9e8e787b5faa16f0e29c01f724fe", null ],
+    [ "WiFiUtils::password", "namespace_wi_fi_utils.html#a8406f582dc9c103acf1d502a0197d77c", null ],
+    [ "WiFiUtils::ssid", "namespace_wi_fi_utils.html#ab3ed17324e346c382f95914caf528072", null ]
 ];

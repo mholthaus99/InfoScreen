@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['label_0',['label',['../struct_i_r_action.html#aef4a44bf719174b1504f57bde08ea43f',1,'IRAction']]],
-  ['lcd_1',['lcd',['../display_8cpp.html#a89f3415fca461331cb078e2b6f21314d',1,'display.cpp']]],
-  ['lcd_5fclear_2',['lcd_clear',['../display_8cpp.html#a35c08b1fa742e650f4873939707b893b',1,'display.cpp']]],
-  ['lcd_5finit_3',['lcd_init',['../display_8cpp.html#ac23e73124dc9fabae95671fe71d074a6',1,'display.cpp']]],
-  ['lcd_5ftogglebacklight_4',['lcd_toggleBacklight',['../display_8cpp.html#aea7c2414a848256669321af7f195ec75',1,'display.cpp']]],
-  ['loop_5',['loop',['../main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
+  ['features_0',['🔧 Features',['../md_readme.html#autotoc_md1',1,'']]],
+  ['fetch_1',['fetch',['../namespace_r_s_s.html#a874f8d59c5f89636d21e89b946df42ab',1,'RSS::fetch()'],['../namespace_weather.html#ab1486980f26cf9cf55d52ddb9d3ebce5',1,'Weather::fetch()']]],
+  ['fetchntp_2',['fetchNTP',['../namespace_time_utils.html#aafb4546d75c80d6c7a26a78c40580edc',1,'TimeUtils']]],
+  ['flagforskip_3',['flagForSkip',['../class_mode_manager.html#ac55c1a2f5b25bdf45d2ee357165d6b12',1,'ModeManager']]],
+  ['flagforupdate_4',['flagForUpdate',['../class_mode_manager.html#a880e14f2103dac990101dfccf2e93204',1,'ModeManager']]],
+  ['function_5',['FUNCTION',['../namespace_i_r_codes.html#a6a89dd3dc72328999425ca418b227f28',1,'IRCodes']]],
+  ['functionview_6',['FunctionView',['../class_views_1_1_function_view.html',1,'Views']]]
 ];

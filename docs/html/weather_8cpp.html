@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/weather.cpp File Reference</title>
+<title>My Project: src/network/weather.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,169 +91,42 @@ $(function(){initNavTree('weather_8cpp.html','',''); });
   <div class="headertitle"><div class="title">weather.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;weather.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="weather_8h_source.html">weather.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="secrets_8h_source.html">secrets.h</a>&quot;</code><br />
 <code>#include &lt;ArduinoJson.h&gt;</code><br />
 <code>#include &lt;ESP8266HTTPClient.h&gt;</code><br />
-<code>#include &lt;WiFiClient.h&gt;</code><br />
+<code>#include &lt;WiFiClientSecure.h&gt;</code><br />
 <code>#include &lt;ESP8266WiFi.h&gt;</code><br />
-<code>#include &quot;secrets.h&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:Weather" id="r_Weather"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html">Weather</a></td></tr>
+<tr class="memdesc:namespace_weather"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_weather.html" title="Weather namespace for fetching and accessing weather data.">Weather</a> namespace for fetching and accessing weather data. <br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aceaf91c044539f741109a0b6489d7742" id="r_aceaf91c044539f741109a0b6489d7742"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aceaf91c044539f741109a0b6489d7742">weather_fetch</a> ()</td></tr>
-<tr class="memdesc:aceaf91c044539f741109a0b6489d7742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the latest weather data from OpenWeatherMap API.  <br /></td></tr>
-<tr class="memitem:a5b723799904ca0ba17ec91319189f856" id="r_a5b723799904ca0ba17ec91319189f856"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b723799904ca0ba17ec91319189f856">weather_init</a> ()</td></tr>
-<tr class="memdesc:a5b723799904ca0ba17ec91319189f856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the weather module and fetches the initial weather data.  <br /></td></tr>
-<tr class="memitem:a98cbd8d949bf785e5f32deed27ad209c" id="r_a98cbd8d949bf785e5f32deed27ad209c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98cbd8d949bf785e5f32deed27ad209c">getprint_weather_summary</a> ()</td></tr>
-<tr class="memdesc:a98cbd8d949bf785e5f32deed27ad209c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get latest weather summary string.  <br /></td></tr>
-<tr class="memitem:a3228cddd21f9da74d181f21a9509a0e4" id="r_a3228cddd21f9da74d181f21a9509a0e4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3228cddd21f9da74d181f21a9509a0e4">getprint_location</a> ()</td></tr>
-<tr class="memdesc:a3228cddd21f9da74d181f21a9509a0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get cached location string.  <br /></td></tr>
-<tr class="memitem:af3e312b319b75e2e37f8f4155788720f" id="r_af3e312b319b75e2e37f8f4155788720f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e312b319b75e2e37f8f4155788720f">getprint_temperature</a> ()</td></tr>
-<tr class="memdesc:af3e312b319b75e2e37f8f4155788720f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get cached temperature string.  <br /></td></tr>
-<tr class="memitem:add37534af3fe6ef57914987e008e3652" id="r_add37534af3fe6ef57914987e008e3652"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add37534af3fe6ef57914987e008e3652">getprint_weather_description</a> ()</td></tr>
-<tr class="memdesc:add37534af3fe6ef57914987e008e3652"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get cached weather description string.  <br /></td></tr>
+<tr class="memitem:ab1486980f26cf9cf55d52ddb9d3ebce5" id="r_ab1486980f26cf9cf55d52ddb9d3ebce5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#ab1486980f26cf9cf55d52ddb9d3ebce5">Weather::fetch</a> ()</td></tr>
+<tr class="memdesc:ab1486980f26cf9cf55d52ddb9d3ebce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to fetch the latest weather data.  <br /></td></tr>
+<tr class="memitem:a488f1e02bc098cfd852b4c4fe8ffd589" id="r_a488f1e02bc098cfd852b4c4fe8ffd589"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a488f1e02bc098cfd852b4c4fe8ffd589">Weather::init</a> ()</td></tr>
+<tr class="memdesc:a488f1e02bc098cfd852b4c4fe8ffd589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the weather module and fetches initial weather data.  <br /></td></tr>
+<tr class="memitem:aad9bbd20aef34e7f92992d46d062618c" id="r_aad9bbd20aef34e7f92992d46d062618c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#aad9bbd20aef34e7f92992d46d062618c">Weather::getSummary</a> ()</td></tr>
+<tr class="memdesc:aad9bbd20aef34e7f92992d46d062618c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a formatted weather summary string.  <br /></td></tr>
+<tr class="memitem:ae3ad8f633ca9dff20651a5a7ccfc84bf" id="r_ae3ad8f633ca9dff20651a5a7ccfc84bf"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#ae3ad8f633ca9dff20651a5a7ccfc84bf">Weather::getDescription</a> ()</td></tr>
+<tr class="memdesc:ae3ad8f633ca9dff20651a5a7ccfc84bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the weather description string.  <br /></td></tr>
+<tr class="memitem:a1f94f0f06902f6ff5400f361cafeb2b9" id="r_a1f94f0f06902f6ff5400f361cafeb2b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a1f94f0f06902f6ff5400f361cafeb2b9">Weather::getLocation</a> ()</td></tr>
+<tr class="memdesc:a1f94f0f06902f6ff5400f361cafeb2b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the location/city string.  <br /></td></tr>
+<tr class="memitem:a9e78394e960dee8718c5894feeefbee0" id="r_a9e78394e960dee8718c5894feeefbee0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a9e78394e960dee8718c5894feeefbee0">Weather::getTemperature</a> ()</td></tr>
+<tr class="memdesc:a9e78394e960dee8718c5894feeefbee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the temperature string.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a1f7ef7a7d193ac87eea8dd887fab7260" id="r_a1f7ef7a7d193ac87eea8dd887fab7260"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f7ef7a7d193ac87eea8dd887fab7260">WEATHER_UPDATE_INTERVAL</a> = 10UL * 60UL * 1000UL</td></tr>
+<tr class="memitem:ad6988b11cc4969605fbe1f9c732604f0" id="r_ad6988b11cc4969605fbe1f9c732604f0"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#ad6988b11cc4969605fbe1f9c732604f0">Weather::weatherSummary</a> = &quot;Weather data not yet fetched&quot;</td></tr>
+<tr class="memitem:a59a7127c54d5f68ef743c187b7493404" id="r_a59a7127c54d5f68ef743c187b7493404"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a59a7127c54d5f68ef743c187b7493404">Weather::cachedLocation</a> = &quot;Unknown&quot;</td></tr>
+<tr class="memitem:ad2294c8097c6e3055b78670175d3a0fb" id="r_ad2294c8097c6e3055b78670175d3a0fb"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#ad2294c8097c6e3055b78670175d3a0fb">Weather::cachedTemp</a> = &quot;--F&quot;</td></tr>
+<tr class="memitem:a1002a1e4f6a6edc9004c2fac00012183" id="r_a1002a1e4f6a6edc9004c2fac00012183"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a1002a1e4f6a6edc9004c2fac00012183">Weather::cachedDesc</a> = &quot;Unavailable&quot;</td></tr>
+<tr class="memitem:a21e4b3ef7fa9b5827faf9653d7f0a8c9" id="r_a21e4b3ef7fa9b5827faf9653d7f0a8c9"><td class="memItemLeft" align="right" valign="top">static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a21e4b3ef7fa9b5827faf9653d7f0a8c9">Weather::lastWeatherFetchMillis</a> = 0</td></tr>
+<tr class="memitem:a87df8c0b2b7166ee1e1951039a9b4a06" id="r_a87df8c0b2b7166ee1e1951039a9b4a06"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_weather.html#a87df8c0b2b7166ee1e1951039a9b4a06">Weather::UPDATE_INTERVAL</a> = 10UL * 60UL * 1000UL</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a3228cddd21f9da74d181f21a9509a0e4" name="a3228cddd21f9da74d181f21a9509a0e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3228cddd21f9da74d181f21a9509a0e4">&#9670;&#160;</a></span>getprint_location()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_location </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get cached location string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to location C-string. </dd></dl>
-
-</div>
-</div>
-<a id="af3e312b319b75e2e37f8f4155788720f" name="af3e312b319b75e2e37f8f4155788720f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3e312b319b75e2e37f8f4155788720f">&#9670;&#160;</a></span>getprint_temperature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_temperature </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get cached temperature string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to temperature C-string. </dd></dl>
-
-</div>
-</div>
-<a id="add37534af3fe6ef57914987e008e3652" name="add37534af3fe6ef57914987e008e3652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add37534af3fe6ef57914987e008e3652">&#9670;&#160;</a></span>getprint_weather_description()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_weather_description </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get cached weather description string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to weather description C-string. </dd></dl>
-
-</div>
-</div>
-<a id="a98cbd8d949bf785e5f32deed27ad209c" name="a98cbd8d949bf785e5f32deed27ad209c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98cbd8d949bf785e5f32deed27ad209c">&#9670;&#160;</a></span>getprint_weather_summary()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_weather_summary </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get latest weather summary string. </p>
-<p>If the cached data is older than the update interval, attempts to refresh it.</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to weather summary C-string. </dd></dl>
-
-</div>
-</div>
-<a id="aceaf91c044539f741109a0b6489d7742" name="aceaf91c044539f741109a0b6489d7742"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceaf91c044539f741109a0b6489d7742">&#9670;&#160;</a></span>weather_fetch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool weather_fetch </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fetches the latest weather data from OpenWeatherMap API. </p>
-<p>Updates cached weather summary, location, temperature, and description. Handles connection, HTTP, and JSON errors gracefully.</p>
-<dl class="section return"><dt>Returns</dt><dd>true if weather data was successfully fetched and parsed, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a5b723799904ca0ba17ec91319189f856" name="a5b723799904ca0ba17ec91319189f856"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b723799904ca0ba17ec91319189f856">&#9670;&#160;</a></span>weather_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void weather_init </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the weather module and fetches the initial weather data. </p>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a1f7ef7a7d193ac87eea8dd887fab7260" name="a1f7ef7a7d193ac87eea8dd887fab7260"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f7ef7a7d193ac87eea8dd887fab7260">&#9670;&#160;</a></span>WEATHER_UPDATE_INTERVAL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned long WEATHER_UPDATE_INTERVAL = 10UL * 60UL * 1000UL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -267,7 +140,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="weather_8cpp.html">weather.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_fc4c7f03e1a69a98c370fae55a743828.html">network</a></li><li class="navelem"><a href="weather_8cpp.html">weather.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

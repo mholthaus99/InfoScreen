@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/network.cpp File Reference</title>
+<title>My Project: src/network/network.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,229 +92,37 @@ $(function(){initNavTree('network_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;ESP8266WiFi.h&gt;</code><br />
-<code>#include &quot;secrets.h&quot;</code><br />
-<code>#include &quot;network.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="secrets_8h_source.html">secrets.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="network_8h_source.html">network.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:WiFiUtils" id="r_WiFiUtils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html">WiFiUtils</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3fcec2d93a0bcb6e99ed8457fd0faa5b" id="r_a3fcec2d93a0bcb6e99ed8457fd0faa5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fcec2d93a0bcb6e99ed8457fd0faa5b">wifi_connect</a> (void(*statusCallback)(const char *))</td></tr>
-<tr class="memdesc:a3fcec2d93a0bcb6e99ed8457fd0faa5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the Wi-Fi network using the provided credentials.  <br /></td></tr>
-<tr class="memitem:ac2af562ded7ab218b0c09122db4fbd06" id="r_ac2af562ded7ab218b0c09122db4fbd06"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2af562ded7ab218b0c09122db4fbd06">wifi_isConnected</a> ()</td></tr>
-<tr class="memdesc:ac2af562ded7ab218b0c09122db4fbd06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the device is currently connected to Wi-Fi.  <br /></td></tr>
-<tr class="memitem:a5e788c2e336d80bb309417043ae200d1" id="r_a5e788c2e336d80bb309417043ae200d1"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e788c2e336d80bb309417043ae200d1">getprint_wifi_ssid</a> ()</td></tr>
-<tr class="memdesc:a5e788c2e336d80bb309417043ae200d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Wi-Fi SSID as a string.  <br /></td></tr>
-<tr class="memitem:af25b46c6936b693244f459be26fe3fb0" id="r_af25b46c6936b693244f459be26fe3fb0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af25b46c6936b693244f459be26fe3fb0">getprint_wifi_password</a> ()</td></tr>
-<tr class="memdesc:af25b46c6936b693244f459be26fe3fb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Wi-Fi password as a string.  <br /></td></tr>
-<tr class="memitem:a144aacd4db9772f800bf14c78cbd9add" id="r_a144aacd4db9772f800bf14c78cbd9add"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a144aacd4db9772f800bf14c78cbd9add">getprint_wifi_ip</a> ()</td></tr>
-<tr class="memdesc:a144aacd4db9772f800bf14c78cbd9add"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the local IP address as a string.  <br /></td></tr>
-<tr class="memitem:a2b79ce4ddba51d8ec45d1d294653183f" id="r_a2b79ce4ddba51d8ec45d1d294653183f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b79ce4ddba51d8ec45d1d294653183f">getprint_wifi_dns</a> ()</td></tr>
-<tr class="memdesc:a2b79ce4ddba51d8ec45d1d294653183f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the DNS server IP address as a string.  <br /></td></tr>
-<tr class="memitem:a5385e16342e889c99e6b9b6cc6e30989" id="r_a5385e16342e889c99e6b9b6cc6e30989"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5385e16342e889c99e6b9b6cc6e30989">getprint_wifi_gateway</a> ()</td></tr>
-<tr class="memdesc:a5385e16342e889c99e6b9b6cc6e30989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the gateway IP address as a string.  <br /></td></tr>
-<tr class="memitem:ad1eee5f099a1e1f3339334e146bb1c98" id="r_ad1eee5f099a1e1f3339334e146bb1c98"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1eee5f099a1e1f3339334e146bb1c98">getprint_wifi_subnet</a> ()</td></tr>
-<tr class="memdesc:ad1eee5f099a1e1f3339334e146bb1c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the subnet mask as a string.  <br /></td></tr>
+<tr class="memitem:a400c2b7ae450f4a618b2c563da4aa59c" id="r_a400c2b7ae450f4a618b2c563da4aa59c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a400c2b7ae450f4a618b2c563da4aa59c">WiFiUtils::wifi_connect</a> (void(*statusCallback)(const char *))</td></tr>
+<tr class="memdesc:a400c2b7ae450f4a618b2c563da4aa59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to Wi-Fi with status updates via callback.  <br /></td></tr>
+<tr class="memitem:a873d9e8e787b5faa16f0e29c01f724fe" id="r_a873d9e8e787b5faa16f0e29c01f724fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a873d9e8e787b5faa16f0e29c01f724fe">WiFiUtils::wifi_isConnected</a> ()</td></tr>
+<tr class="memdesc:a873d9e8e787b5faa16f0e29c01f724fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether Wi-Fi is connected.  <br /></td></tr>
+<tr class="memitem:a0509aad372b35cefc9ced3bc805bc286" id="r_a0509aad372b35cefc9ced3bc805bc286"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a0509aad372b35cefc9ced3bc805bc286">WiFiUtils::getprint_wifi_ssid</a> ()</td></tr>
+<tr class="memdesc:a0509aad372b35cefc9ced3bc805bc286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns current Wi-Fi SSID.  <br /></td></tr>
+<tr class="memitem:a9b36d6642aa939e163cd6b854b22c565" id="r_a9b36d6642aa939e163cd6b854b22c565"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a9b36d6642aa939e163cd6b854b22c565">WiFiUtils::getprint_wifi_password</a> ()</td></tr>
+<tr class="memdesc:a9b36d6642aa939e163cd6b854b22c565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns current Wi-Fi password.  <br /></td></tr>
+<tr class="memitem:a74d9888a127258f5fb15d1cf56b8330c" id="r_a74d9888a127258f5fb15d1cf56b8330c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a74d9888a127258f5fb15d1cf56b8330c">WiFiUtils::getprint_wifi_ip</a> ()</td></tr>
+<tr class="memdesc:a74d9888a127258f5fb15d1cf56b8330c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns device's local IP.  <br /></td></tr>
+<tr class="memitem:a76ea7622073ec2ff116a668a57dafc1f" id="r_a76ea7622073ec2ff116a668a57dafc1f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a76ea7622073ec2ff116a668a57dafc1f">WiFiUtils::getprint_wifi_dns</a> ()</td></tr>
+<tr class="memdesc:a76ea7622073ec2ff116a668a57dafc1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns DNS server IP.  <br /></td></tr>
+<tr class="memitem:abed1d6269fbddf85ae7f6acd9a08b58b" id="r_abed1d6269fbddf85ae7f6acd9a08b58b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#abed1d6269fbddf85ae7f6acd9a08b58b">WiFiUtils::getprint_wifi_gateway</a> ()</td></tr>
+<tr class="memdesc:abed1d6269fbddf85ae7f6acd9a08b58b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns default gateway IP.  <br /></td></tr>
+<tr class="memitem:a2ae8aaecddc513a7837a6930060e9ed8" id="r_a2ae8aaecddc513a7837a6930060e9ed8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a2ae8aaecddc513a7837a6930060e9ed8">WiFiUtils::getprint_wifi_subnet</a> ()</td></tr>
+<tr class="memdesc:a2ae8aaecddc513a7837a6930060e9ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns subnet mask.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a587ba0cb07f02913598610049a3bbb79" id="r_a587ba0cb07f02913598610049a3bbb79"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a587ba0cb07f02913598610049a3bbb79">ssid</a> = WIFI_SSID</td></tr>
-<tr class="memitem:aa4a2ebcb494493f648ae1e6975672575" id="r_aa4a2ebcb494493f648ae1e6975672575"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4a2ebcb494493f648ae1e6975672575">password</a> = WIFI_PASS</td></tr>
+<tr class="memitem:ab3ed17324e346c382f95914caf528072" id="r_ab3ed17324e346c382f95914caf528072"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#ab3ed17324e346c382f95914caf528072">WiFiUtils::ssid</a> = <a class="el" href="secrets_8h.html#a586542b79d00e4db7e1d5a667ae83a2b">WIFI_SSID</a></td></tr>
+<tr class="memitem:a8406f582dc9c103acf1d502a0197d77c" id="r_a8406f582dc9c103acf1d502a0197d77c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_wi_fi_utils.html#a8406f582dc9c103acf1d502a0197d77c">WiFiUtils::password</a> = <a class="el" href="secrets_8h.html#a3c95561b03d0fcf9048b231ae2ba90fb">WIFI_PASS</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a2b79ce4ddba51d8ec45d1d294653183f" name="a2b79ce4ddba51d8ec45d1d294653183f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b79ce4ddba51d8ec45d1d294653183f">&#9670;&#160;</a></span>getprint_wifi_dns()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_dns </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the DNS server IP address as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the DNS IP address string. </dd></dl>
-
-</div>
-</div>
-<a id="a5385e16342e889c99e6b9b6cc6e30989" name="a5385e16342e889c99e6b9b6cc6e30989"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5385e16342e889c99e6b9b6cc6e30989">&#9670;&#160;</a></span>getprint_wifi_gateway()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_gateway </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the gateway IP address as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the gateway IP address string. </dd></dl>
-
-</div>
-</div>
-<a id="a144aacd4db9772f800bf14c78cbd9add" name="a144aacd4db9772f800bf14c78cbd9add"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a144aacd4db9772f800bf14c78cbd9add">&#9670;&#160;</a></span>getprint_wifi_ip()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_ip </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the local IP address as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the IP address string. </dd></dl>
-
-</div>
-</div>
-<a id="af25b46c6936b693244f459be26fe3fb0" name="af25b46c6936b693244f459be26fe3fb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af25b46c6936b693244f459be26fe3fb0">&#9670;&#160;</a></span>getprint_wifi_password()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_password </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the Wi-Fi password as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the password string. </dd></dl>
-
-</div>
-</div>
-<a id="a5e788c2e336d80bb309417043ae200d1" name="a5e788c2e336d80bb309417043ae200d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e788c2e336d80bb309417043ae200d1">&#9670;&#160;</a></span>getprint_wifi_ssid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_ssid </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the Wi-Fi SSID as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the SSID string. </dd></dl>
-
-</div>
-</div>
-<a id="ad1eee5f099a1e1f3339334e146bb1c98" name="ad1eee5f099a1e1f3339334e146bb1c98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1eee5f099a1e1f3339334e146bb1c98">&#9670;&#160;</a></span>getprint_wifi_subnet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_wifi_subnet </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the subnet mask as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the subnet mask string. </dd></dl>
-
-</div>
-</div>
-<a id="a3fcec2d93a0bcb6e99ed8457fd0faa5b" name="a3fcec2d93a0bcb6e99ed8457fd0faa5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fcec2d93a0bcb6e99ed8457fd0faa5b">&#9670;&#160;</a></span>wifi_connect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void wifi_connect </td>
-          <td>(</td>
-          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>statusCallback&#160;</em></span>)(const char *)</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Connects to the Wi-Fi network using the provided credentials. </p>
-<p>Attempts to connect to the Wi-Fi network and provides status updates via the callback. If connection fails after 40 attempts, notifies via callback and returns.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">statusCallback</td><td>Optional callback to report connection status messages. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac2af562ded7ab218b0c09122db4fbd06" name="ac2af562ded7ab218b0c09122db4fbd06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2af562ded7ab218b0c09122db4fbd06">&#9670;&#160;</a></span>wifi_isConnected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool wifi_isConnected </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks if the device is currently connected to Wi-Fi. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if connected, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="aa4a2ebcb494493f648ae1e6975672575" name="aa4a2ebcb494493f648ae1e6975672575"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4a2ebcb494493f648ae1e6975672575">&#9670;&#160;</a></span>password</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* password = WIFI_PASS</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a587ba0cb07f02913598610049a3bbb79" name="a587ba0cb07f02913598610049a3bbb79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a587ba0cb07f02913598610049a3bbb79">&#9670;&#160;</a></span>ssid</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* ssid = WIFI_SSID</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -328,7 +136,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="network_8cpp.html">network.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_fc4c7f03e1a69a98c370fae55a743828.html">network</a></li><li class="navelem"><a href="network_8cpp.html">network.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

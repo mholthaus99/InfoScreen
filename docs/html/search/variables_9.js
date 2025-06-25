@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['weather_5fupdate_5finterval_0',['WEATHER_UPDATE_INTERVAL',['../weather_8cpp.html#a1f7ef7a7d193ac87eea8dd887fab7260',1,'weather.cpp']]]
+  ['needsupdateflag_0',['needsUpdateFlag',['../class_mode_manager.html#ac5fb2fec9b00fbc60de58690ebcfc98c',1,'ModeManager']]],
+  ['ntpserver_1',['ntpServer',['../namespace_time_utils.html#ac681f11a930d6c4a1dcbb7a3f822936a',1,'TimeUtils']]]
 ];

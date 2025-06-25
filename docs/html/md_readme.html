@@ -92,28 +92,28 @@ $(function(){initNavTree('md_readme.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-<p>This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and much more.</p>
+<p>This project is a feature-rich 20x4 <a class="el" href="namespace_l_c_d.html">LCD</a> dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and much more.</p>
 <div style="display: flex; justify-content: center; gap: 20px; align-items: flex-start;"> <img src="assets/front.jpg" alt="Front View" style="height: 230px; object-fit: contain;" class="inline"/> <img src="assets/body_render.jpg" alt="Body Render" style="height: 230px; object-fit: contain;" class="inline"/> </div><h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 🔧 Features</h1>
 <ul>
 <li>Time from NIST</li>
-<li>Weather display using a OpenWeatherAPI</li>
-<li>Local news via RSS</li>
+<li><a class="el" href="namespace_weather.html" title="Weather namespace for fetching and accessing weather data.">Weather</a> display using a OpenWeatherAPI</li>
+<li>Local news via <a class="el" href="namespace_r_s_s.html">RSS</a></li>
 <li>DHT11 temperature and humidity readings</li>
 <li>Remote control via infrared remote</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Hardware Setup</h1>
 <ul>
-<li>LCD SDA pin -&gt; ESP8266 D2 pin</li>
-<li>LCD SCL pin -&gt; ESP8266 D1 pin</li>
+<li><a class="el" href="namespace_l_c_d.html">LCD</a> SDA pin -&gt; ESP8266 D2 pin</li>
+<li><a class="el" href="namespace_l_c_d.html">LCD</a> SCL pin -&gt; ESP8266 D1 pin</li>
 <li>IR Reciever data pin -&gt; ESP8266 D5 pin</li>
 <li>DHT11 Sensor data pin -&gt; ESP8266 D6 pin</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 External Libraries</h1>
 <ul>
-<li>LCD I2C<ul>
+<li><a class="el" href="namespace_l_c_d.html">LCD</a> I2C<ul>
 <li>duinowitchery/hd44780@^1.3.2</li>
 </ul>
 </li>
@@ -126,7 +126,7 @@ External Libraries</h1>
 <li>adafruit/DHT sensor library @ ^1.4.6</li>
 </ul>
 </li>
-<li>Weather and News parsing<ul>
+<li><a class="el" href="namespace_weather.html" title="Weather namespace for fetching and accessing weather data.">Weather</a> and News parsing<ul>
 <li>bblanchon/ArduinoJson @ ^7.4.2</li>
 </ul>
 </li>
@@ -134,10 +134,10 @@ External Libraries</h1>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 TODO</h1>
 <ul>
-<li>Add location and news url to secrets.h</li>
+<li>Add location and news url to <a class="el" href="secrets_8h.html">secrets.h</a></li>
 <li>Local server to update messages remotely</li>
 <li>Pixel art / fun animations</li>
-<li>Custom character LCD handling</li>
+<li>Custom character <a class="el" href="namespace_l_c_d.html">LCD</a> handling</li>
 <li>AP wifi Setup</li>
 <li>EEPROM</li>
 <li>Pagination</li>

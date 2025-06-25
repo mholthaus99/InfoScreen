@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/controller.cpp File Reference</title>
+<title>My Project: src/system/controller.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,51 +91,43 @@ $(function(){initNavTree('controller_8cpp.html','',''); });
   <div class="headertitle"><div class="title">controller.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;mode_manager.h&quot;</code><br />
-<code>#include &quot;controller.h&quot;</code><br />
-<code>#include &quot;network.h&quot;</code><br />
-<code>#include &quot;ir_receiver.h&quot;</code><br />
-<code>#include &quot;view.h&quot;</code><br />
-<code>#include &quot;news_view.h&quot;</code><br />
-<code>#include &quot;default_view.h&quot;</code><br />
-<code>#include &quot;menu_view.h&quot;</code><br />
-<code>#include &quot;dht_sensor.h&quot;</code><br />
-<code>#include &quot;weather.h&quot;</code><br />
-<code>#include &quot;time_utils.h&quot;</code><br />
-<code>#include &quot;display.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="controller_8h_source.html">controller.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mode__manager_8h_source.html">mode_manager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ir__receiver_8h_source.html">ir_receiver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="network_8h_source.html">../network/network.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="view_8h_source.html">views/view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="default__view_8h_source.html">views/default_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="news__view_8h_source.html">views/news_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="menu__view_8h_source.html">views/menu_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dht__sensor_8h_source.html">../sensors/dht_sensor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="weather_8h_source.html">../network/weather.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="time__utils_8h_source.html">../network/time_utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display_8h_source.html">../system/display.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8c6e58bb7e2a0dcf8537fc940ebfa385" id="r_a8c6e58bb7e2a0dcf8537fc940ebfa385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c6e58bb7e2a0dcf8537fc940ebfa385">app_init</a> ()</td></tr>
-<tr class="memdesc:a8c6e58bb7e2a0dcf8537fc940ebfa385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the application and all hardware/software subsystems.  <br /></td></tr>
+<tr class="memdesc:a8c6e58bb7e2a0dcf8537fc940ebfa385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize all subsystems and views. Call this in <span class="tt"><a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Arduino setup function.">setup()</a></span>.  <br /></td></tr>
 <tr class="memitem:a7cf6bd39a002a062bfb8a3cca8a13abf" id="r_a7cf6bd39a002a062bfb8a3cca8a13abf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cf6bd39a002a062bfb8a3cca8a13abf">renderCurrentMode</a> ()</td></tr>
-<tr class="memdesc:a7cf6bd39a002a062bfb8a3cca8a13abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the current view by calling its render() method.  <br /></td></tr>
+<tr class="memdesc:a7cf6bd39a002a062bfb8a3cca8a13abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the currently active view (call in <span class="tt"><a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Arduino main loop function.">loop()</a></span>).  <br /></td></tr>
 <tr class="memitem:aafe3dcb1a4e6da6b5956c570591a06fc" id="r_aafe3dcb1a4e6da6b5956c570591a06fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafe3dcb1a4e6da6b5956c570591a06fc">switchView</a> (int mode)</td></tr>
-<tr class="memdesc:aafe3dcb1a4e6da6b5956c570591a06fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switches the current view to the specified mode.  <br /></td></tr>
+<tr class="memdesc:aafe3dcb1a4e6da6b5956c570591a06fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch to the given view mode.  <br /></td></tr>
 <tr class="memitem:af458013126cd6262140bdbaee73ef7ed" id="r_af458013126cd6262140bdbaee73ef7ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af458013126cd6262140bdbaee73ef7ed">irhandle_power</a> ()</td></tr>
-<tr class="memdesc:af458013126cd6262140bdbaee73ef7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the power button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:adf6e2a266ce635776151423b20ce7736" id="r_adf6e2a266ce635776151423b20ce7736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf6e2a266ce635776151423b20ce7736">irhandle_func</a> ()</td></tr>
-<tr class="memdesc:adf6e2a266ce635776151423b20ce7736"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the function/menu button. Switches to the function menu view.  <br /></td></tr>
-<tr class="memitem:a0df832bd44a68ee898af2755b4523e7c" id="r_a0df832bd44a68ee898af2755b4523e7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0df832bd44a68ee898af2755b4523e7c">irhandle_digit</a> (int digit)</td></tr>
-<tr class="memdesc:a0df832bd44a68ee898af2755b4523e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for digit buttons. Forwards the event to the current view.  <br /></td></tr>
+<tr class="memitem:abd1bbd7271cf420e75e26c81cdb75a2c" id="r_abd1bbd7271cf420e75e26c81cdb75a2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1bbd7271cf420e75e26c81cdb75a2c">irhandle_digit</a> (int d)</td></tr>
 <tr class="memitem:ab19eaf19f7eabee962b4d3cd620721c1" id="r_ab19eaf19f7eabee962b4d3cd620721c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab19eaf19f7eabee962b4d3cd620721c1">irhandle_skip</a> ()</td></tr>
-<tr class="memdesc:ab19eaf19f7eabee962b4d3cd620721c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the skip button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a01deb756ae8a5e2c042ddd890859c635" id="r_a01deb756ae8a5e2c042ddd890859c635"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01deb756ae8a5e2c042ddd890859c635">irhandle_back</a> ()</td></tr>
-<tr class="memdesc:a01deb756ae8a5e2c042ddd890859c635"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the back button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a69a700509559ea4972b543716c199772" id="r_a69a700509559ea4972b543716c199772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a700509559ea4972b543716c199772">irhandle_volume_up</a> ()</td></tr>
-<tr class="memdesc:a69a700509559ea4972b543716c199772"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the volume up button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a821ef31c60eba8ea51d1a45476667efb" id="r_a821ef31c60eba8ea51d1a45476667efb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a821ef31c60eba8ea51d1a45476667efb">irhandle_volume_down</a> ()</td></tr>
-<tr class="memdesc:a821ef31c60eba8ea51d1a45476667efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the volume down button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a2f4b0d57a7c883b0e0b10ce93b85817f" id="r_a2f4b0d57a7c883b0e0b10ce93b85817f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f4b0d57a7c883b0e0b10ce93b85817f">irhandle_channel_up</a> ()</td></tr>
-<tr class="memdesc:a2f4b0d57a7c883b0e0b10ce93b85817f"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the channel up button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a5856816f8f862823ca6eaaa6dea519c9" id="r_a5856816f8f862823ca6eaaa6dea519c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5856816f8f862823ca6eaaa6dea519c9">irhandle_channel_down</a> ()</td></tr>
-<tr class="memdesc:a5856816f8f862823ca6eaaa6dea519c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the channel down button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a2a374c9704aa83a521fdc56460f67f1f" id="r_a2a374c9704aa83a521fdc56460f67f1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a374c9704aa83a521fdc56460f67f1f">irhandle_play_pause</a> ()</td></tr>
-<tr class="memdesc:a2a374c9704aa83a521fdc56460f67f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the play/pause button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a4f5ef90afa9bf080aeb9440070a7dccb" id="r_a4f5ef90afa9bf080aeb9440070a7dccb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f5ef90afa9bf080aeb9440070a7dccb">irhandle_eq</a> ()</td></tr>
-<tr class="memdesc:a4f5ef90afa9bf080aeb9440070a7dccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the EQ button. Forwards the event to the current view.  <br /></td></tr>
 <tr class="memitem:a698cbb12b866b5551387528b3c1cd3b8" id="r_a698cbb12b866b5551387528b3c1cd3b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a698cbb12b866b5551387528b3c1cd3b8">irhandle_repeat</a> ()</td></tr>
-<tr class="memdesc:a698cbb12b866b5551387528b3c1cd3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">IR handler for the repeat button. Forwards the event to the current view.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa14b7b576a24b984b57b766d15316b58" id="r_aa14b7b576a24b984b57b766d15316b58"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_view.html">View</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa14b7b576a24b984b57b766d15316b58">currentView</a> = nullptr</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a8c6e58bb7e2a0dcf8537fc940ebfa385" name="a8c6e58bb7e2a0dcf8537fc940ebfa385"></a>
@@ -153,8 +145,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the application and all hardware/software subsystems. </p>
-<p>Should be called in <a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Arduino setup function.">setup()</a>. Initializes serial, LCD, WiFi, time, IR, DHT sensor, and weather modules, and prints status messages to the display. </p>
+<p>Initialize all subsystems and views. Call this in <span class="tt"><a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Arduino setup function.">setup()</a></span>. </p>
 
 </div>
 </div>
@@ -173,8 +164,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the back button. Forwards the event to the current view. </p>
-
 </div>
 </div>
 <a id="a5856816f8f862823ca6eaaa6dea519c9" name="a5856816f8f862823ca6eaaa6dea519c9"></a>
@@ -191,8 +180,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for the channel down button. Forwards the event to the current view. </p>
 
 </div>
 </div>
@@ -211,12 +198,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the channel up button. Forwards the event to the current view. </p>
-
 </div>
 </div>
-<a id="a0df832bd44a68ee898af2755b4523e7c" name="a0df832bd44a68ee898af2755b4523e7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0df832bd44a68ee898af2755b4523e7c">&#9670;&#160;</a></span>irhandle_digit()</h2>
+<a id="abd1bbd7271cf420e75e26c81cdb75a2c" name="abd1bbd7271cf420e75e26c81cdb75a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1bbd7271cf420e75e26c81cdb75a2c">&#9670;&#160;</a></span>irhandle_digit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,19 +209,11 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void irhandle_digit </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>digit</em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>d</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for digit buttons. Forwards the event to the current view. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">digit</td><td>The digit pressed. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -255,8 +232,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the EQ button. Forwards the event to the current view. </p>
-
 </div>
 </div>
 <a id="adf6e2a266ce635776151423b20ce7736" name="adf6e2a266ce635776151423b20ce7736"></a>
@@ -273,8 +248,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for the function/menu button. Switches to the function menu view. </p>
 
 </div>
 </div>
@@ -293,8 +266,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the play/pause button. Forwards the event to the current view. </p>
-
 </div>
 </div>
 <a id="af458013126cd6262140bdbaee73ef7ed" name="af458013126cd6262140bdbaee73ef7ed"></a>
@@ -311,8 +282,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for the power button. Forwards the event to the current view. </p>
 
 </div>
 </div>
@@ -331,8 +300,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the repeat button. Forwards the event to the current view. </p>
-
 </div>
 </div>
 <a id="ab19eaf19f7eabee962b4d3cd620721c1" name="ab19eaf19f7eabee962b4d3cd620721c1"></a>
@@ -349,8 +316,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for the skip button. Forwards the event to the current view. </p>
 
 </div>
 </div>
@@ -369,8 +334,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>IR handler for the volume down button. Forwards the event to the current view. </p>
-
 </div>
 </div>
 <a id="a69a700509559ea4972b543716c199772" name="a69a700509559ea4972b543716c199772"></a>
@@ -387,8 +350,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>IR handler for the volume up button. Forwards the event to the current view. </p>
 
 </div>
 </div>
@@ -407,7 +368,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Renders the current view by calling its render() method. </p>
+<p>Render the currently active view (call in <span class="tt"><a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Arduino main loop function.">loop()</a></span>). </p>
 
 </div>
 </div>
@@ -426,14 +387,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Switches the current view to the specified mode. </p>
-<p>Deletes the previous view and creates a new one based on the mode. Calls onExit() for the old view and onEnter() for the new view.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td>The mode to switch to (see DisplayMode enum). </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Switch to the given view mode. </p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="aa14b7b576a24b984b57b766d15316b58" name="aa14b7b576a24b984b57b766d15316b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14b7b576a24b984b57b766d15316b58">&#9670;&#160;</a></span>currentView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_view.html">View</a>* currentView = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -450,7 +427,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="controller_8cpp.html">controller.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li><li class="navelem"><a href="controller_8cpp.html">controller.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

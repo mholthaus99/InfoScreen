@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ir_5frecv_5fpin_0',['IR_RECV_PIN',['../ir__receiver_8cpp.html#a195153baa3e84f0eecb79fee239ea2f9',1,'ir_receiver.cpp']]]
+  ['eq_0',['EQ',['../namespace_i_r_codes.html#a864b124e6bb2a835e77a552518dc8b49',1,'IRCodes']]]
 ];

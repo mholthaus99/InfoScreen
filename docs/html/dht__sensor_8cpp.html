@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/dht_sensor.cpp File Reference</title>
+<title>My Project: src/sensors/dht_sensor.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,37 +91,33 @@ $(function(){initNavTree('dht__sensor_8cpp.html','',''); });
   <div class="headertitle"><div class="title">dht_sensor.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;dht_sensor.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="dht__sensor_8h_source.html">dht_sensor.h</a>&quot;</code><br />
 <code>#include &lt;DHT.h&gt;</code><br />
 <code>#include &lt;Arduino.h&gt;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:DHTSensor" id="r_DHTSensor"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html">DHTSensor</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a2c509dba12bba99883a5be9341b7a0c5" id="r_a2c509dba12bba99883a5be9341b7a0c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c509dba12bba99883a5be9341b7a0c5">DHTTYPE</a>&#160;&#160;&#160;DHT11</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac35ff567951181ecb33dea43c9228c2d" id="r_ac35ff567951181ecb33dea43c9228c2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac35ff567951181ecb33dea43c9228c2d">dht_init</a> ()</td></tr>
-<tr class="memdesc:ac35ff567951181ecb33dea43c9228c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the DHT sensor.  <br /></td></tr>
-<tr class="memitem:aeeadca2fc83a6a274291bc2726c9e43d" id="r_aeeadca2fc83a6a274291bc2726c9e43d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeadca2fc83a6a274291bc2726c9e43d">dht_getTemperature</a> ()</td></tr>
-<tr class="memdesc:aeeadca2fc83a6a274291bc2726c9e43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current temperature from the DHT sensor in Fahrenheit.  <br /></td></tr>
-<tr class="memitem:a644e5add0a337d18d674f21db837ad8e" id="r_a644e5add0a337d18d674f21db837ad8e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a644e5add0a337d18d674f21db837ad8e">dht_getHumidity</a> ()</td></tr>
-<tr class="memdesc:a644e5add0a337d18d674f21db837ad8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current humidity from the DHT sensor.  <br /></td></tr>
-<tr class="memitem:af9520fa68c8ce219eb9eaf7187e05f83" id="r_af9520fa68c8ce219eb9eaf7187e05f83"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9520fa68c8ce219eb9eaf7187e05f83">getprint_dht_summary</a> ()</td></tr>
-<tr class="memdesc:af9520fa68c8ce219eb9eaf7187e05f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a formatted summary string of temperature and humidity.  <br /></td></tr>
-<tr class="memitem:a9d39154f11e475416bfd5ea3d4263a09" id="r_a9d39154f11e475416bfd5ea3d4263a09"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d39154f11e475416bfd5ea3d4263a09">getprint_dht_temperature</a> ()</td></tr>
-<tr class="memdesc:a9d39154f11e475416bfd5ea3d4263a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a formatted temperature string for display.  <br /></td></tr>
-<tr class="memitem:a9cd36fdd10c8455d9a48a8b6bc0c706a" id="r_a9cd36fdd10c8455d9a48a8b6bc0c706a"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cd36fdd10c8455d9a48a8b6bc0c706a">getprint_humidity</a> ()</td></tr>
-<tr class="memdesc:a9cd36fdd10c8455d9a48a8b6bc0c706a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a formatted humidity string for display.  <br /></td></tr>
+<tr class="memitem:a79ecfed418943af4115a3f39adaa9560" id="r_a79ecfed418943af4115a3f39adaa9560"><td class="memItemLeft" align="right" valign="top">static DHT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#a79ecfed418943af4115a3f39adaa9560">DHTSensor::dht</a> (<a class="el" href="#a3ef103f04b847f81938f2aa7ab9397dc">DHTPIN</a>, <a class="el" href="#a2c509dba12bba99883a5be9341b7a0c5">DHTTYPE</a>)</td></tr>
+<tr class="memitem:a4df248d5693f1231234f1cfa247cb897" id="r_a4df248d5693f1231234f1cfa247cb897"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#a4df248d5693f1231234f1cfa247cb897">DHTSensor::init</a> ()</td></tr>
+<tr class="memitem:a6055e8b3d726f7b84c0a2f96370298de" id="r_a6055e8b3d726f7b84c0a2f96370298de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#a6055e8b3d726f7b84c0a2f96370298de">DHTSensor::getTemperatureF</a> ()</td></tr>
+<tr class="memitem:a27315daa48138acbc74f5ba5d7fdea4e" id="r_a27315daa48138acbc74f5ba5d7fdea4e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#a27315daa48138acbc74f5ba5d7fdea4e">DHTSensor::getHumidity</a> ()</td></tr>
+<tr class="memitem:a010ab695e6e0d28aea30f35d71639d26" id="r_a010ab695e6e0d28aea30f35d71639d26"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#a010ab695e6e0d28aea30f35d71639d26">DHTSensor::getFormattedTemperature</a> ()</td></tr>
+<tr class="memitem:adf22607ccf4206a9cc7e26e73389e2b2" id="r_adf22607ccf4206a9cc7e26e73389e2b2"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#adf22607ccf4206a9cc7e26e73389e2b2">DHTSensor::getFormattedHumidity</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a3ef103f04b847f81938f2aa7ab9397dc" id="r_a3ef103f04b847f81938f2aa7ab9397dc"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ef103f04b847f81938f2aa7ab9397dc">DHTPIN</a> = D6</td></tr>
 <tr class="memdesc:a3ef103f04b847f81938f2aa7ab9397dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin used for DHT sensor.  <br /></td></tr>
-<tr class="memitem:aba39eec34015ac66b542ff1d87541154" id="r_aba39eec34015ac66b542ff1d87541154"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba39eec34015ac66b542ff1d87541154">dhtTempBuf</a> [16]</td></tr>
-<tr class="memdesc:aba39eec34015ac66b542ff1d87541154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static buffer for formatted temperature string.  <br /></td></tr>
-<tr class="memitem:adbd95db45284ac284e2e7240f8225132" id="r_adbd95db45284ac284e2e7240f8225132"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbd95db45284ac284e2e7240f8225132">dhtHumBuf</a> [16]</td></tr>
-<tr class="memdesc:adbd95db45284ac284e2e7240f8225132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static buffer for formatted humidity string.  <br /></td></tr>
+<tr class="memitem:add847917458c9d1d82eacd0f746ac3df" id="r_add847917458c9d1d82eacd0f746ac3df"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#add847917458c9d1d82eacd0f746ac3df">DHTSensor::dhtTempBuf</a> [16]</td></tr>
+<tr class="memitem:af03f5f73d3dbf1f95e3b395580e5686b" id="r_af03f5f73d3dbf1f95e3b395580e5686b"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_h_t_sensor.html#af03f5f73d3dbf1f95e3b395580e5686b">DHTSensor::dhtHumBuf</a> [16]</td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
 <a id="a2c509dba12bba99883a5be9341b7a0c5" name="a2c509dba12bba99883a5be9341b7a0c5"></a>
@@ -138,144 +134,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a644e5add0a337d18d674f21db837ad8e" name="a644e5add0a337d18d674f21db837ad8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644e5add0a337d18d674f21db837ad8e">&#9670;&#160;</a></span>dht_getHumidity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float dht_getHumidity </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the current humidity from the DHT sensor. </p>
-<dl class="section return"><dt>Returns</dt><dd>Relative humidity in percent, or NAN if reading fails. </dd></dl>
-
-</div>
-</div>
-<a id="aeeadca2fc83a6a274291bc2726c9e43d" name="aeeadca2fc83a6a274291bc2726c9e43d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeeadca2fc83a6a274291bc2726c9e43d">&#9670;&#160;</a></span>dht_getTemperature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float dht_getTemperature </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the current temperature from the DHT sensor in Fahrenheit. </p>
-<dl class="section return"><dt>Returns</dt><dd>Temperature in Fahrenheit, or NAN if reading fails. </dd></dl>
-
-</div>
-</div>
-<a id="ac35ff567951181ecb33dea43c9228c2d" name="ac35ff567951181ecb33dea43c9228c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac35ff567951181ecb33dea43c9228c2d">&#9670;&#160;</a></span>dht_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dht_init </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the DHT sensor. </p>
-<p>Call this in <a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Arduino setup function.">setup()</a> before reading temperature or humidity. </p>
-
-</div>
-</div>
-<a id="af9520fa68c8ce219eb9eaf7187e05f83" name="af9520fa68c8ce219eb9eaf7187e05f83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9520fa68c8ce219eb9eaf7187e05f83">&#9670;&#160;</a></span>getprint_dht_summary()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_dht_summary </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get a formatted summary string of temperature and humidity. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to a static buffer containing "xx.xF xx.x%" or "Sensor error". </dd></dl>
-
-</div>
-</div>
-<a id="a9d39154f11e475416bfd5ea3d4263a09" name="a9d39154f11e475416bfd5ea3d4263a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d39154f11e475416bfd5ea3d4263a09">&#9670;&#160;</a></span>getprint_dht_temperature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_dht_temperature </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get a formatted temperature string for display. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to a static buffer containing "xx.xF" or "Temp error". </dd></dl>
-
-</div>
-</div>
-<a id="a9cd36fdd10c8455d9a48a8b6bc0c706a" name="a9cd36fdd10c8455d9a48a8b6bc0c706a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cd36fdd10c8455d9a48a8b6bc0c706a">&#9670;&#160;</a></span>getprint_humidity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * getprint_humidity </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get a formatted humidity string for display. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to a static buffer containing "xx.x%" or "Hum error". </dd></dl>
-
-</div>
-</div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="adbd95db45284ac284e2e7240f8225132" name="adbd95db45284ac284e2e7240f8225132"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbd95db45284ac284e2e7240f8225132">&#9670;&#160;</a></span>dhtHumBuf</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char dhtHumBuf[16]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Static buffer for formatted humidity string. </p>
-
-</div>
-</div>
 <a id="a3ef103f04b847f81938f2aa7ab9397dc" name="a3ef103f04b847f81938f2aa7ab9397dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ef103f04b847f81938f2aa7ab9397dc">&#9670;&#160;</a></span>DHTPIN</h2>
 
@@ -300,22 +159,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aba39eec34015ac66b542ff1d87541154" name="aba39eec34015ac66b542ff1d87541154"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba39eec34015ac66b542ff1d87541154">&#9670;&#160;</a></span>dhtTempBuf</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char dhtTempBuf[16]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Static buffer for formatted temperature string. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -329,7 +172,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dht__sensor_8cpp.html">dht_sensor.cpp</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_7349e89ef19c117195f8e371603e1b1f.html">sensors</a></li><li class="navelem"><a href="dht__sensor_8cpp.html">dht_sensor.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

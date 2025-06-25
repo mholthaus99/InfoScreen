@@ -1,13 +1,13 @@
 var dht__sensor_8cpp =
 [
     [ "DHTTYPE", "dht__sensor_8cpp.html#a2c509dba12bba99883a5be9341b7a0c5", null ],
-    [ "dht_getHumidity", "dht__sensor_8cpp.html#a644e5add0a337d18d674f21db837ad8e", null ],
-    [ "dht_getTemperature", "dht__sensor_8cpp.html#aeeadca2fc83a6a274291bc2726c9e43d", null ],
-    [ "dht_init", "dht__sensor_8cpp.html#ac35ff567951181ecb33dea43c9228c2d", null ],
-    [ "getprint_dht_summary", "dht__sensor_8cpp.html#af9520fa68c8ce219eb9eaf7187e05f83", null ],
-    [ "getprint_dht_temperature", "dht__sensor_8cpp.html#a9d39154f11e475416bfd5ea3d4263a09", null ],
-    [ "getprint_humidity", "dht__sensor_8cpp.html#a9cd36fdd10c8455d9a48a8b6bc0c706a", null ],
-    [ "dhtHumBuf", "dht__sensor_8cpp.html#adbd95db45284ac284e2e7240f8225132", null ],
+    [ "DHTSensor::dht", "namespace_d_h_t_sensor.html#a79ecfed418943af4115a3f39adaa9560", null ],
+    [ "DHTSensor::getFormattedHumidity", "namespace_d_h_t_sensor.html#adf22607ccf4206a9cc7e26e73389e2b2", null ],
+    [ "DHTSensor::getFormattedTemperature", "namespace_d_h_t_sensor.html#a010ab695e6e0d28aea30f35d71639d26", null ],
+    [ "DHTSensor::getHumidity", "namespace_d_h_t_sensor.html#a27315daa48138acbc74f5ba5d7fdea4e", null ],
+    [ "DHTSensor::getTemperatureF", "namespace_d_h_t_sensor.html#a6055e8b3d726f7b84c0a2f96370298de", null ],
+    [ "DHTSensor::init", "namespace_d_h_t_sensor.html#a4df248d5693f1231234f1cfa247cb897", null ],
+    [ "DHTSensor::dhtHumBuf", "namespace_d_h_t_sensor.html#af03f5f73d3dbf1f95e3b395580e5686b", null ],
     [ "DHTPIN", "dht__sensor_8cpp.html#a3ef103f04b847f81938f2aa7ab9397dc", null ],
-    [ "dhtTempBuf", "dht__sensor_8cpp.html#aba39eec34015ac66b542ff1d87541154", null ]
+    [ "DHTSensor::dhtTempBuf", "namespace_d_h_t_sensor.html#add847917458c9d1d82eacd0f746ac3df", null ]
 ];

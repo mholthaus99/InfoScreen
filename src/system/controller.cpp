@@ -23,7 +23,9 @@ void app_init()
     Serial.begin(115200);
     LCD::init();
 
-    wifi_connect([](const char *status) {
+    
+    
+    WiFiUtils::wifi_connect([](const char *status) {
         LCD::printMultiLine(status);
     });
 

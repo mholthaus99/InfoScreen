@@ -91,9 +91,9 @@ $(function(){initNavTree('main_8cpp.html','',''); });
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;mode_manager.h&quot;</code><br />
-<code>#include &quot;controller.h&quot;</code><br />
-<code>#include &quot;ir_receiver.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="mode__manager_8h_source.html">system/mode_manager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="controller_8h_source.html">system/controller.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ir__receiver_8h_source.html">system/ir_receiver.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -119,7 +119,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Arduino main loop function. </p>
-<p>Continuously polls the IR receiver for input and renders the current display mode. The display logic is delegated to <a class="el" href="controller_8cpp.html#a7cf6bd39a002a062bfb8a3cca8a13abf" title="Renders the current view by calling its render() method.">renderCurrentMode()</a>. </p>
+<p>Continuously polls the IR receiver for input and renders the current display mode. The display logic is delegated to <a class="el" href="controller_8cpp.html#a7cf6bd39a002a062bfb8a3cca8a13abf" title="Render the currently active view (call in loop()).">renderCurrentMode()</a>. </p>
 
 </div>
 </div>
@@ -139,7 +139,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Arduino setup function. </p>
-<p>Initializes all hardware and software subsystems for the InfoScreen application. Calls <a class="el" href="controller_8cpp.html#a8c6e58bb7e2a0dcf8537fc940ebfa385" title="Initializes the application and all hardware/software subsystems.">app_init()</a> to perform consolidated setup. </p>
+<p>Initializes all hardware and software subsystems for the InfoScreen application. Calls <a class="el" href="controller_8cpp.html#a8c6e58bb7e2a0dcf8537fc940ebfa385" title="Initialize all subsystems and views. Call this in setup().">app_init()</a> to perform consolidated setup. </p>
 
 </div>
 </div>

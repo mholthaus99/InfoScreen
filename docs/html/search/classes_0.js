@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iraction_0',['IRAction',['../struct_i_r_action.html',1,'']]]
+  ['defaultview_0',['DefaultView',['../class_views_1_1_default_view.html',1,'Views']]]
 ];
