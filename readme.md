@@ -27,7 +27,11 @@
 | IR Receiver Data       | D5          |
 | DHT11 Sensor Data      | D6          |
 
+
 Supported boards include NodeMCU, Wemos D1 mini, and other ESP8266 variants.
+
+##Enclosure
+The custom case was designed for 3D printing—STL files are available in the enclosure/ folder for download and printing.
 ![Body render](assets/body_render.jpg)]
 
 
