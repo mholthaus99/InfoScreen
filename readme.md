@@ -4,9 +4,6 @@
 
 ![Front view of DisplayGadget](assets/front.jpg)
 
-
-
-
 ## ✨ Features
 
 - **Weather Display:** Current conditions from OpenWeatherMap  
