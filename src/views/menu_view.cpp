@@ -1,7 +1,8 @@
 #include "menu_view.h"
 #include "../system/display.h"
-#include "../system/mode_manager.h"
+#include "../system/view_controller.h"
 #include <Arduino.h> // For Serial.printf
+#include <functional>
 
 namespace Views
 {
@@ -21,14 +22,14 @@ namespace Views
 
     void FunctionView::onBack()
     {
-        ModeManager::setMode(MODE_DEFAULT);
+        ViewController::setMode(MODE_DEFAULT);
         if (switchViewCallback)
             switchViewCallback(MODE_DEFAULT);
     }
 
     void FunctionView::onFunction()
     {
-        ModeManager::setMode(MODE_DEFAULT);
+        ViewController::setMode(MODE_DEFAULT);
         if (switchViewCallback)
             switchViewCallback(MODE_DEFAULT);
     }
@@ -39,17 +40,17 @@ namespace Views
         switch (digit)
         {
         case 1:
-            ModeManager::setMode(MODE_DEFAULT);
+            ViewController::setMode(MODE_DEFAULT);
             if (switchViewCallback)
                 switchViewCallback(MODE_DEFAULT);
             break;
         case 2:
-            ModeManager::setMode(MODE_NEWS);
+            ViewController::setMode(MODE_NEWS);
             if (switchViewCallback)
                 switchViewCallback(MODE_NEWS);
             break;
         case 3:
-            ModeManager::setMode(MODE_DEFAULT); // You might want a MODE_NETWORK or similar
+            ViewController::setMode(MODE_DEFAULT); // You might want a MODE_NETWORK or similar
             if (switchViewCallback)
                 switchViewCallback(MODE_DEFAULT);
             break;

@@ -1,7 +1,7 @@
 #include "news_view.h"
 #include "../network/rss_reader.h"
 #include "../system/display.h"
-#include "../system/mode_manager.h"
+#include "../system/view_controller.h"
 
 namespace Views
 {

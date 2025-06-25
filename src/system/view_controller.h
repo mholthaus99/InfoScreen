@@ -1,6 +1,5 @@
 #pragma once
-#include "views/view.h"
-
+#include "../views/view.h"
 
 enum DisplayMode
 {
@@ -11,16 +10,17 @@ enum DisplayMode
   MODE_COUNT
 };
 
-namespace Views{
+namespace Views
+{
   class View;
 }
 
-namespace ModeManager
+namespace ViewController
 {
   void switchView(DisplayMode mode);
   void renderCurrentView();
   void setMode(DisplayMode mode);
   DisplayMode getMode();
-  Views::View* getCurrentView();
-  //View* getCurrentViewPointer(); // Renamed to avoid overloading by return type alone
+  Views::View *getCurrentView();
+
 }

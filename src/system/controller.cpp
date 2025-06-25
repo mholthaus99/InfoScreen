@@ -1,5 +1,5 @@
 #include "controller.h"
-#include "mode_manager.h"
+#include "view_controller.h"
 #include "ir_receiver.h"
 #include "../network/network.h"
 
@@ -14,8 +14,6 @@
 #include "../system/display.h"
 
 using namespace Views;
-
-// static View *currentView = nullptr;
 
 void app_init()
 {
@@ -58,112 +56,75 @@ void app_init()
     LCD::printAt("Weather ready", 3);
     LCD::clear();
 
-    ModeManager::setMode(MODE_DEFAULT);
+    ViewController::setMode(MODE_DEFAULT);
 }
 
 void renderCurrentMode()
 {
 
-    if (ModeManager::getCurrentView()){
-    ModeManager::getCurrentView()->render();
+    if (ViewController::getCurrentView())
+    {
+        ViewController::getCurrentView()->render();
     }
 }
 
-// void switchView(int mode)
-// {
-//     if (currentView)
-//     {
-//         currentView->onExit();
-//         delete currentView;
-//         currentView = nullptr;
-//     }
-
-//     switch (mode)
-//     {
-//     case MODE_DEFAULT:
-//         currentView = new DefaultView();
-//         break;
-//     case MODE_MENU:
-//     {
-//         auto *menu = new FunctionView();
-//         menu->setSwitchViewCallback(switchView);
-//         currentView = menu;
-//         break;
-//     }
-//     case MODE_NEWS:
-//         currentView = new NewsView();
-//         break;
-//     case MODE_NETWORK:
-//         currentView = new DefaultView(); // TODO: create NetworkView later
-//         break;
-//     default:
-//         currentView = new DefaultView();
-//         break;
-//     }
-
-//     if (currentView)
-//         currentView->onEnter();
-// }
-
-// === IR Event Dispatching ===
-
 void irhandle_power()
 {
-    
-        ModeManager::getCurrentView()->onPower();
+
+    ViewController::getCurrentView()->onPower();
 }
 void irhandle_func()
 {
 
-    ModeManager::setMode(MODE_MENU);
+    ViewController::setMode(MODE_MENU);
 }
 void irhandle_digit(int d)
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onDigit(d);
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onDigit(d);
 }
 void irhandle_skip()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onSkip();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onSkip();
 }
 void irhandle_back()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onBack();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onBack();
 }
 void irhandle_volume_up()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onVolumeUp();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onVolumeUp();
 }
 void irhandle_volume_down()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onVolumeDown();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onVolumeDown();
 }
 void irhandle_channel_up()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onChannelUp();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onChannelUp();
 }
 void irhandle_channel_down()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onChannelDown();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onChannelDown();
 }
 void irhandle_play_pause()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onPlayPause();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onPlayPause();
 }
 void irhandle_eq()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onEQ();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onEQ();
 }
 void irhandle_repeat()
 {
-    if (ModeManager::getCurrentView())
-        ModeManager::getCurrentView()->onRepeat();
+    if (ViewController::getCurrentView())
+        ViewController::getCurrentView()->onRepeat();
 }

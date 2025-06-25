@@ -1,6 +1,6 @@
 #pragma once
 // Abstract base class
-#include "../system/mode_manager.h"
+
 #include "../system/display.h"
 
 namespace Views

@@ -1,4 +1,4 @@
-#include "mode_manager.h"
+#include "view_controller.h"
 
 #include "../views/view.h"
 #include "../views/default_view.h"
@@ -7,7 +7,7 @@
 
 using namespace Views;
 
-namespace ModeManager
+namespace ViewController
 {
 
   static View *currentView = nullptr;
@@ -16,7 +16,7 @@ namespace ModeManager
   void switchView(DisplayMode mode)
   {
     LCD::clear();
-    View *oldView = currentView; // Hold old pointer but don't delete yet
+    View *oldView = currentView; // Hold old pointer but don't delete yet. If deleted too early, functionview, will delete on its self before the callback completes.
 
     // Create new view pointer, but don't assign to currentView yet
     View *newView = nullptr;
@@ -31,7 +31,7 @@ namespace ModeManager
     case MODE_MENU:
     {
       auto *menu = new FunctionView();
-      menu->setSwitchViewCallback(ModeManager::setMode); // set callback before swapping
+      menu->setSwitchViewCallback(ViewController::setMode); // set callback before swapping
       newView = menu;
       break;
     }

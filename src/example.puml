@@ -1,0 +1,286 @@
+@startuml
+
+
+
+' ==========================
+' ENUMS
+' ==========================
+package ViewController {
+    enum DisplayMode {
+        MODE_DEFAULT
+        MODE_MENU
+        MODE_NETWORK
+        MODE_NEWS
+        MODE_COUNT
+    }
+}
+
+' ==========================
+' STRUCTS
+' ==========================
+struct IRAction {
+    uint32_t code
+    void (**callbackField)()
+}
+
+struct IRCallbacks {
+    void (*onBack)()
+    void (*onChannelDown)()
+    void (*onChannelUp)()
+    void (*onDigit)(int)
+    void (*onEQ)()
+    void (*onFunction)()
+    void (*onPlayPause)()
+    void (*onPower)()
+    void (*onRepeat)()
+    void (*onSkip)()
+    void (*onVolumeDown)()
+    void (*onVolumeUp)()
+}
+
+' ==========================
+' BASE UI VIEWS
+' ==========================
+package Views {
+    class View {
+        +~View()
+        +onEnter()
+        +onExit()
+        +onPower()
+        +onDigit(digit : int)
+        +onFunction()
+        +onSkip()
+        +onBack()
+        +onVolumeUp()
+        +onVolumeDown()
+        +onChannelUp()
+        +onChannelDown()
+        +onPlayPause()
+        +onEQ()
+        +onRepeat()
+        +render()
+    }
+
+
+
+
+
+
+
+
+    class DefaultView {
+        -bool showingClimate
+        -unsigned long lastToggle
+        +void render()
+    }
+
+    class FunctionView {
+        -SwitchViewCallback switchViewCallback
+        +void onBack()
+        +void onDigit(int digit)
+        +void onEnter()
+        +void onFunction()
+        +void render()
+        +void setSwitchViewCallback(SwitchViewCallback cb)
+    }
+
+    class NewsView {
+        -unsigned long timeOfLastTitleChange
+        +void onSkip()
+        +void render()
+    }
+
+    DefaultView --|> View
+    FunctionView --|> View
+    NewsView --|> View
+}
+
+
+' ==========================
+' VIEW CONTROLLER
+' ==========================
+package ViewController {
+    class ViewController {
+        - currentView : View*
+        - currentMode : DisplayMode
+        + switchView(mode : DisplayMode)
+        + renderCurrentView()
+        + setMode(mode : DisplayMode)
+        + getMode() : DisplayMode
+        + getCurrentView() : View*
+    }
+
+    ViewController --> Views.View : manages
+}
+
+' ==========================
+' IRCodes ENUM
+' ==========================
+package IRCodes {
+    enum IRCode {
+        BACK
+        CHANNEL_UP
+        CHANNEL_DOWN
+        DIGITS
+        EQ
+        FUNCTION
+        PLAY_PAUSE
+        POWER
+        REPEAT
+            SKIP
+            VOLUME_UP
+            VOLUME_DOWN
+        }
+    }
+
+    ' ==========================
+    ' RSS READER
+    ' ==========================
+    package RSS {
+        class RSSReader {
+            - char cachedHeadlines[MAX_HEADLINES][MAX_TITLE_LEN]
+            - size_t currentHeadlineIndex
+            - size_t headlineCount
+            - unsigned long lastRSSUpdate
+            + fetch()
+            + clearHeadlines()
+            + getNextHeadline(): const char*
+        }
+    }
+
+    ' ==========================
+    ' WEATHER MODULE
+    ' ==========================
+    package Weather {
+        class WeatherAPI {
+            - String cachedDesc
+            - String cachedTemp
+            - String cachedLocation
+            - unsigned long lastWeatherFetchMillis
+            - static String weatherSummary
+            + init()
+            + fetch(): bool
+            + getDescription(): const char*
+            + getTemperature(): const char*
+            + getLocation(): const char*
+            + getSummary(): const char*
+        }
+    }
+
+    ' ==========================
+    ' TIME UTILITIES
+    ' ==========================
+    package TimeUtils {
+        class TimeUtil {
+            - unsigned long lastNTPSync
+            - unsigned long lastSync
+            - time_t lastSyncEpoch
+            + init()
+            + getDSTOffset(): int
+            + getFormattedTime(): const char*
+            + syncWithNTP(): bool
+        }
+    }
+
+    ' ==========================
+    ' DHT SENSOR
+    ' ==========================
+    package DHTSensor {
+        class SensorAPI {
+            + init()
+            + getHumidity(): float
+            + getTemperatureF(): float
+            + getFormattedHumidity(): const char*
+            + getFormattedTemperature(): const char*
+        }
+    }
+
+    ' ==========================
+    ' LCD DISPLAY
+    ' ==========================
+    package LCD {
+        class Display {
+            + init()
+            + clear()
+            + toggleBacklight()
+            + print(const char *message)
+            + printAt(const char *message, byte line)
+            + printAt(const char *message, byte line, byte col)
+            + printMultiLine(const char *message)
+            + printWrapped(const char *message)
+        }
+    }
+
+    ' ==========================
+    ' WIFI UTILITIES
+    ' ==========================
+    package WiFiUtils {
+        class WiFiInfo {
+            - static const char *ssid
+            - static const char *password
+            + getprint_wifi_ssid(): const char*
+            + getprint_wifi_password(): const char*
+            + getprint_wifi_ip(): const char*
+            + getprint_wifi_gateway(): const char*
+            + getprint_wifi_dns(): const char*
+            + getprint_wifi_subnet(): const char*
+            + wifi_connect(void (*statusCallback)(const char *))
+            + wifi_isConnected(): bool
+        }
+    }
+
+    ' Main application functions and dependencies
+    class Main {
+        +setup()
+        +loop()
+    }
+
+    controller.cpp ..> Views::View : uses (render, IR events)
+    controller.cpp ..> LCD : uses
+    controller.cpp ..> DHTSensor : uses
+    controller.cpp ..> Weather : uses
+    controller.cpp ..> TimeUtils : uses
+    controller.cpp ..> WiFiUtils : uses
+    controller.cpp ..> ViewController : uses (setMode, getCurrentView)
+    controller.cpp ..> IRReceiver : uses (ir_init, ir_registerCallbacks)
+
+    Views::FunctionView ..> ViewController : setSwitchViewCallback
+
+    Main ..> Controller : calls app_init()
+    Main ..> IRReceiver : calls ir_poll()
+    Main ..> ViewController : calls renderCurrentMode()
+
+    Views.View ..> LCD : uses
+    Views.View ..> Display.LCD : uses
+
+    ' Associations / Dependencies
+    ViewController.ViewController --> Views.View : currentView
+    ViewController.ViewController --> ViewController.DisplayMode
+
+    Views.FunctionView ..> ViewController.DisplayMode : uses
+    Views.FunctionView --> SwitchViewCallback : callback
+
+    IRAction ..> IRCodes.IRCode : uses
+    IRAction --> IRCallbacks : callbackField
+
+    IRCallbacks ..> Views.View : callback signatures
+
+    Views.DefaultView ..> DHTSensor.SensorAPI : uses
+    Views.DefaultView ..> Weather.WeatherAPI : uses
+    Views.DefaultView ..> TimeUtils.TimeUtil : uses
+
+    Views.NewsView ..> RSS.RSSReader : uses
+    Views.NewsView ..> LCD.Display : prints to
+
+    Views.NewsView ..> RSS.RSSReader : uses
+
+    WiFiUtils.WiFiInfo --> secrets.h : SSID, PASS macros
+
+    ViewController::ViewController --> Views::View : uses
+    ViewController::ViewController --> Views::DefaultView : creates
+    ViewController::ViewController --> Views::NewsView : creates
+    ViewController::ViewController --> Views::FunctionView : creates
+    Views::FunctionView ..> ViewController::ViewController : setSwitchViewCallback(ViewController::setMode)
+    ViewController::ViewController ..> LCD : uses
+
+    @enduml

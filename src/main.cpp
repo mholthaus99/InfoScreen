@@ -1,4 +1,4 @@
-#include "system/mode_manager.h"
+#include "system/view_controller.h"
 #include "system/controller.h"
 #include "system/ir_receiver.h"
 #include <Arduino.h>
