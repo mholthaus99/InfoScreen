@@ -2,7 +2,7 @@
 
 **DisplayGadget** is a modular, extensible dashboard for ESP8266-based microcontrollers with a 20x4 I2C LCD display. It provides real-time data such as weather, time, Wi-Fi status, news headlines, and indoor climate. Users can navigate views and trigger actions using an infrared (IR) remote.
 
-[Front view of DisplayGadget](assets/front.jpg)
+[Front view of DisplayGadget](assets/front.jpg)]
 
 
 
@@ -28,7 +28,7 @@
 | DHT11 Sensor Data      | D6          |
 
 Supported boards include NodeMCU, Wemos D1 mini, and other ESP8266 variants.
-[Body render](assets/body_render.jpg)
+[Body render](assets/body_render.jpg)]
 
 ## 🧰 External Libraries
 
