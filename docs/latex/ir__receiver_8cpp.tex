@@ -1,0 +1,80 @@
+\doxysection{src/ir\+\_\+receiver.cpp File Reference}
+\label{ir__receiver_8cpp}\index{src/ir\_receiver.cpp@{src/ir\_receiver.cpp}}
+{\ttfamily \#include "{}ir\+\_\+receiver.\+h"{}}\newline
+{\ttfamily \#include $<$IRremote\+ESP8266.\+h$>$}\newline
+{\ttfamily \#include $<$IRrecv.\+h$>$}\newline
+{\ttfamily \#include "{}ir\+\_\+codes.\+h"{}}\newline
+{\ttfamily \#include $<$IRutils.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ IRAction}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ ir\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the IR receiver hardware. \end{DoxyCompactList}\item 
+void \textbf{ ir\+\_\+poll} ()
+\begin{DoxyCompactList}\small\item\em Polls the IR receiver and handles input if available. \end{DoxyCompactList}\item 
+void \textbf{ ir\+\_\+register\+Callbacks} (const IRCallbacks \&callbacks)
+\begin{DoxyCompactList}\small\item\em Registers callback functions for IR events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr uint16\+\_\+t \textbf{ IR\+\_\+\+RECV\+\_\+\+PIN} = D5
+\begin{DoxyCompactList}\small\item\em IR receiver pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{ir\_receiver.cpp@{ir\_receiver.cpp}!ir\_init@{ir\_init}}
+\index{ir\_init@{ir\_init}!ir\_receiver.cpp@{ir\_receiver.cpp}}
+\doxysubsubsection{ir\_init()}
+{\footnotesize\ttfamily \label{ir__receiver_8cpp_a398213820d1862c262f45bb51a4bb934} 
+void ir\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the IR receiver hardware. 
+
+\index{ir\_receiver.cpp@{ir\_receiver.cpp}!ir\_poll@{ir\_poll}}
+\index{ir\_poll@{ir\_poll}!ir\_receiver.cpp@{ir\_receiver.cpp}}
+\doxysubsubsection{ir\_poll()}
+{\footnotesize\ttfamily \label{ir__receiver_8cpp_a5635a95dc30583a28c5cfe6aa9ae6d89} 
+void ir\+\_\+poll (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Polls the IR receiver and handles input if available. 
+
+Call this from the main {\ttfamily \doxyref{loop()}{p.}{main_8cpp_afe461d27b9c48d5921c00d521181f12f}} function. \index{ir\_receiver.cpp@{ir\_receiver.cpp}!ir\_registerCallbacks@{ir\_registerCallbacks}}
+\index{ir\_registerCallbacks@{ir\_registerCallbacks}!ir\_receiver.cpp@{ir\_receiver.cpp}}
+\doxysubsubsection{ir\_registerCallbacks()}
+{\footnotesize\ttfamily \label{ir__receiver_8cpp_af88eeb7bad341ed041f4053e38fbe62d} 
+void ir\+\_\+register\+Callbacks (\begin{DoxyParamCaption}\item[{const IRCallbacks \&}]{callbacks}{}\end{DoxyParamCaption})}
+
+
+
+Registers callback functions for IR events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callbacks} & Struct containing the callbacks for power, digits, and function buttons. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-var-members}
+\doxysubsection{Variable Documentation}
+\index{ir\_receiver.cpp@{ir\_receiver.cpp}!IR\_RECV\_PIN@{IR\_RECV\_PIN}}
+\index{IR\_RECV\_PIN@{IR\_RECV\_PIN}!ir\_receiver.cpp@{ir\_receiver.cpp}}
+\doxysubsubsection{IR\_RECV\_PIN}
+{\footnotesize\ttfamily \label{ir__receiver_8cpp_a195153baa3e84f0eecb79fee239ea2f9} 
+uint16\+\_\+t IR\+\_\+\+RECV\+\_\+\+PIN = D5\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+IR receiver pin. 
+

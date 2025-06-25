@@ -1,0 +1,62 @@
+\doxysection{src/rss\+\_\+reader.cpp File Reference}
+\label{rss__reader_8cpp}\index{src/rss\_reader.cpp@{src/rss\_reader.cpp}}
+{\ttfamily \#include "{}rss\+\_\+reader.\+h"{}}\newline
+{\ttfamily \#include $<$ESP8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Wi\+Fi\+Client\+Secure.\+h$>$}\newline
+{\ttfamily \#include $<$ESP8266\+HTTPClient.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ rss\+\_\+fetch} ()
+\begin{DoxyCompactList}\small\item\em Fetches and parses RSS headlines from the JSON feed URL. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ rss\+\_\+getprint\+\_\+headline} ()
+\begin{DoxyCompactList}\small\item\em Returns the next cached headline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \textbf{ url} = "{}https\+://maxholthaus.\+com/ssr"{}
+\begin{DoxyCompactList}\small\item\em URL of the JSON RSS feed to fetch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{rss\_reader.cpp@{rss\_reader.cpp}!rss\_fetch@{rss\_fetch}}
+\index{rss\_fetch@{rss\_fetch}!rss\_reader.cpp@{rss\_reader.cpp}}
+\doxysubsubsection{rss\_fetch()}
+{\footnotesize\ttfamily \label{rss__reader_8cpp_ae3fbe816e32d960304f4c26aa40abc4f} 
+void rss\+\_\+fetch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fetches and parses RSS headlines from the JSON feed URL. 
+
+Clears any previously cached headlines before fetching. Uses Wi\+Fi\+Client\+Secure with insecure mode (for testing). Stores up to MAX\+\_\+\+HEADLINES headlines in the cache. Does nothing if Wi-\/\+Fi is not connected or fetch fails. \index{rss\_reader.cpp@{rss\_reader.cpp}!rss\_getprint\_headline@{rss\_getprint\_headline}}
+\index{rss\_getprint\_headline@{rss\_getprint\_headline}!rss\_reader.cpp@{rss\_reader.cpp}}
+\doxysubsubsection{rss\_getprint\_headline()}
+{\footnotesize\ttfamily \label{rss__reader_8cpp_a5b8172a3ace43a883b860dbc9b5fd7f6} 
+const char $\ast$ rss\+\_\+getprint\+\_\+headline (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the next cached headline. 
+
+Automatically refreshes the headlines by calling \doxyref{rss\+\_\+fetch()}{p.}{rss__reader_8cpp_ae3fbe816e32d960304f4c26aa40abc4f} if more than 15 minutes have elapsed since last update or if no headlines are cached.
+
+\begin{DoxyReturn}{Returns}
+const char$\ast$ Pointer to the current headline string. Returns "{}\+No headlines available"{} if cache is empty. 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\doxysubsection{Variable Documentation}
+\index{rss\_reader.cpp@{rss\_reader.cpp}!url@{url}}
+\index{url@{url}!rss\_reader.cpp@{rss\_reader.cpp}}
+\doxysubsubsection{url}
+{\footnotesize\ttfamily \label{rss__reader_8cpp_aec657bef26e5ff27b9442563a591d9ec} 
+const char$\ast$ url = "{}https\+://maxholthaus.\+com/ssr"{}}
+
+
+
+URL of the JSON RSS feed to fetch. 
+

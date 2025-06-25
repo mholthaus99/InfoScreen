@@ -1,0 +1,54 @@
+\chapter{ESP8266 LCD Dashboard }
+\label{md_readme}\index{ESP8266 LCD Dashboard@{ESP8266 LCD Dashboard}}
+\label{md_readme_autotoc_md0}%
+
+
+This project is a feature-\/rich 20x4 LCD dashboard powered by an ESP8266 microcontroller. It can display weather, news, indoor climate data, and much more.
+
+   \doxysection{🔧 Features}\label{md_readme_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Time from NIST
+\item Weather display using a Open\+Weather\+API
+\item Local news via RSS
+\item DHT11 temperature and humidity readings
+\item Remote control via infrared remote
+\end{DoxyItemize}\doxysection{Hardware Setup}\label{md_readme_autotoc_md2}
+
+\begin{DoxyItemize}
+\item LCD SDA pin -\/$>$ ESP8266 D2 pin
+\item LCD SCL pin -\/$>$ ESP8266 D1 pin
+\item IR Reciever data pin -\/$>$ ESP8266 D5 pin
+\item DHT11 Sensor data pin -\/$>$ ESP8266 D6 pin
+\end{DoxyItemize}\doxysection{External Libraries}\label{md_readme_autotoc_md3}
+
+\begin{DoxyItemize}
+\item LCD I2C
+\begin{DoxyItemize}
+\item duinowitchery/hd44780@$^\wedge$1.3.\+2
+\end{DoxyItemize}
+\item IR Reciever
+\begin{DoxyItemize}
+\item crankyoldgit/\+IRremote\+ESP8266@$^\wedge$2.8.\+6
+\end{DoxyItemize}
+\item DHT11
+\begin{DoxyItemize}
+\item adafruit/\+Adafruit Unified Sensor @ $^\wedge$1.1.\+15
+\item adafruit/\+DHT sensor library @ $^\wedge$1.4.\+6
+\end{DoxyItemize}
+\item Weather and News parsing
+\begin{DoxyItemize}
+\item bblanchon/\+Arduino\+Json @ $^\wedge$7.4.\+2
+\end{DoxyItemize}
+\end{DoxyItemize}\doxysection{TODO}\label{md_readme_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Add location and news url to secrets.\+h
+\item Local server to update messages remotely
+\item Pixel art / fun animations
+\item Custom character LCD handling
+\item AP wifi Setup
+\item EEPROM
+\item Pagination
+\item Wi-\/\+Fi signal monitoring 
+\end{DoxyItemize}

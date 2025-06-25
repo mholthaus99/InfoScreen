@@ -1,0 +1,121 @@
+\doxysection{src/weather.cpp File Reference}
+\label{weather_8cpp}\index{src/weather.cpp@{src/weather.cpp}}
+{\ttfamily \#include "{}weather.\+h"{}}\newline
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+{\ttfamily \#include $<$ESP8266\+HTTPClient.\+h$>$}\newline
+{\ttfamily \#include $<$Wi\+Fi\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$ESP8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include "{}secrets.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ weather\+\_\+fetch} ()
+\begin{DoxyCompactList}\small\item\em Fetches the latest weather data from Open\+Weather\+Map API. \end{DoxyCompactList}\item 
+void \textbf{ weather\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the weather module and fetches the initial weather data. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+weather\+\_\+summary} ()
+\begin{DoxyCompactList}\small\item\em Get latest weather summary string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+location} ()
+\begin{DoxyCompactList}\small\item\em Get cached location string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+temperature} ()
+\begin{DoxyCompactList}\small\item\em Get cached temperature string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+weather\+\_\+description} ()
+\begin{DoxyCompactList}\small\item\em Get cached weather description string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned long \textbf{ WEATHER\+\_\+\+UPDATE\+\_\+\+INTERVAL} = 10\+UL $\ast$ 60\+UL $\ast$ 1000\+UL
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{weather.cpp@{weather.cpp}!getprint\_location@{getprint\_location}}
+\index{getprint\_location@{getprint\_location}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{getprint\_location()}
+{\footnotesize\ttfamily \label{weather_8cpp_a3228cddd21f9da74d181f21a9509a0e4} 
+const char $\ast$ getprint\+\_\+location (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get cached location string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to location C-\/string. 
+\end{DoxyReturn}
+\index{weather.cpp@{weather.cpp}!getprint\_temperature@{getprint\_temperature}}
+\index{getprint\_temperature@{getprint\_temperature}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{getprint\_temperature()}
+{\footnotesize\ttfamily \label{weather_8cpp_af3e312b319b75e2e37f8f4155788720f} 
+const char $\ast$ getprint\+\_\+temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get cached temperature string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to temperature C-\/string. 
+\end{DoxyReturn}
+\index{weather.cpp@{weather.cpp}!getprint\_weather\_description@{getprint\_weather\_description}}
+\index{getprint\_weather\_description@{getprint\_weather\_description}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{getprint\_weather\_description()}
+{\footnotesize\ttfamily \label{weather_8cpp_add37534af3fe6ef57914987e008e3652} 
+const char $\ast$ getprint\+\_\+weather\+\_\+description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get cached weather description string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to weather description C-\/string. 
+\end{DoxyReturn}
+\index{weather.cpp@{weather.cpp}!getprint\_weather\_summary@{getprint\_weather\_summary}}
+\index{getprint\_weather\_summary@{getprint\_weather\_summary}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{getprint\_weather\_summary()}
+{\footnotesize\ttfamily \label{weather_8cpp_a98cbd8d949bf785e5f32deed27ad209c} 
+const char $\ast$ getprint\+\_\+weather\+\_\+summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get latest weather summary string. 
+
+If the cached data is older than the update interval, attempts to refresh it.
+
+\begin{DoxyReturn}{Returns}
+Pointer to weather summary C-\/string. 
+\end{DoxyReturn}
+\index{weather.cpp@{weather.cpp}!weather\_fetch@{weather\_fetch}}
+\index{weather\_fetch@{weather\_fetch}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{weather\_fetch()}
+{\footnotesize\ttfamily \label{weather_8cpp_aceaf91c044539f741109a0b6489d7742} 
+bool weather\+\_\+fetch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fetches the latest weather data from Open\+Weather\+Map API. 
+
+Updates cached weather summary, location, temperature, and description. Handles connection, HTTP, and JSON errors gracefully.
+
+\begin{DoxyReturn}{Returns}
+true if weather data was successfully fetched and parsed, false otherwise. 
+\end{DoxyReturn}
+\index{weather.cpp@{weather.cpp}!weather\_init@{weather\_init}}
+\index{weather\_init@{weather\_init}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{weather\_init()}
+{\footnotesize\ttfamily \label{weather_8cpp_a5b723799904ca0ba17ec91319189f856} 
+void weather\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the weather module and fetches the initial weather data. 
+
+
+
+\label{doc-var-members}
+\doxysubsection{Variable Documentation}
+\index{weather.cpp@{weather.cpp}!WEATHER\_UPDATE\_INTERVAL@{WEATHER\_UPDATE\_INTERVAL}}
+\index{WEATHER\_UPDATE\_INTERVAL@{WEATHER\_UPDATE\_INTERVAL}!weather.cpp@{weather.cpp}}
+\doxysubsubsection{WEATHER\_UPDATE\_INTERVAL}
+{\footnotesize\ttfamily \label{weather_8cpp_a1f7ef7a7d193ac87eea8dd887fab7260} 
+const unsigned long WEATHER\+\_\+\+UPDATE\+\_\+\+INTERVAL = 10\+UL $\ast$ 60\+UL $\ast$ 1000\+UL}
+

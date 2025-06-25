@@ -1,0 +1,159 @@
+\doxysection{src/network.cpp File Reference}
+\label{network_8cpp}\index{src/network.cpp@{src/network.cpp}}
+{\ttfamily \#include $<$ESP8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include "{}secrets.\+h"{}}\newline
+{\ttfamily \#include "{}network.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ wifi\+\_\+connect} (void($\ast$status\+Callback)(const char $\ast$))
+\begin{DoxyCompactList}\small\item\em Connects to the Wi-\/\+Fi network using the provided credentials. \end{DoxyCompactList}\item 
+bool \textbf{ wifi\+\_\+is\+Connected} ()
+\begin{DoxyCompactList}\small\item\em Checks if the device is currently connected to Wi-\/\+Fi. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+ssid} ()
+\begin{DoxyCompactList}\small\item\em Gets the Wi-\/\+Fi SSID as a string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+password} ()
+\begin{DoxyCompactList}\small\item\em Gets the Wi-\/\+Fi password as a string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+ip} ()
+\begin{DoxyCompactList}\small\item\em Gets the local IP address as a string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+dns} ()
+\begin{DoxyCompactList}\small\item\em Gets the DNS server IP address as a string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+gateway} ()
+\begin{DoxyCompactList}\small\item\em Gets the gateway IP address as a string. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+wifi\+\_\+subnet} ()
+\begin{DoxyCompactList}\small\item\em Gets the subnet mask as a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \textbf{ ssid} = WIFI\+\_\+\+SSID
+\item 
+const char $\ast$ \textbf{ password} = WIFI\+\_\+\+PASS
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_dns@{getprint\_wifi\_dns}}
+\index{getprint\_wifi\_dns@{getprint\_wifi\_dns}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_dns()}
+{\footnotesize\ttfamily \label{network_8cpp_a2b79ce4ddba51d8ec45d1d294653183f} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+dns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the DNS server IP address as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the DNS IP address string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_gateway@{getprint\_wifi\_gateway}}
+\index{getprint\_wifi\_gateway@{getprint\_wifi\_gateway}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_gateway()}
+{\footnotesize\ttfamily \label{network_8cpp_a5385e16342e889c99e6b9b6cc6e30989} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+gateway (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the gateway IP address as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the gateway IP address string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_ip@{getprint\_wifi\_ip}}
+\index{getprint\_wifi\_ip@{getprint\_wifi\_ip}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_ip()}
+{\footnotesize\ttfamily \label{network_8cpp_a144aacd4db9772f800bf14c78cbd9add} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+ip (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the local IP address as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the IP address string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_password@{getprint\_wifi\_password}}
+\index{getprint\_wifi\_password@{getprint\_wifi\_password}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_password()}
+{\footnotesize\ttfamily \label{network_8cpp_af25b46c6936b693244f459be26fe3fb0} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+password (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the Wi-\/\+Fi password as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the password string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_ssid@{getprint\_wifi\_ssid}}
+\index{getprint\_wifi\_ssid@{getprint\_wifi\_ssid}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_ssid()}
+{\footnotesize\ttfamily \label{network_8cpp_a5e788c2e336d80bb309417043ae200d1} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+ssid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the Wi-\/\+Fi SSID as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the SSID string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!getprint\_wifi\_subnet@{getprint\_wifi\_subnet}}
+\index{getprint\_wifi\_subnet@{getprint\_wifi\_subnet}!network.cpp@{network.cpp}}
+\doxysubsubsection{getprint\_wifi\_subnet()}
+{\footnotesize\ttfamily \label{network_8cpp_ad1eee5f099a1e1f3339334e146bb1c98} 
+const char $\ast$ getprint\+\_\+wifi\+\_\+subnet (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the subnet mask as a string. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the subnet mask string. 
+\end{DoxyReturn}
+\index{network.cpp@{network.cpp}!wifi\_connect@{wifi\_connect}}
+\index{wifi\_connect@{wifi\_connect}!network.cpp@{network.cpp}}
+\doxysubsubsection{wifi\_connect()}
+{\footnotesize\ttfamily \label{network_8cpp_a3fcec2d93a0bcb6e99ed8457fd0faa5b} 
+void wifi\+\_\+connect (\begin{DoxyParamCaption}\item[{void($\ast$}]{status\+Callback~}{)(const char $\ast$)}\end{DoxyParamCaption})}
+
+
+
+Connects to the Wi-\/\+Fi network using the provided credentials. 
+
+Attempts to connect to the Wi-\/\+Fi network and provides status updates via the callback. If connection fails after 40 attempts, notifies via callback and returns.
+
+
+\begin{DoxyParams}{Parameters}
+{\em status\+Callback} & Optional callback to report connection status messages. \\
+\hline
+\end{DoxyParams}
+\index{network.cpp@{network.cpp}!wifi\_isConnected@{wifi\_isConnected}}
+\index{wifi\_isConnected@{wifi\_isConnected}!network.cpp@{network.cpp}}
+\doxysubsubsection{wifi\_isConnected()}
+{\footnotesize\ttfamily \label{network_8cpp_ac2af562ded7ab218b0c09122db4fbd06} 
+bool wifi\+\_\+is\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the device is currently connected to Wi-\/\+Fi. 
+
+\begin{DoxyReturn}{Returns}
+true if connected, false otherwise. 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\doxysubsection{Variable Documentation}
+\index{network.cpp@{network.cpp}!password@{password}}
+\index{password@{password}!network.cpp@{network.cpp}}
+\doxysubsubsection{password}
+{\footnotesize\ttfamily \label{network_8cpp_aa4a2ebcb494493f648ae1e6975672575} 
+const char$\ast$ password = WIFI\+\_\+\+PASS}
+
+\index{network.cpp@{network.cpp}!ssid@{ssid}}
+\index{ssid@{ssid}!network.cpp@{network.cpp}}
+\doxysubsubsection{ssid}
+{\footnotesize\ttfamily \label{network_8cpp_a587ba0cb07f02913598610049a3bbb79} 
+const char$\ast$ ssid = WIFI\+\_\+\+SSID}
+

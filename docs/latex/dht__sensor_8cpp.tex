@@ -1,0 +1,157 @@
+\doxysection{src/dht\+\_\+sensor.cpp File Reference}
+\label{dht__sensor_8cpp}\index{src/dht\_sensor.cpp@{src/dht\_sensor.cpp}}
+{\ttfamily \#include "{}dht\+\_\+sensor.\+h"{}}\newline
+{\ttfamily \#include $<$DHT.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ DHTTYPE}~DHT11
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ dht\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initialize the DHT sensor. \end{DoxyCompactList}\item 
+float \textbf{ dht\+\_\+get\+Temperature} ()
+\begin{DoxyCompactList}\small\item\em Get the current temperature from the DHT sensor in Fahrenheit. \end{DoxyCompactList}\item 
+float \textbf{ dht\+\_\+get\+Humidity} ()
+\begin{DoxyCompactList}\small\item\em Get the current humidity from the DHT sensor. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+dht\+\_\+summary} ()
+\begin{DoxyCompactList}\small\item\em Get a formatted summary string of temperature and humidity. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+dht\+\_\+temperature} ()
+\begin{DoxyCompactList}\small\item\em Get a formatted temperature string for display. \end{DoxyCompactList}\item 
+const char $\ast$ \textbf{ getprint\+\_\+humidity} ()
+\begin{DoxyCompactList}\small\item\em Get a formatted humidity string for display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr uint8\+\_\+t \textbf{ DHTPIN} = D6
+\begin{DoxyCompactList}\small\item\em Pin used for DHT sensor. \end{DoxyCompactList}\item 
+char \textbf{ dht\+Temp\+Buf} [16]
+\begin{DoxyCompactList}\small\item\em Static buffer for formatted temperature string. \end{DoxyCompactList}\item 
+char \textbf{ dht\+Hum\+Buf} [16]
+\begin{DoxyCompactList}\small\item\em Static buffer for formatted humidity string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!DHTTYPE@{DHTTYPE}}
+\index{DHTTYPE@{DHTTYPE}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{DHTTYPE}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_a2c509dba12bba99883a5be9341b7a0c5} 
+\#define DHTTYPE~DHT11}
+
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!dht\_getHumidity@{dht\_getHumidity}}
+\index{dht\_getHumidity@{dht\_getHumidity}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{dht\_getHumidity()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_a644e5add0a337d18d674f21db837ad8e} 
+float dht\+\_\+get\+Humidity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the current humidity from the DHT sensor. 
+
+\begin{DoxyReturn}{Returns}
+Relative humidity in percent, or NAN if reading fails. 
+\end{DoxyReturn}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!dht\_getTemperature@{dht\_getTemperature}}
+\index{dht\_getTemperature@{dht\_getTemperature}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{dht\_getTemperature()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_aeeadca2fc83a6a274291bc2726c9e43d} 
+float dht\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the current temperature from the DHT sensor in Fahrenheit. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in Fahrenheit, or NAN if reading fails. 
+\end{DoxyReturn}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!dht\_init@{dht\_init}}
+\index{dht\_init@{dht\_init}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{dht\_init()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_ac35ff567951181ecb33dea43c9228c2d} 
+void dht\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize the DHT sensor. 
+
+Call this in \doxyref{setup()}{p.}{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d} before reading temperature or humidity. \index{dht\_sensor.cpp@{dht\_sensor.cpp}!getprint\_dht\_summary@{getprint\_dht\_summary}}
+\index{getprint\_dht\_summary@{getprint\_dht\_summary}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{getprint\_dht\_summary()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_af9520fa68c8ce219eb9eaf7187e05f83} 
+const char $\ast$ getprint\+\_\+dht\+\_\+summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get a formatted summary string of temperature and humidity. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to a static buffer containing "{}xx.\+x\+F xx.\+x\%"{} or "{}\+Sensor error"{}. 
+\end{DoxyReturn}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!getprint\_dht\_temperature@{getprint\_dht\_temperature}}
+\index{getprint\_dht\_temperature@{getprint\_dht\_temperature}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{getprint\_dht\_temperature()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_a9d39154f11e475416bfd5ea3d4263a09} 
+const char $\ast$ getprint\+\_\+dht\+\_\+temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get a formatted temperature string for display. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to a static buffer containing "{}xx.\+x\+F"{} or "{}\+Temp error"{}. 
+\end{DoxyReturn}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!getprint\_humidity@{getprint\_humidity}}
+\index{getprint\_humidity@{getprint\_humidity}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{getprint\_humidity()}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_a9cd36fdd10c8455d9a48a8b6bc0c706a} 
+const char $\ast$ getprint\+\_\+humidity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get a formatted humidity string for display. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to a static buffer containing "{}xx.\+x\%"{} or "{}\+Hum error"{}. 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\doxysubsection{Variable Documentation}
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!dhtHumBuf@{dhtHumBuf}}
+\index{dhtHumBuf@{dhtHumBuf}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{dhtHumBuf}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_adbd95db45284ac284e2e7240f8225132} 
+char dht\+Hum\+Buf[16]}
+
+
+
+Static buffer for formatted humidity string. 
+
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!DHTPIN@{DHTPIN}}
+\index{DHTPIN@{DHTPIN}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{DHTPIN}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_a3ef103f04b847f81938f2aa7ab9397dc} 
+uint8\+\_\+t DHTPIN = D6\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Pin used for DHT sensor. 
+
+\index{dht\_sensor.cpp@{dht\_sensor.cpp}!dhtTempBuf@{dhtTempBuf}}
+\index{dhtTempBuf@{dhtTempBuf}!dht\_sensor.cpp@{dht\_sensor.cpp}}
+\doxysubsubsection{dhtTempBuf}
+{\footnotesize\ttfamily \label{dht__sensor_8cpp_aba39eec34015ac66b542ff1d87541154} 
+char dht\+Temp\+Buf[16]}
+
+
+
+Static buffer for formatted temperature string. 
+

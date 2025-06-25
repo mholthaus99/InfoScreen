@@ -1,7 +1,6 @@
-#include "mode_manager.h"
-#include "controller.h"
-#include "ir_receiver.h"
-
+#include "system/mode_manager.h"
+#include "system/controller.h"
+#include "system/ir_receiver.h"
 /**
  * @brief Arduino setup function.
  * 
