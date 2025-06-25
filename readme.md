@@ -102,4 +102,4 @@ DisplayGadget/
 - [ ] EEPROM settings storage  
 - [ ] View pagination and transitions  
 - [ ] Wi-Fi signal strength indicator  
-- [ ] `secrets.h` auto-generator for easier setup  
+- [ ] `secrets.h` add a blank to the repository
