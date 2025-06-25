@@ -1,64 +1,32 @@
 #include "mode_manager.h"
 #include "controller.h"
+
 #include "network.h"
-#include "time_utils.h"
 #include "ir_receiver.h"
-#include "dht_sensor.h"
-#include "weather.h"
-#include "ir_handlers.h"
-#include "rss_reader.h"
 
-/**
- * @brief Tracks whether the default screen is showing climate (1) or weather (0).
- */
-int showingClimate = 0;
+#include "view.h"
+#include "news_view.h"
+#include "default_view.h"
+#include "menu_view.h"
 
-/**
- * @brief Timestamp of the last toggle between climate and weather on the default screen.
- */
-unsigned long lastDefaultToggle = 0;
+// refactor starting here
+View *currentView = nullptr;
 
-/**
- * @brief Timestamp of the last change to the title on the news display.
- */
-unsigned long timeOfLastTitleChange = 0;
+void switchView(int mode);
 
-static void displayDefault();
-static void displayWeather();
-static void displayClimate();
-static void displayFuncMenu();
-static void displayDeviceInfo();
-static void displayNews();
-
-/**
- * @brief Renders the current display mode by calling the appropriate display function.ds
- */
-void renderCurrentMode()
-{
-  switch (currentMode)
-  {
-  case MODE_DEFAULT:
-    displayDefault();
-    break;
-  case MODE_WEATHER:
-    displayWeather();
-    break;
-  case MODE_CLIMATE:
-    displayClimate();
-    break;
-  case MODE_FUNC:
-    displayFuncMenu();
-    break;
-  case MODE_INFO:
-    displayDeviceInfo();
-    break;
-  case MODE_NEWS:
-    displayNews();
-    break;
-  default:
-    break;
-  }
-}
+// Declare IR handler function prototypes
+void irhandle_power();
+void irhandle_func();
+void irhandle_digit(int digit);
+void irhandle_skip();
+void irhandle_back();
+void irhandle_volume_up();
+void irhandle_volume_down();
+void irhandle_channel_up();
+void irhandle_channel_down();
+void irhandle_play_pause();
+void irhandle_eq();
+void irhandle_repeat();
 
 /**
  * @brief Initializes the application and all hardware/software subsystems.
@@ -70,7 +38,6 @@ void app_init()
 {
   Serial.begin(115200);
   lcd_init();
-  lastDefaultToggle = millis() - 5000;
 
   wifi_connect([](const char *status)
                { printMultiLine(status); });
@@ -109,124 +76,161 @@ void app_init()
   weather_init();
   printAt("Weather ready", 3);
   lcd_clear();
+
+  switchView(MODE_DEFAULT);
 }
 
 /**
- * @brief Displays the default screen, toggling between climate and weather every 5 seconds.
- *
- * Shows the current time at the top right, and alternates between indoor climate
- * and weather information on the lower lines.
+ * @brief Renders the current display mode by calling the appropriate display function.ds
  */
-void displayDefault()
+void renderCurrentMode()
 {
-  if (displayMgr.shouldUpdate(MODE_DEFAULT))
+
+  if (currentView)
   {
-    displayMgr.markUpdated();
-    showingClimate = 0;
-    lastDefaultToggle = millis() - 5000;
-    lcd_clear();
-  }
-
-  printAt(time_getprint(), 0, 9);
-
-  if (millis() - lastDefaultToggle >= 5000)
-  {
-    if (showingClimate == 0)
-    {
-      printAt("Indoor Climate", 1);
-      printAt(getprint_dht_temperature(), 2);
-      printAt(getprint_humidity(), 3);
-      showingClimate = 1;
-    }
-    else
-    {
-      printAt(getprint_location(), 1);
-      printAt(getprint_weather_description(), 2);
-      printAt(getprint_temperature(), 3);
-      showingClimate = 0;
-    }
-
-    lastDefaultToggle = millis();
+    currentView->render();
   }
 }
 
-void displayNews()
+void switchView(int mode)
 {
-  if (displayMgr.shouldUpdate(MODE_NEWS))
+  if (currentView)
   {
-    printWrapped(rss_getprint_headline()); // This will update the headline
-    timeOfLastTitleChange = millis();
-    displayMgr.markUpdated();
+    currentView->onExit();
+    delete currentView;
   }
 
-  if (millis() - timeOfLastTitleChange >= 5000)
+  switch (mode)
   {
-    timeOfLastTitleChange = millis();
 
-    printWrapped(rss_getprint_headline()); // This will update the headline
+  case MODE_DEFAULT:
+    currentView = new DefaultView();
+    break;
+
+  case MODE_FUNC:
+  {
+    FunctionView *menuView = new FunctionView(); // functionview needs a callback to switch to news view
+    menuView->setSwitchViewCallback(switchView);
+    currentView = menuView;
+    break;
+  }
+
+  case MODE_NEWS:
+    currentView = new NewsView();
+    break;
+
+  default:
+    currentView = new DefaultView(); // Fallback to default view
+    break;
+  }
+  currentView->onEnter();
+}
+
+void irhandle_power()
+{
+  if (currentView)
+  {
+    currentView->onPower();
   }
 }
 
-/**
- * @brief Displays the current weather information.
- *
- * Shows the current time and a summary of the weather.
- */
-void displayWeather()
+void irhandle_func()
 {
-  if (displayMgr.shouldUpdate(MODE_WEATHER))
+  if (currentView)
   {
-    printAt(time_getprint(), 0, 9);
-    printAt(getprint_weather_summary(), 2);
-    displayMgr.markUpdated();
+    switchView(MODE_FUNC);
   }
 }
 
-/**
- * @brief Displays the indoor climate data.
- *
- * Shows the current time and a summary of temperature and humidity.
- */
-void displayClimate()
+void irhandle_digit(int digit)
 {
-  if (displayMgr.shouldUpdate(MODE_CLIMATE))
+  if (currentView)
   {
-    printAt(time_getprint(), 0, 9);
-    printAt(getprint_dht_summary(), 2);
-    displayMgr.markUpdated();
+    currentView->onDigit(digit);
+  }
+}
+void irhandle_skip()
+{
+  if (currentView)
+  {
+    currentView->onSkip();
+  }
+}
+void irhandle_back()
+{
+  if (currentView)
+  {
+    currentView->onBack();
+  }
+}
+void irhandle_volume_up()
+{
+  if (currentView)
+  {
+    currentView->onVolumeUp();
+  }
+}
+void irhandle_volume_down()
+{
+  if (currentView)
+  {
+    currentView->onVolumeDown();
   }
 }
 
-/**
- * @brief Displays the function menu.
- *
- * Shows a list of available functions for the user to select.
- */
-void displayFuncMenu()
+void irhandle_channel_up()
 {
-  if (displayMgr.shouldUpdate(MODE_FUNC))
+  if (currentView)
   {
-    printAt("1. Toggle Power", 0);
-    printAt("2. Internet Settings", 1);
-    printAt("3. News", 2);
-    printAt("4. Default", 3);
-    displayMgr.markUpdated();
+    currentView->onChannelUp();
   }
 }
 
-/**
- * @brief Displays the device and network information.
- *
- * Shows WiFi SSID, password, and IP address.
- */
-void displayDeviceInfo()
+void irhandle_channel_down()
 {
-  if (displayMgr.shouldUpdate(MODE_INFO))
+  if (currentView)
   {
-    printAt(getprint_wifi_ssid(), 0);
-    printAt(getprint_wifi_password(), 1);
-    printAt(getprint_wifi_ip(), 2);
-    printAt("<>", 3);
-    displayMgr.markUpdated();
+    currentView->onChannelDown();
   }
 }
+
+void irhandle_play_pause()
+{
+  if (currentView)
+  {
+    currentView->onPlayPause();
+  }
+}
+
+void irhandle_eq()
+{
+  if (currentView)
+  {
+    currentView->onEQ();
+  }
+}
+
+void irhandle_repeat()
+{
+  if (currentView)
+  {
+    currentView->onRepeat();
+  }
+}
+
+// /**
+//  * @brief Displays the device and network information.
+//  *
+//  * Shows WiFi SSID, password, and IP address.
+//  */
+// void displayDeviceInfo()
+// {
+//   if (displayMgr.shouldUpdate(MODE_INFO))
+//   {
+//     printAt(getprint_wifi_ssid(), 0);
+//     printAt(getprint_wifi_password(), 1);
+//     printAt(getprint_wifi_ip(), 2);
+//     printAt("<>", 3);
+//     displayMgr.markUpdated();
+//   }
+// }
