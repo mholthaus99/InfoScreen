@@ -23,7 +23,6 @@ unsigned long lastDefaultToggle = 0;
  */
 unsigned long timeOfLastTitleChange = 0;
 
-
 static void displayDefault();
 static void displayWeather();
 static void displayClimate();
@@ -32,34 +31,49 @@ static void displayDeviceInfo();
 static void displayNews();
 
 /**
- * @brief Renders the current display mode by calling the appropriate display function.
+ * @brief Renders the current display mode by calling the appropriate display function.ds
  */
-void renderCurrentMode() {
-  switch (currentMode) {
-    case MODE_DEFAULT: displayDefault(); break;
-    case MODE_WEATHER: displayWeather(); break;
-    case MODE_CLIMATE: displayClimate(); break;
-    case MODE_FUNC: displayFuncMenu(); break;
-    case MODE_INFO: displayDeviceInfo(); break;
-    case MODE_NEWS: displayNews(); break;
-    default: break;
+void renderCurrentMode()
+{
+  switch (currentMode)
+  {
+  case MODE_DEFAULT:
+    displayDefault();
+    break;
+  case MODE_WEATHER:
+    displayWeather();
+    break;
+  case MODE_CLIMATE:
+    displayClimate();
+    break;
+  case MODE_FUNC:
+    displayFuncMenu();
+    break;
+  case MODE_INFO:
+    displayDeviceInfo();
+    break;
+  case MODE_NEWS:
+    displayNews();
+    break;
+  default:
+    break;
   }
 }
 
 /**
  * @brief Initializes the application and all hardware/software subsystems.
- * 
+ *
  * This function should be called in setup(). It initializes serial, LCD, WiFi,
  * time, IR, DHT sensor, and weather modules, and prints status messages to the display.
  */
-void app_init() {
+void app_init()
+{
   Serial.begin(115200);
   lcd_init();
   lastDefaultToggle = millis() - 5000;
 
-  wifi_connect([](const char *status) {
-    printMultiLine(status);
-  });
+  wifi_connect([](const char *status)
+               { printMultiLine(status); });
 
   lcd_clear();
   print("Getting NIST time...");
@@ -69,19 +83,18 @@ void app_init() {
   printAt("Starting IR...", 2);
 
   ir_init();
-  ir_registerCallbacks({
-    .onPower = irhandle_power,
-    .onDigit = irhandle_digit,
-    .onFunction = irhandle_func,
-    .onSkip = irhandle_skip,
-    .onBack = irhandle_back,
-    .onVolumeUp = irhandle_volume_up,
-    .onVolumeDown = irhandle_volume_down,
-    .onChannelUp = irhandle_channel_up,
-    .onChannelDown = irhandle_channel_down,
-    .onPlayPause = irhandle_play_pause,
-    .onEQ = irhandle_eq,
-    .onRepeat = irhandle_repeat
+  ir_registerCallbacks({.onPower = irhandle_power,
+                        .onDigit = irhandle_digit,
+                        .onFunction = irhandle_func,
+                        .onSkip = irhandle_skip,
+                        .onBack = irhandle_back,
+                        .onVolumeUp = irhandle_volume_up,
+                        .onVolumeDown = irhandle_volume_down,
+                        .onChannelUp = irhandle_channel_up,
+                        .onChannelDown = irhandle_channel_down,
+                        .onPlayPause = irhandle_play_pause,
+                        .onEQ = irhandle_eq,
+                        .onRepeat = irhandle_repeat
 
   });
 
@@ -96,14 +109,11 @@ void app_init() {
   weather_init();
   printAt("Weather ready", 3);
   lcd_clear();
-
-  
-
 }
 
 /**
  * @brief Displays the default screen, toggling between climate and weather every 5 seconds.
- * 
+ *
  * Shows the current time at the top right, and alternates between indoor climate
  * and weather information on the lower lines.
  */
@@ -149,19 +159,17 @@ void displayNews()
     displayMgr.markUpdated();
   }
 
-  if(millis() - timeOfLastTitleChange >= 5000)
+  if (millis() - timeOfLastTitleChange >= 5000)
   {
     timeOfLastTitleChange = millis();
-    
+
     printWrapped(rss_getprint_headline()); // This will update the headline
   }
-
 }
-
 
 /**
  * @brief Displays the current weather information.
- * 
+ *
  * Shows the current time and a summary of the weather.
  */
 void displayWeather()
@@ -176,7 +184,7 @@ void displayWeather()
 
 /**
  * @brief Displays the indoor climate data.
- * 
+ *
  * Shows the current time and a summary of temperature and humidity.
  */
 void displayClimate()
@@ -191,7 +199,7 @@ void displayClimate()
 
 /**
  * @brief Displays the function menu.
- * 
+ *
  * Shows a list of available functions for the user to select.
  */
 void displayFuncMenu()
@@ -208,7 +216,7 @@ void displayFuncMenu()
 
 /**
  * @brief Displays the device and network information.
- * 
+ *
  * Shows WiFi SSID, password, and IP address.
  */
 void displayDeviceInfo()

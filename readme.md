@@ -10,8 +10,6 @@ This project is a feature-rich 20x4 LCD dashboard powered by an ESP8266 microcon
   <img src="assets/body_render.jpg" alt="Body Render" style="height: 230px; object-fit: contain;">
 </div>
 
-
-
 ## 🔧 Features
 
 - Time from NIST
