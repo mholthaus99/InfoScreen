@@ -10,8 +10,6 @@
   <img src="assets/body_render.jpg" alt="Body Render" style="height: 230px; object-fit: contain;">
 </div>
 
----
-
 ## ✨ Features
 
 - **Weather Display:** Current conditions from OpenWeatherMap  
@@ -22,8 +20,6 @@
 - **IR Remote Control:** Navigate menus and trigger functions  
 - **Modular Architecture:** Add new views and data sources easily  
 - **Pixel Art & Custom Characters:** Fun, animated display options  
-
----
 
 ## 🛠️ Hardware Setup
 
@@ -36,8 +32,6 @@
 
 Supported boards include NodeMCU, Wemos D1 mini, and other ESP8266 variants.
 
----
-
 ## 🧰 External Libraries
 
 - **LCD I2C:** [`duinowitchery/hd44780@^1.3.2`](https://github.com/duinoWitchery/hd44780)
@@ -47,33 +41,36 @@ Supported boards include NodeMCU, Wemos D1 mini, and other ESP8266 variants.
   - [`adafruit/DHT sensor library @ ^1.4.6`](https://github.com/adafruit/DHT-sensor-library)
 - **Data Parsing:** [`bblanchon/ArduinoJson @ ^7.4.2`](https://github.com/bblanchon/ArduinoJson)
 
----
-
 ## 🧱 Project Structure
 
-'''
-src/
-main.cpp ; Arduino entry point
-system/
-controller.*; Main application logic
-view_controller.* ; View switching and rendering
-display.*; LCD abstraction layer
-ir_receiver.* ; IR input handler
-views/
-view.*; Abstract base view
-default_view.* ; Default info (weather, time, climate)
-news_view.*; RSS news headlines
-menu_view.* ; Menu / actions interface
-network/
-network.*; Wi-Fi utilities
-weather.* ; OpenWeatherMap integration
-time_utils.*; NIST time sync
-rss_reader.* ; RSS feed handling
-sensors/
-dht_sensor.* ; DHT11 interface
-secrets.h ; Wi-Fi & API credentials (excluded from git)
-
-'''
+```plaintext
+InfoScreen/
+├── src/                        # Source code
+│   ├── main.cpp                # Arduino entry point
+│   ├── system/                 # Core system logic
+│   │   ├── controller.*        # App lifecycle & control logic
+│   │   ├── view_controller.*   # Manages switching between views
+│   │   ├── display.*           # LCD rendering utilities
+│   │   └── ir_receiver.*       # IR remote decoding
+│   ├── views/                  # UI views (screen modes)
+│   │   ├── view.*              # Base abstract class for all views
+│   │   ├── default_view.*      # Shows time, weather, and DHT sensor data
+│   │   ├── news_view.*         # Displays RSS news feed
+│   │   └── menu_view.*         # Menu interface (e.g. settings, actions)
+│   ├── network/                # Networking and APIs
+│   │   ├── network.*           # Wi-Fi connection and utility functions
+│   │   ├── weather.*           # OpenWeatherMap API integration
+│   │   ├── time_utils.*        # Time synchronization with NIST
+│   │   └── rss_reader.*        # RSS news headline parser
+│   └── sensors/                # Sensor integrations
+│       └── dht_sensor.*        # DHT11 temperature/humidity interface
+├── include/                    # Header files (optional if used)
+├── lib/                        # External libraries (if manually included)
+├── data/                       # SPIFFS or LittleFS data (optional)
+├── secrets.h                   # Wi-Fi & API keys (excluded from version control)
+├── platformio.ini              # PlatformIO build configuration
+└── README.md                   # Project documentation
+```
 
 ## 🚀 Getting Started
 
@@ -93,8 +90,6 @@ secrets.h ; Wi-Fi & API credentials (excluded from git)
 4. **Wire your hardware** according to the diagram above
 5. **Build and upload** to your ESP8266 board
 
----
-
 ## 🧪 Planned Features & TODOs
 
 - [ ] Local server to push messages remotely  
@@ -105,13 +100,3 @@ secrets.h ; Wi-Fi & API credentials (excluded from git)
 - [ ] View pagination and transitions  
 - [ ] Wi-Fi signal strength indicator  
 - [ ] `secrets.h` auto-generator for easier setup  
-
----
-
-## 📄 License
-
-[MIT License](LICENSE)
-
----
-
-**InfoScreen** is built to be extensible and hackable—customize views, add sensors, and make the interface your own!
