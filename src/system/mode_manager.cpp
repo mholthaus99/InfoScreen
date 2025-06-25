@@ -5,70 +5,77 @@
 #include "../views/news_view.h"
 #include "../views/menu_view.h"
 
-
 using namespace Views;
 
-namespace ModeManager {
+namespace ModeManager
+{
 
-    static View* currentView = nullptr;
-    static DisplayMode currentMode = MODE_DEFAULT;
+  static View *currentView = nullptr;
+  static DisplayMode currentMode = MODE_DEFAULT;
 
-    void switchView(DisplayMode mode)
+  void switchView(DisplayMode mode)
+  {
+    LCD::clear();
+    View *oldView = currentView; // Hold old pointer but don't delete yet
+
+    // Create new view pointer, but don't assign to currentView yet
+    View *newView = nullptr;
+
+    currentMode = mode;
+
+    switch (mode)
     {
-        if (currentView)
-        {
-            currentView->onExit();
-            delete currentView;
-            currentView = nullptr;
-        }
-
-        currentMode = mode;
-
-        switch (mode)
-        {
-        case MODE_DEFAULT:
-            currentView = new DefaultView();
-            break;
-        case MODE_MENU:
-        {
-            auto* menu = new FunctionView();
-            menu->setSwitchViewCallback(ModeManager::setMode);  // Allows menu to change mode
-            currentView = menu;
-            break;
-        }
-        case MODE_NEWS:
-            currentView = new NewsView();
-            break;
-        case MODE_NETWORK:
-            // TODO: Replace with NetworkView once implemented
-            currentView = new DefaultView();
-            break;
-        default:
-            currentView = new DefaultView();
-            break;
-        }
-
-        if (currentView)
-            currentView->onEnter();
-    }
-
-    void renderCurrentView()
+    case MODE_DEFAULT:
+      newView = new DefaultView();
+      break;
+    case MODE_MENU:
     {
-        if (currentView)
-            currentView->render();
+      auto *menu = new FunctionView();
+      menu->setSwitchViewCallback(ModeManager::setMode); // set callback before swapping
+      newView = menu;
+      break;
+    }
+    case MODE_NEWS:
+      newView = new NewsView();
+      break;
+    case MODE_NETWORK:
+      newView = new DefaultView(); // placeholder
+      break;
+    default:
+      newView = new DefaultView();
+      break;
     }
 
-    void setMode(DisplayMode mode)
+    if (newView)
+      newView->onEnter();
+
+    currentView = newView;
+
+    if (oldView)
     {
-        switchView(mode);
+      oldView->onExit();
+      delete oldView;
     }
+  }
 
-    DisplayMode getMode()
-    {
-        return currentMode;
-    }
+  void renderCurrentView()
+  {
+    if (currentView)
+      currentView->render();
+  }
 
-    View* getCurrentView(){
-      return currentView;
-    }
+  void setMode(DisplayMode mode)
+  {
+    switchView(mode);
+  }
+
+  DisplayMode getMode()
+  {
+    return currentMode;
+  }
+
+  View *getCurrentView()
+  {
+    return currentView;
+  }
 }
