@@ -5,8 +5,8 @@
 
 using namespace Views;
 
-ViewController::ViewController(LcdRenderer& renderer)
-  : renderer(renderer) {
+ViewController::ViewController(IViewRenderer& renderer)
+  : _renderer(renderer) {
 }
 
 void ViewController::switchView(DisplayMode mode) {
@@ -17,10 +17,10 @@ void ViewController::switchView(DisplayMode mode) {
 
   switch (mode) {
   case MODE_DEFAULT:
-    newView = new DefaultView(renderer);
+   // newView = new DefaultView(_renderer);
     break;
   case MODE_MENU: {
-    auto* menu = new FunctionView();
+    auto* menu = new FunctionView(_renderer);
     menu->setSwitchViewCallback([this](DisplayMode m) { this->setMode(m); });
     newView = menu;
     break;
@@ -29,10 +29,10 @@ void ViewController::switchView(DisplayMode mode) {
     newView = new NewsView();
     break;
   case MODE_NETWORK:
-    newView = new DefaultView(renderer); // Placeholder
+    //newView = new DefaultView(_renderer); // Placeholder
     break;
   default:
-    newView = new DefaultView(renderer);
+    //newView = new DefaultView(_renderer);
     break;
   }
 

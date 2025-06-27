@@ -1,15 +1,18 @@
 #include "default_view.h"
 
-#include "../network/time_utils_instance.h"
+
 #include "../network/weather.h"
 #include "../sensors/dht_sensor.h"
 
 
 namespace Views
 {
+
+  
+
      void DefaultView::render()
      {
-          _renderer.drawText(0, 9, timeUtils.getFormattedTime());
+        //  _renderer.drawText(0, 9, timeUtils.getFormattedTime());
 
 
           if (millis() - lastToggle >= 5000)

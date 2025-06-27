@@ -7,10 +7,11 @@
 
 class Hd44780Adapter : public ILCD {
 public:
-     Hd44780Adapter(hd44780_I2Cexp& lcd) : _lcd(lcd) {}
+     Hd44780Adapter(hd44780_I2Cexp& lcd, uint8_t rows, uint8_t cols) : _lcd(lcd), _rows(rows), _cols(cols){}
 
-     void begin(uint8_t cols, uint8_t rows) override {
-          _lcd.begin(0x27, cols, rows);
+     void begin() override {
+     
+          _lcd.begin(0x27, _cols, _rows);
      }
 
      void clear() override {
@@ -44,7 +45,17 @@ public:
           }
      }
 
+     uint8_t getRows() const override {
+          return _rows;
+     }
+
+     uint8_t getCols() const override {
+          return _cols;
+     }
+
 private:
      hd44780_I2Cexp& _lcd;
      bool backlightIsOn;
+     uint8_t _rows;
+     uint8_t _cols;
 };

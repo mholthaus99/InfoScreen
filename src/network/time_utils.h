@@ -1,17 +1,20 @@
 #pragma once
-
+#include "../interfaces/ITime.h"
+#include "../interfaces/IObject.h"
 #include <Arduino.h>
 #include <time.h>
 
-class TimeUtils {
+class TimeUtils : public ITime , public IObject {
 public:
     // TimeUtils(const char* ntpServer = "time.nist.gov", long timezoneOffset = 0,
     // bool daylightSavingTime = false);
     TimeUtils();
-    void init();
-    const char* getFormattedTime();
+    void init() override;
+    const char* getFormattedTime() override;
+    void update() override;
 
 private:
+    
     bool syncWithNTP();
     int getDSTOffset();
     int getTimeZoneOffset();

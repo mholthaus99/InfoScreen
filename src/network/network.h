@@ -1,33 +1,31 @@
-#pragma once
+#ifndef WIFI_MANAGER_H
+#define WIFI_MANAGER_H
 
-namespace WiFiUtils
-{
-     /**
-      * @file network.h
-      * @brief Wi-Fi connection utilities for ESP8266.
-      */
+#include <ESP8266WiFi.h>
+#include "../interfaces/INetwork.h"
+#include "../interfaces/IObject.h"
+class WiFiManager : public INetwork , public IObject {
+public:
+     //WiFiManager(const char* ssid, const char* password);
 
-      /// @brief Connect to Wi-Fi with status updates via callback.
-     void wifi_connect();
 
-     /// @brief Returns whether Wi-Fi is connected.
-     bool wifi_isConnected();
+     void init() override;
 
-     /// @brief Returns current Wi-Fi SSID.
-     const char* getprint_wifi_ssid();
+     void setCredentials(const char* ssid, const char* password);
+     void connect() override;
+     bool isConnected()  override;
 
-     /// @brief Returns current Wi-Fi password.
-     const char* getprint_wifi_password();
+     const char* getSSID() const;
+     const char* getPassword() const;
+     const char* getLocalIP();
+     const char* getDNS();
+     const char* getGateway();
+     const char* getSubnet();
 
-     /// @brief Returns device's local IP.
-     const char* getprint_wifi_ip();
+private:
+     const char* _ssid;
+     const char* _password;
+     String _ipBuffer;
+};
 
-     /// @brief Returns DNS server IP.
-     const char* getprint_wifi_dns();
-
-     /// @brief Returns default gateway IP.
-     const char* getprint_wifi_gateway();
-
-     /// @brief Returns subnet mask.
-     const char* getprint_wifi_subnet();
-}  // namespace WiFiUtils
+#endif // WIFI_MANAGER_H

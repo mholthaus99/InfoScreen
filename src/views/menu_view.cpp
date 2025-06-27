@@ -1,11 +1,12 @@
 #include "menu_view.h"
 
-
+//#include "../interfaces/IViewRenderer.h"
 #include <Arduino.h> // For Serial.printf
 #include <functional>
 
 namespace Views
 {
+    
 
     void FunctionView::setSwitchViewCallback(SwitchViewCallback cb)
     {
@@ -14,7 +15,9 @@ namespace Views
 
     void FunctionView::onEnter()
     {
-
+        _renderer.drawText(0, 0, "Default");
+        _renderer.drawText(0, 1, "Local News");
+        _renderer.drawText(0, 2, "Network");
         // lcdextern.printAt("1. Default", 0);
         // lcdextern.printAt("2. Local News", 1);
         // lcdextern.printAt("3. Network", 2);

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "lcd_renderer.h"
+#include "../interfaces/IViewRenderer.h"
 #include "../views/view.h"
+#include <vector>
 
 enum DisplayMode {
      MODE_DEFAULT,
@@ -12,16 +13,20 @@ enum DisplayMode {
 
 class ViewController {
 public:
-     explicit ViewController(LcdRenderer& renderer);
+     explicit ViewController(IViewRenderer& renderer);
 
      void setMode(DisplayMode mode);
      DisplayMode getMode() const;
-     Views::View* getCurrentView() const;
+     View* getCurrentView() const;
+     void addView(View* view) {
+          views.push_back(view);
+     }
 
 private:
      void switchView(DisplayMode mode);
 
      DisplayMode currentMode = MODE_DEFAULT;
-     Views::View* currentView = nullptr;
-     LcdRenderer& renderer;
+     View* currentView = nullptr;
+     IViewRenderer& _renderer;
+     std::vector<View*> views;
 };

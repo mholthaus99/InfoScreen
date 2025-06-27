@@ -1,6 +1,6 @@
 #pragma once
 #include <functional>
-
+#include "../interfaces/IViewRenderer.h"
 #include "../system/view_controller.h"
 #include "view.h"
 
@@ -13,6 +13,7 @@ namespace Views {
     using SwitchViewCallback = std::function<void(DisplayMode)>;
 
 
+    FunctionView(IViewRenderer& viewRenderer) : _renderer(viewRenderer) {}
     /**
      * @brief Set a callback function to be called when the view changes.
      * @param cb The callback to invoke
@@ -42,6 +43,7 @@ namespace Views {
     void render() override;
 
   private:
+    IViewRenderer& _renderer;
     SwitchViewCallback switchViewCallback = nullptr;
   };
 

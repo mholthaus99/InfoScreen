@@ -4,8 +4,8 @@
 
 class LcdRenderer : public IViewRenderer {
 public:
-    LcdRenderer(ILCD& lcd, uint8_t cols, uint8_t rows)
-        : _lcd(lcd), _cols(cols), _rows(rows), _col(0), _row(0) {
+    LcdRenderer(ILCD& lcd)
+        : _lcd(lcd), _cols(lcd.getCols()), _rows(lcd.getRows()) , _col(0), _row(0) {
     }
 
     void drawText(int col, int row, const char* text) override {
