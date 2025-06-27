@@ -1,7 +1,7 @@
 #include "display.h"
 
 // Use your desired constructor arguments here (I2C address 0x27, 20 columns, 4 rows)
-LCDDisplay lcd(0x27, 20, 4);
+LCDDisplay lcdextern(0x27, 20, 4);
 
 LCDDisplay::LCDDisplay(uint8_t i2c_addr, uint8_t cols, uint8_t rows)
      : lcd(i2c_addr, cols, rows), cols(cols), rows(rows), cursorLine(0), backlightOn(true) {

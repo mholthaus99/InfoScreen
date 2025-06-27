@@ -4,19 +4,21 @@
 #include <IRremoteESP8266.h>
 #include <IRutils.h>
 #include "ir_codes.h"
+#include <functional>
+
 struct IRCallbacks {
-     void (*onPower)();
-     void (*onFunction)();
-     void (*onSkip)();
-     void (*onBack)();
-     void (*onPlayPause)();
-     void (*onVolumeUp)();
-     void (*onVolumeDown)();
-     void (*onChannelUp)();
-     void (*onChannelDown)();
-     void (*onEQ)();
-     void (*onRepeat)();
-     void (*onDigit)(int digit);
+     std::function<void()> onPower;
+     std::function<void()> onFunction;
+     std::function<void()> onSkip;
+     std::function<void()> onBack;
+     std::function<void()> onPlayPause;
+     std::function<void()> onVolumeUp;
+     std::function<void()> onVolumeDown;
+     std::function<void()> onChannelUp;
+     std::function<void()> onChannelDown;
+     std::function<void()> onEQ;
+     std::function<void()> onRepeat;
+     std::function<void(int)> onDigit;
 };
 class IRReceiver {
 public:
@@ -30,7 +32,7 @@ private:
      struct IRAction {
           uint32_t code;
           const char* label;
-          void (**callbackField)();  // Pointer to a function pointer
+          std::function<void()>* callbackField;
      };
      IRrecv irrecv;
      decode_results results;

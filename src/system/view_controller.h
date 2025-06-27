@@ -1,17 +1,27 @@
 #pragma once
+
+#include "lcd_renderer.h"
 #include "../views/view.h"
 
-enum DisplayMode { MODE_DEFAULT, MODE_MENU, MODE_NEWS, MODE_NETWORK, MODE_COUNT };
+enum DisplayMode {
+     MODE_DEFAULT,
+     MODE_MENU,
+     MODE_NEWS,
+     MODE_NETWORK
+};
 
-namespace Views {
-     class View;
-}
+class ViewController {
+public:
+     explicit ViewController(LcdRenderer& renderer);
 
-namespace ViewController {
-     void switchView(DisplayMode mode);
-     void renderCurrentView();
      void setMode(DisplayMode mode);
-     DisplayMode getMode();
-     Views::View* getCurrentView();
+     DisplayMode getMode() const;
+     Views::View* getCurrentView() const;
 
-}  // namespace ViewController
+private:
+     void switchView(DisplayMode mode);
+
+     DisplayMode currentMode = MODE_DEFAULT;
+     Views::View* currentView = nullptr;
+     LcdRenderer& renderer;
+};

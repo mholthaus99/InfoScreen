@@ -1,107 +1,120 @@
 @startuml
-title DisplayGadget Architecture - Clean & Modular
- 
+title DisplayGadget System - Updated with Renderer Abstraction
 
-' ' ==== CORE INTERFACES ====
-' interface IView {
-'     +onEnter()
-'     +onExit()
-'     +render()
-'     +handleInput(key: int)
-' }
+' ==== ENUM ====
+enum DisplayMode {
+    MODE_DEFAULT
+    MODE_MENU
+    MODE_NEWS
+    MODE_NETWORK
+    MODE_COUNT
+}
 
-' interface ILcd {
-'     +begin(cols: uint8_t, rows: uint8_t)
-'     +clear()
-'     +setCursor(col: uint8_t, row: uint8_t)
-'     +print(str: const char*)
-'     +printAt(col: uint8_t, row: uint8_t, str: const char*)
-'     +printWrap(str: const char*)
-'     +toggleBacklight()
-' }
+' ==== CORE CONTROLLERS ====
+class Controller {
+    +init()
+    +loop()
+}
 
-' interface IInputProvider {
-'     +readInput(): int
-' }
+class ViewController {
+    +registerView(view: IView*)
+    +setActiveView(index: uint8_t)
+    +getCurrentView(): IView*
+    +handleInput(key: int)
+}
 
-' interface INetwork {
-'     +connect(ssid: const char*, pwd: const char*)
-'     +isConnected(): bool
-'     +localIP(): String
-' }
+' ==== INTERFACES ====
+interface IView {
+    +onEnter()
+    +onExit()
+    +render()
+    +handleInput(key: int)
+}
 
-' interface ISystem {
-'     +restart()
-'     +sleep(ms: uint32_t)
-' }
+interface IDisplayRenderer {
+    +drawText(col: int, row: int, text: const char*)
+    +drawWrap(text: const char*)
+    +clear()
+}
 
-' ' ==== SYSTEM CORE ====
-' class Controller {
-'     +init()
-'     +loop()
-'     -_input: IInputProvider*
-'     -_display: ILcd*
-'     -_network: INetwork*
-'     -_system: ISystem*
-'     -_viewController: ViewController
-' }
+interface ILcd {
+    +begin(cols, rows)
+    +clear()
+    +setCursor(col, row)
+    +print(text)
+    +print(char)
+    +backlight(enable)
+}
 
-' class ViewController {
-'     +registerView(view: IView*)
-'     +setActiveView(index: uint8_t)
-'     +nextView()
-'     +render()
-'     +handleInput(key: int)
-'     -_views: List<IView*>
-' }
+interface IInputProvider {
+    +readInput(): int
+}
 
-' ' ==== DISPLAY ADAPTER ====
-' class Hd44780Adapter
-' Hd44780Adapter ..|> ILcd
+interface INetwork
+interface ISystem
 
-' ' ==== INPUT PROVIDERS ====
-' class IRInputProvider
-' class ButtonInputProvider
-' class SerialInputProvider
+' ==== DISPLAY IMPLEMENTATION ====
+class LcdRenderer {
+    -ILcd& lcd
+    -cols, rows, col, row
+    +drawText()
+    +drawWrap()
+    +clear()
+}
 
-' IRInputProvider ..|> IInputProvider
-' ButtonInputProvider ..|> IInputProvider
-' SerialInputProvider ..|> IInputProvider
+LcdRenderer ..|> IDisplayRenderer
+LcdRenderer --> ILcd
 
-' ' ==== VIEWS ====
-' class DefaultView
-' class NewsView
-' class MenuView
-' class MyCustomView
+class Hd44780Adapter
+Hd44780Adapter ..|> ILcd
 
-' IView <|-- DefaultView
-' IView <|-- NewsView
-' IView <|-- MenuView
-' IView <|-- MyCustomView
+' ==== INPUTS ====
+class IRInputProvider
+class ButtonInputProvider
+class SerialInputProvider
 
-' DefaultView ..> ILcd
-' NewsView ..> ILcd
-' MenuView ..> ILcd
-' MyCustomView ..> ILcd
+IRInputProvider ..|> IInputProvider
+ButtonInputProvider ..|> IInputProvider
+SerialInputProvider ..|> IInputProvider
 
-' DefaultView ..> INetwork
-' NewsView ..> RSSReader
-' DefaultView ..> DHTSensor
-' DefaultView ..> TimeUtils
+' ==== VIEWS ====
+class DefaultView
+class MenuView
+class NewsView
+class MyCustomView
 
-' ' ==== NETWORK ====
-' class RSSReader
-' class Weather
-' class TimeUtils
+IView <|-- DefaultView
+IView <|-- MenuView
+IView <|-- NewsView
+IView <|-- MyCustomView
 
-' ' ==== SENSORS ====
-' class DHTSensor
+DefaultView ..> IDisplayRenderer
+MenuView ..> IDisplayRenderer
+NewsView ..> IDisplayRenderer
+MyCustomView ..> IDisplayRenderer
 
-' ' ==== RELATIONSHIPS ====
-' Controller --> ViewController : manages views
-' Controller --> IInputProvider : uses
-' Controller --> ILcd : renders on
-' Controller --> INetwork : connects via
-' Controller --> ISystem : manages system
+DefaultView ..> INetwork
+DefaultView ..> TimeUtils
+DefaultView ..> DHTSensor
+NewsView ..> RSSReader
+
+' ==== SYSTEM MODULES ====
+class DHTSensor
+class TimeUtils
+class RSSReader
+class Weather
+
+' ==== RELATIONSHIPS ====
+Controller --> ViewController
+Controller --> IInputProvider
+Controller --> IDisplayRenderer
+Controller --> INetwork
+Controller --> ISystem
 
 @enduml
+' [Controller]
+'     ↳ owns → [ViewController]
+'                 ↳ manages → [IView*]
+'                             ↳ depends on → [IDisplayRenderer]
+'                                            ↳ implemented by → [LcdRenderer]
+'                                                             ↳ uses → [ILcd] (e.g. Hd44780)

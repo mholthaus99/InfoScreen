@@ -1,5 +1,8 @@
 #pragma once
-
+#include "../interfaces/ILCD.h"
+#include "../lcd_renderer.h"
+#include "view_controller.h"
+#include <Arduino.h>
 /**
  * @brief Main application controller for InfoScreen.
  *
@@ -10,7 +13,7 @@ public:
     /**
      * @brief Construct a new Controller object.
      */
-    Controller() = default;
+    Controller(ILCD& lcd, uint8_t cols, uint8_t rows);
 
     /**
      * @brief Initialize all hardware and software subsystems.
@@ -27,25 +30,32 @@ public:
     void loop();
 
 private:
-    /**
-     * @brief Dispatch an IR event handler method to the current view.
-     *
-     * @tparam MethodPtr Pointer to a view member function.
-     * @param method The member function pointer to call.
-     */
-    template <typename MethodPtr>
-    static void dispatchIRHandler(MethodPtr method);
+    ILCD& _lcd;
 
-    /**
-     * @brief Dispatch an IR event handler method with an argument to the current view.
-     *
-     * @tparam MethodPtr Pointer to a view member function.
-     * @tparam Arg Argument type.
-     * @param method The member function pointer to call.
-     * @param arg The argument to pass to the handler.
-     */
+    uint8_t _lcdCols;
+    uint8_t _lcdRows;
+    LcdRenderer _renderer;
+    ViewController viewController;
+ 
+
+
+    // Template method definitions should be moved to the header file (controller.h)
+    // Remove these from the .cpp file and add them to controller.h as follows:
+
+    // In controller.h, add inside the Controller class:
+    template <typename MethodPtr>
+    void dispatchIRHandler(MethodPtr method) {
+        if (auto view = viewController.getCurrentView()) {
+            (view->*method)();
+        }
+    }
+
     template <typename MethodPtr, typename Arg>
-    static void dispatchIRHandler(MethodPtr method, Arg arg);
+    void dispatchIRHandler(MethodPtr method, Arg arg) {
+        if (auto view = viewController.getCurrentView()) {
+            (view->*method)(arg);
+        }
+    }
 
     /**
      * @brief Initialize the LCD display.

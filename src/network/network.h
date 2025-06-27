@@ -8,7 +8,7 @@ namespace WiFiUtils
       */
 
       /// @brief Connect to Wi-Fi with status updates via callback.
-     void wifi_connect(void (*statusCallback)(const char*));
+     void wifi_connect();
 
      /// @brief Returns whether Wi-Fi is connected.
      bool wifi_isConnected();

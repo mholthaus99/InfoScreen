@@ -1,7 +1,7 @@
 #pragma once
 // Abstract base class
 
-#include "../system/display_instance.h"
+
 
 namespace Views
 {
@@ -17,7 +17,7 @@ namespace Views
           virtual void onExit() {}
 
           // IR event handlers - override in subclasses
-          virtual void onPower() { lcd.toggleBacklight(); }
+          virtual void onPower() {}
           virtual void onDigit(int digit) {}
           virtual void onFunction()
           {

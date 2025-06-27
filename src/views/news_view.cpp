@@ -1,7 +1,8 @@
 #include "news_view.h"
+#include <Arduino.h>
 
 #include "../network/rss_reader.h"
-#include "../system/display_instance.h"
+
 #include "../system/view_controller.h"
 
 namespace Views {
@@ -11,10 +12,10 @@ namespace Views {
       const char* headline = RSS::getNextHeadline();
 
       if (headline && headline[0] != '\0') {
-        lcd.printWrapped(headline);
+        //lcdextern.printWrapped(headline);
       }
       else {
-        lcd.printAt("No headlines", 1);
+        //lcdextern.printAt("No headlines", 1);
       }
 
       timeOfLastTitleChange = millis();
@@ -25,10 +26,10 @@ namespace Views {
     const char* headline = RSS::getNextHeadline();
 
     if (headline && headline[0] != '\0') {
-      lcd.printWrapped(headline);
+      //lcdextern.printWrapped(headline);
     }
     else {
-      lcd.printAt("No headlines", 1);
+      //lcdextern.printAt("No headlines", 1);
     }
   }
 

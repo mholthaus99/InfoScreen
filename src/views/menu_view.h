@@ -6,13 +6,12 @@
 
 namespace Views {
 
-  /**
-   * @brief A view that presents a menu of selectable functions.
-   */
+
+
   class FunctionView : public View {
   public:
-    using SwitchViewCallback =
-      void (*)(DisplayMode);  ///< Function pointer type for view switching
+    using SwitchViewCallback = std::function<void(DisplayMode)>;
+
 
     /**
      * @brief Set a callback function to be called when the view changes.

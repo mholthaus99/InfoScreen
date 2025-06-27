@@ -4,13 +4,20 @@
 #include "../network/time_utils_instance.h"
 #include "../network/weather.h"
 #include "../sensors/dht_sensor.h"
-#include "../system/display_instance.h"
+//#include "../system/display_instance.h"
 #include "ir_receiver.h"
 #include "view_controller.h"
 
 IRReceiver irReceiver;
 
+
 using namespace Views;
+
+Controller::Controller(ILCD& lcd, uint8_t cols, uint8_t rows)
+     : _lcd(lcd), _lcdCols(cols), _lcdRows(rows), _renderer(_lcd, 20, 4), viewController(_renderer)
+{
+
+}
 
 void Controller::init() {
      Serial.begin(115200);
@@ -20,69 +27,64 @@ void Controller::init() {
      initIR();
      initSensors();
 
-     ViewController::setMode(MODE_DEFAULT);
+     viewController.setMode(MODE_DEFAULT);
+
 }
 
 void Controller::loop() {
      irReceiver.poll();
 
-     if (auto view = ViewController::getCurrentView()) {
+     if (auto view = viewController.getCurrentView()) {
           view->render();
      }
 }
 
-template <typename MethodPtr>
-void Controller::dispatchIRHandler(MethodPtr method) {
-     if (auto view = ViewController::getCurrentView()) {
-          (view->*method)();
-     }
-}
 
-template <typename MethodPtr, typename Arg>
-void Controller::dispatchIRHandler(MethodPtr method, Arg arg) {
-     if (auto view = ViewController::getCurrentView()) {
-          (view->*method)(arg);
-     }
-}
 
-void Controller::initLCD() { lcd.init(); }
+void Controller::initLCD() { _lcd.begin(_lcdCols, _lcdRows); }
 
 void Controller::initWiFi() {
-     WiFiUtils::wifi_connect([](const char* status) { lcd.printMultiLine(status); });
+     WiFiUtils::wifi_connect();
 }
 
 void Controller::initTime() {
-     lcd.print("Getting NIST time...");
+     _lcd.print("Getting NIST time...");
      timeUtils.init();
-     lcd.printAt("NIST time set", 1);
+     _lcd.print("NIST time set");
 }
 
 void Controller::initIR() {
-     lcd.printAt("Starting IR...", 2);
+     _lcd.print("Starting IR");
      irReceiver.begin();
 
      irReceiver.setCallbacks(
-          { []() { dispatchIRHandler(&View::onPower); }, []() { ViewController::setMode(MODE_MENU); },
-           []() { dispatchIRHandler(&View::onSkip); }, []() { dispatchIRHandler(&View::onBack); },
-           []() { dispatchIRHandler(&View::onPlayPause); },
-           []() { dispatchIRHandler(&View::onVolumeUp); },
-           []() { dispatchIRHandler(&View::onVolumeDown); },
-           []() { dispatchIRHandler(&View::onChannelUp); },
-           []() { dispatchIRHandler(&View::onChannelDown); },
-           []() { dispatchIRHandler(&View::onEQ); }, []() { dispatchIRHandler(&View::onRepeat); },
-           [](int d) { dispatchIRHandler(&View::onDigit, d); } });
+          {
+              [this]() { dispatchIRHandler(&View::onPower); },
+              [this]() { viewController.setMode(MODE_MENU); },
+              [this]() { dispatchIRHandler(&View::onSkip); },
+              [this]() { dispatchIRHandler(&View::onBack); },
+              [this]() { dispatchIRHandler(&View::onPlayPause); },
+              [this]() { dispatchIRHandler(&View::onVolumeUp); },
+              [this]() { dispatchIRHandler(&View::onVolumeDown); },
+              [this]() { dispatchIRHandler(&View::onChannelUp); },
+              [this]() { dispatchIRHandler(&View::onChannelDown); },
+              [this]() { dispatchIRHandler(&View::onEQ); },
+              [this]() { dispatchIRHandler(&View::onRepeat); },
+              [this](int d) { dispatchIRHandler(&View::onDigit, d); }
+          }
+     );
 
-     lcd.printAt("IR ready", 3);
-     lcd.clear();
+     _lcd.print("IR ready");
+     _lcd.clear();
 }
 
 void Controller::initSensors() {
-     lcd.printAt("Starting DHT...", 0);
+     _lcd.print("Starting DHT...");
      DHTSensor::init();
-     lcd.printAt("DHT sensor ready", 1);
+     _lcd.print("DHT sensor ready");
 
-     lcd.printAt("Fetch weather...", 2);
+     _lcd.print("Fetch weather...");
      Weather::init();
-     lcd.printAt("Weather ready", 3);
-     lcd.clear();
+     _lcd.print("Weather ready");
+     _lcd.clear();
 }

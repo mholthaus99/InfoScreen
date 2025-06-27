@@ -37,7 +37,7 @@ namespace WiFiUtils
      static const char* ssid = WIFI_SSID;
      static const char* password = WIFI_PASS;
 
-     void wifi_connect(void (*statusCallback)(const char*))
+     void wifi_connect()
      {
           Serial.println("Connecting to Wi-Fi...");
 
@@ -61,12 +61,12 @@ namespace WiFiUtils
                attempts++;
                statusMsg += ".";
 
-               if (statusCallback) statusCallback(statusMsg.c_str());
+               //if (statusCallback) statusCallback(statusMsg.c_str());
 
                if (attempts > 40)
                {
                     Serial.println("\nFailed to connect to WiFi.");
-                    if (statusCallback) statusCallback("WiFi Failed.");
+                   // if (statusCallback) statusCallback("WiFi Failed.");
                     return;
                }
           }
@@ -74,15 +74,15 @@ namespace WiFiUtils
           Serial.println();
           Serial.printf("Connected! IP address: %s\n", WiFi.localIP().toString().c_str());
 
-          if (statusCallback)
-          {
-               statusCallback("");
-               String msg = "Connected!\n\nSSID:";
-               msg += WiFi.SSID();
-               msg += "\nIP:";
-               msg += WiFi.localIP().toString();
-               statusCallback(msg.c_str());
-          }
+          // if (statusCallback)
+          // {
+          //      statusCallback("");
+          //      String msg = "Connected!\n\nSSID:";
+          //      msg += WiFi.SSID();
+          //      msg += "\nIP:";
+          //      msg += WiFi.localIP().toString();
+          //      statusCallback(msg.c_str());
+          // }
 
           delay(2000);
      }

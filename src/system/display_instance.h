@@ -1,5 +1,5 @@
-#pragma once
+// #pragma once
 
-#include "display.h"
+// #include "display.h"
 
-extern LCDDisplay lcd;  // External declaration
+// extern LCDDisplay lcdextern;  // External declaration
