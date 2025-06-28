@@ -25,7 +25,6 @@ class IInputDevice {
     // Input events the Controller listens for:
     virtual void onPower() = 0;
     virtual void onFunction() = 0;  // This is the "Menu" button in the context of a TV remote
-    // virtual void onMenu() = 0;
     virtual void onSkip() = 0;
     virtual void onBack() = 0;
     virtual void onPlayPause() = 0;

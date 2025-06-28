@@ -1,10 +1,10 @@
 #pragma once
 #include <Arduino.h>
 
-#include "../imp/dht_sensor.h"
-#include "../interfaces/IView.h"
-#include "../utilities/time_utils.h"
-#include "../utilities/weather.h"
+#include "../hardware/dht_sensor.h"
+#include "../../src/interfaces/IView.h"
+#include "../helpers/time_utils.h"
+#include "../helpers/weather.h"
 class DefaultView : public View {
    public:
     DefaultView();

@@ -5,8 +5,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 
-#include "../interfaces/IWeather.h"
-#include "secrets.h"
+#include "../../src/secrets.h"
 
 class MyWeather {
    public:

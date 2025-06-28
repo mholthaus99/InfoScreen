@@ -5,7 +5,7 @@
 #include <hd44780.h>
 #include <hd44780ioClass/hd44780_I2Cexp.h>
 
-#include "../interfaces/IViewRenderer.h"
+#include "../../src/interfaces/IViewRenderer.h"
 
 /**
  * @brief Renderer for HD44780 LCD displays using I2C.

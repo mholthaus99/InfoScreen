@@ -7,7 +7,7 @@
 #include "../interfaces/IInputDevice.h"
 #include "../interfaces/IView.h"
 #include "../interfaces/IViewRenderer.h"
-#include "../views/menu_view.h"
+#include "../system/menu_view.h"
 #include "view_controller.h"
 
 class Controller {

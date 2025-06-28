@@ -5,7 +5,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 
-#include "../secrets.h"
+#include "../../src/secrets.h"
 
 namespace RSS {
 static constexpr size_t MAX_HEADLINES = 10;

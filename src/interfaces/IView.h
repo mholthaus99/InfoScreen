@@ -1,6 +1,6 @@
 #pragma once
 // Abstract base class
-#include "../interfaces/IViewRenderer.h"
+#include "IViewRenderer.h"
 class View {
    public:
     virtual ~View() {}

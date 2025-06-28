@@ -2,9 +2,8 @@
 #include <Arduino.h>
 #include <time.h>
 
-#include "../interfaces/IObject.h"
-#include "../interfaces/ITime.h"
-#include "../secrets.h"
+
+#include "../../src/secrets.h"
 
 class TimeUtils {
    public:
