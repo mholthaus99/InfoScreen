@@ -1,60 +1,48 @@
 #include "view_controller.h"
-#include "../views/default_view.h"
-#include "../views/news_view.h"
-#include "../views/menu_view.h"
+#include <Arduino.h>
 
-using namespace Views;
-
-ViewController::ViewController(IViewRenderer& renderer)
-  : _renderer(renderer) {
+ViewController::ViewController(IViewRenderer& renderer) : _renderer(renderer), _currentView(nullptr) {
+  // Initialize the view controller with the renderer
 }
 
-void ViewController::switchView(DisplayMode mode) {
-  View* oldView = currentView;
-  View* newView = nullptr;
+void ViewController::addView(View* view) {
+  views.push_back(view);
+}
 
-  currentMode = mode;
+void ViewController::switchTo(int index) {
+  Serial.printf("ViewController::switchTo(%d)\n", index);
+  Serial.printf("Total views: %d\n", views.size());
 
-  switch (mode) {
-  case MODE_DEFAULT:
-   // newView = new DefaultView(_renderer);
-    break;
-  case MODE_MENU: {
-    auto* menu = new FunctionView(_renderer);
-    menu->setSwitchViewCallback([this](DisplayMode m) { this->setMode(m); });
-    newView = menu;
-    break;
-  }
-  case MODE_NEWS:
-    newView = new NewsView();
-    break;
-  case MODE_NETWORK:
-    //newView = new DefaultView(_renderer); // Placeholder
-    break;
-  default:
-    //newView = new DefaultView(_renderer);
-    break;
+  if (views.empty()) {
+    Serial.println("No views available to switch to.");
+    return;
   }
 
-  if (newView)
-    newView->onEnter();
+  if (index < 0 || index >= views.size()) {
+    Serial.println("Invalid view index.");
+    return;
+  }
 
-  currentView = newView;
+  if (_currentView) {
+    _currentView->onExit();
+  }
 
-  if (oldView) {
-    oldView->onExit();
-    delete oldView;
+  _currentView = views[index];
+  if (_currentView) {
+    Serial.println("Calling onEnter() for new view.");
+    _currentView->onEnter();
+  }
+  else {
+    Serial.println("currentView is null after switch.");
   }
 }
 
-void ViewController::setMode(DisplayMode mode) {
-  switchView(mode);
-}
 
-DisplayMode ViewController::getMode() const {
-  return currentMode;
-}
-
-View* ViewController::getCurrentView() const {
-  return currentView;
+View* ViewController::getCurrentView() const
+{
+  if (_currentView == nullptr) {
+    Serial.println("No current view set.");
+    return nullptr;
+  }
+  return _currentView;
 }

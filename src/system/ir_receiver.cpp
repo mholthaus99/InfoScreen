@@ -1,8 +1,10 @@
 #include "ir_receiver.h"
 
-IRReceiver::IRReceiver(uint16_t recvPin) : irrecv(recvPin), registeredCallbacks{ nullptr } {}
+IRReceiver::IRReceiver(uint16_t recvPin) : irrecv(recvPin), registeredCallbacks{} {}
 
-void IRReceiver::begin() { irrecv.enableIRIn(); }
+void IRReceiver::begin() {
+    irrecv.enableIRIn();
+}
 
 void IRReceiver::poll() {
     if (irrecv.decode(&results)) {
@@ -13,7 +15,9 @@ void IRReceiver::poll() {
     }
 }
 
-void IRReceiver::setCallbacks(const IRCallbacks& callbacks) { registeredCallbacks = callbacks; }
+void IRReceiver::setCallbacks(const InputCallbacks& callbacks) {
+    registeredCallbacks = callbacks;
+}
 
 void IRReceiver::handleResultCode(uint32_t code) {
     static IRAction irActions[] = {
@@ -50,4 +54,54 @@ void IRReceiver::handleResultCode(uint32_t code) {
     }
 
     Serial.printf("Unknown code: 0x%08X\n", code);
+}
+
+// Forwarding interface methods to callbacks:
+
+void IRReceiver::onPower() {
+    if (registeredCallbacks.onPower) registeredCallbacks.onPower();
+}
+
+void IRReceiver::onFunction() {
+    if (registeredCallbacks.onFunction) registeredCallbacks.onFunction();
+}
+
+void IRReceiver::onSkip() {
+    if (registeredCallbacks.onSkip) registeredCallbacks.onSkip();
+}
+
+void IRReceiver::onBack() {
+    if (registeredCallbacks.onBack) registeredCallbacks.onBack();
+}
+
+void IRReceiver::onPlayPause() {
+    if (registeredCallbacks.onPlayPause) registeredCallbacks.onPlayPause();
+}
+
+void IRReceiver::onVolumeUp() {
+    if (registeredCallbacks.onVolumeUp) registeredCallbacks.onVolumeUp();
+}
+
+void IRReceiver::onVolumeDown() {
+    if (registeredCallbacks.onVolumeDown) registeredCallbacks.onVolumeDown();
+}
+
+void IRReceiver::onChannelUp() {
+    if (registeredCallbacks.onChannelUp) registeredCallbacks.onChannelUp();
+}
+
+void IRReceiver::onChannelDown() {
+    if (registeredCallbacks.onChannelDown) registeredCallbacks.onChannelDown();
+}
+
+void IRReceiver::onEQ() {
+    if (registeredCallbacks.onEQ) registeredCallbacks.onEQ();
+}
+
+void IRReceiver::onRepeat() {
+    if (registeredCallbacks.onRepeat) registeredCallbacks.onRepeat();
+}
+
+void IRReceiver::onDigit(int digit) {
+    if (registeredCallbacks.onDigit) registeredCallbacks.onDigit(digit);
 }

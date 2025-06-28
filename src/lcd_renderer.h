@@ -1,7 +1,7 @@
 #pragma once
 #include "./interfaces/IViewRenderer.h"
 #include "./interfaces/ILCD.h"
-
+#include <Arduino.h>
 class LcdRenderer : public IViewRenderer {
 public:
     LcdRenderer(ILCD& lcd)
@@ -9,10 +9,21 @@ public:
     }
 
     void drawText(int col, int row, const char* text) override {
+        Serial.printf("Drawing text at col: %d, row: %d, text: %s\n", col, row, text);
         _lcd.setCursor(col, row);
         _lcd.print(text);
         _col = col;
         _row = row;
+    }
+
+    void drawTextonLine(int row, const char* text) override {
+
+        _lcd.setCursor(0, row);
+        char buf[21]; //TODO: Make this dynamic based on _cols
+        snprintf(buf, sizeof(buf), "%-20s", text);
+        _lcd.print(buf);
+   
+        Serial.println(buf);
     }
 
     void drawWrap(const char* text) override {

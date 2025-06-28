@@ -1,70 +1,44 @@
 #include "menu_view.h"
+#include <Arduino.h>
 
-//#include "../interfaces/IViewRenderer.h"
-#include <Arduino.h> // For Serial.printf
-#include <functional>
 
-namespace Views
-{
-    
-
-    void FunctionView::setSwitchViewCallback(SwitchViewCallback cb)
-    {
-        switchViewCallback = cb;
-    }
-
-    void FunctionView::onEnter()
-    {
-        _renderer.drawText(0, 0, "Default");
-        _renderer.drawText(0, 1, "Local News");
-        _renderer.drawText(0, 2, "Network");
-        // lcdextern.printAt("1. Default", 0);
-        // lcdextern.printAt("2. Local News", 1);
-        // lcdextern.printAt("3. Network", 2);
-    }
-
-    void FunctionView::onBack()
-    {
-       // ViewController::setMode(MODE_DEFAULT);
-        if (switchViewCallback)
-            switchViewCallback(MODE_DEFAULT);
-    }
-
-    void FunctionView::onFunction()
-    {
-       // ViewController::setMode(MODE_DEFAULT);
-        if (switchViewCallback)
-            switchViewCallback(MODE_DEFAULT);
-    }
-
-    void FunctionView::onDigit(int digit)
-    {
-        Serial.printf("Digit %d pressed in FunctionView\n", digit);
-        switch (digit)
-        {
-        case 1:
-          //  ViewController::setMode(MODE_DEFAULT);
-            if (switchViewCallback)
-                switchViewCallback(MODE_DEFAULT);
-            break;
-        case 2:
-          //  ViewController::setMode(MODE_NEWS);
-            if (switchViewCallback)
-                switchViewCallback(MODE_NEWS);
-            break;
-        case 3:
-           // ViewController::setMode(MODE_DEFAULT); // You might want a MODE_NETWORK or similar
-            if (switchViewCallback)
-                switchViewCallback(MODE_DEFAULT);
-            break;
-        default:
-            Serial.println("Invalid digit in FunctionView");
-            break;
-        }
-    }
-
-    void FunctionView::render() {
+void FunctionView::onEnter() {
+    if (_viewRenderer == nullptr) {
+        Serial.println("FunctionView: _viewRenderer is null, cannot render.");
         return;
     }
+    _viewRenderer->drawTextonLine(0, "1. Default");
+    _viewRenderer->drawTextonLine(1, "2. Local News");
+    _viewRenderer->drawTextonLine(2, "3. Network");
+}
 
-} // namespace Views
+void FunctionView::onBack() {
+    setViewControllerIndex(0); // Switch to DefaultView
+}
+
+void FunctionView::onFunction() {
+    setViewControllerIndex(0); // Switch to DefaultView
+}
+
+void FunctionView::onDigit(int digit) {
+    Serial.printf("Digit %d pressed in FunctionView\n", digit);
+    switch (digit) {
+    case 1:
+        setViewControllerIndex(0); // Switch to DefaultView
+        break;
+    case 2:
+        setViewControllerIndex(1); // Switch to DefaultView
+        break;
+    case 3:
+        setViewControllerIndex(2); // Switch to DefaultView
+        break;
+    default:
+        Serial.println("Invalid digit in FunctionView");
+        break;
+    }
+}
+
+void FunctionView::render() {
+
+
+}

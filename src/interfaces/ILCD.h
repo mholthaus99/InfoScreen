@@ -1,6 +1,14 @@
 #pragma once
 #include <stdint.h>
 
+/**
+ * @brief Interface for LCD display operations.
+ *
+ * This abstract class defines the interface for controlling an LCD display.
+ * Implementations must provide methods for initialization, clearing the display,
+ * setting the cursor position, printing characters or strings, and controlling
+ * the backlight. It also provides methods to query the display's dimensions.
+ */
 class ILCD {
 public:
      virtual void begin() = 0;

@@ -1,6 +1,6 @@
 #pragma once
 // Abstract base class
-
+#include "../interfaces/IViewRenderer.h"
 class View
 {
 public:
@@ -31,4 +31,11 @@ public:
 
      // Render the view
      virtual void render() = 0;
+
+     void setViewController(IViewRenderer* viewRenderer)
+     {
+          _viewRenderer = viewRenderer;
+     }
+protected:
+     IViewRenderer* _viewRenderer = nullptr; // Pointer to the view renderer managing this view
 };

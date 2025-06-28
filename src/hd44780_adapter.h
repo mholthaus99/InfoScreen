@@ -11,7 +11,7 @@ public:
 
      void begin() override {
      
-          _lcd.begin(0x27, _cols, _rows);
+          _lcd.begin(_cols, _rows, 0x27);
      }
 
      void clear() override {

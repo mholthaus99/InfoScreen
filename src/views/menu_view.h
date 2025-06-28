@@ -1,50 +1,37 @@
-#pragma once
-#include <functional>
+#include "../system/view_controller.h"  // or wherever it's defined
 #include "../interfaces/IViewRenderer.h"
-#include "../system/view_controller.h"
 #include "view.h"
-
-namespace Views {
-
+#include <Arduino.h>
+#include <functional>
 
 
   class FunctionView : public View {
   public:
-    using SwitchViewCallback = std::function<void(DisplayMode)>;
+    using SwitchViewCallback = std::function<void(int)>;
 
+    void setSwitchViewCallback(SwitchViewCallback callback) {
+        _switchViewCallback = callback;
+    }
 
-    FunctionView(IViewRenderer& viewRenderer) : _renderer(viewRenderer) {}
-    /**
-     * @brief Set a callback function to be called when the view changes.
-     * @param cb The callback to invoke
-     */
-    void setSwitchViewCallback(SwitchViewCallback cb);
+   
 
-    /**
-     * @brief Draw the view upon entering the menu.
-     */
     void onEnter() override;
-
-    /**
-     * @brief Handle IR back button by switching to default view.
-     */
     void onBack() override;
-
-    /**
-     * @brief Handle digit presses to navigate to different views.
-     */
-    void onDigit(int digit) override;
-
-    /**
-     * @brief overridding on function while in the menu to close the menu.
-     */
     void onFunction() override;
-
+    void onDigit(int digit) override;
     void render() override;
 
+
+
   private:
-    IViewRenderer& _renderer;
-    SwitchViewCallback switchViewCallback = nullptr;
+
+    void setViewControllerIndex(int index) {
+      if (_switchViewCallback) {
+        _switchViewCallback(index);
+      }
+    }
+    
+    SwitchViewCallback _switchViewCallback; // Callback to switch views
   };
 
-}  // namespace Views
+

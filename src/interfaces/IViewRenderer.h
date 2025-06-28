@@ -4,6 +4,8 @@ class IViewRenderer {
 public:
      virtual void drawText(int col, int row, const char* text) = 0;
 
+     virtual void drawTextonLine(int col, const char* text) = 0;
+
      // Draws text word-wrapped within the screen dimensions
      virtual void drawWrap(const char* text) = 0;
 

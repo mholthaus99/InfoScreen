@@ -1,56 +1,49 @@
 #pragma once
-#include <Arduino.h>
+
+#include <functional>
 
 #include "../interfaces/IViewRenderer.h"
 #include "../views/view.h"
-
-#include "ir_receiver.h"
+#include "../interfaces/IInputDevice.h"
 #include "view_controller.h"
-
 
 class Controller {
 public:
-  
-    Controller(IViewRenderer& viewRenderer);
+    using SwitchViewCallback = std::function<void(int)>;
+
+    Controller(IViewRenderer& renderer, IInputDevice& inputDevice);
+
+    SwitchViewCallback getSwitchViewCallback();
+
+    void addView(View* view);
 
     void init();
-
-    void addView(View* view) {
-        viewController.addView(view);
-    }
 
     void loop();
 
 private:
+    IViewRenderer& _renderer;
+    IInputDevice& _inputDevice;
+    ViewController _viewController;
 
-    IViewRenderer& _viewRenderer;
-    ViewController viewController;
-
-    IRReceiver irReceiver;
-
-    void initIR();
+    void setInputDeviceCallbacks();
 
 
- 
+
     template <typename MethodPtr>
-    void dispatchIRHandler(MethodPtr method) {
-        if (auto view = viewController.getCurrentView()) {
+    void dispatchInputHandler(MethodPtr method) {
+        if (auto* view = _viewController.getCurrentView()) {
             (view->*method)();
         }
     }
 
-    template <typename MethodPtr, typename Arg>
-    void dispatchIRHandler(MethodPtr method, Arg arg) {
-        if (auto view = viewController.getCurrentView()) {
-            (view->*method)(arg);
+    template <typename Func, typename... Args>
+    void dispatchInputHandler(Func method, Args&&... args) {
+        if (auto* view = _viewController.getCurrentView()) {
+            (view->*method)(std::forward<Args>(args)...);
         }
     }
 
-
-
-
- 
-
-
-
 };
+
+

@@ -1,49 +1,53 @@
+/**
+ * @file controller.cpp
+ * @brief Implements the main application controller for InfoScreen.
+ */
+
 #include "controller.h"
+#include <Arduino.h>
 
+Controller::Controller(IViewRenderer& renderer, IInputDevice& inputDevice)
+     : _renderer(renderer), _inputDevice(inputDevice), _viewController(renderer) {
+}
 
-Controller::Controller(IViewRenderer& viewRenderer) : _viewRenderer(viewRenderer), viewController(viewRenderer) {}
+Controller::SwitchViewCallback Controller::getSwitchViewCallback() {
+     return [this](int index) {
+          _viewController.switchTo(index);
+          };
+}
+
+void Controller::addView(View* view) {
+     _viewController.addView(view);
+     view->setViewController(&_renderer);
+}
 
 void Controller::init() {
-     
-     initIR();
-
-     viewController.setMode(MODE_DEFAULT);
-
+     setInputDeviceCallbacks();
+     _viewController.switchTo(0);
 }
 
 void Controller::loop() {
-     irReceiver.poll();
-
-     if (auto view = viewController.getCurrentView()) {
+     _inputDevice.poll();
+     if (auto view = _viewController.getCurrentView()) {
           view->render();
      }
 }
 
-
-
-void Controller::initIR() {
-     _viewRenderer.drawText(0, 0, "Starting IR");
-     irReceiver.begin();
-
-     irReceiver.setCallbacks(
-          {
-              [this]() { dispatchIRHandler(&View::onPower); },
-              [this]() { viewController.setMode(MODE_MENU); },
-              [this]() { dispatchIRHandler(&View::onSkip); },
-              [this]() { dispatchIRHandler(&View::onBack); },
-              [this]() { dispatchIRHandler(&View::onPlayPause); },
-              [this]() { dispatchIRHandler(&View::onVolumeUp); },
-              [this]() { dispatchIRHandler(&View::onVolumeDown); },
-              [this]() { dispatchIRHandler(&View::onChannelUp); },
-              [this]() { dispatchIRHandler(&View::onChannelDown); },
-              [this]() { dispatchIRHandler(&View::onEQ); },
-              [this]() { dispatchIRHandler(&View::onRepeat); },
-              [this](int d) { dispatchIRHandler(&View::onDigit, d); }
-          }
-     );
-
-     _viewRenderer.drawText(0, 0, "IR ready");
-     // _lcd.clear();
+void Controller::setInputDeviceCallbacks() {
+     
+     _inputDevice.setCallbacks({
+         [this]() { dispatchInputHandler(&View::onPower); },
+         [this]() { _viewController.switchTo(0); },
+         [this]() { dispatchInputHandler(&View::onSkip); },
+         [this]() { dispatchInputHandler(&View::onBack); },
+         [this]() { dispatchInputHandler(&View::onPlayPause); },
+         [this]() { dispatchInputHandler(&View::onVolumeUp); },
+         [this]() { dispatchInputHandler(&View::onVolumeDown); },
+         [this]() { dispatchInputHandler(&View::onChannelUp); },
+         [this]() { dispatchInputHandler(&View::onChannelDown); },
+         [this]() { dispatchInputHandler(&View::onEQ); },
+         [this]() { dispatchInputHandler(&View::onRepeat); },
+         [this](int d) { dispatchInputHandler(&View::onDigit, d); }
+          });
 }
-
-
+ 
