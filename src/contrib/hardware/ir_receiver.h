@@ -6,7 +6,7 @@
 
 #include <functional>
 
-#include "../../src/interfaces/IInputDevice.h"
+#include "../../interfaces/IInputDevice.h"
 #include "ir_codes.h"
 
 class IRReceiver : public IInputDevice {

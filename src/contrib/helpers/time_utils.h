@@ -3,7 +3,7 @@
 #include <time.h>
 
 
-#include "../../src/secrets.h"
+#include "../../secrets.h"
 
 class TimeUtils {
    public:

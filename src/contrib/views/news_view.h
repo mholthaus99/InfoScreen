@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 
-#include "../../src/interfaces/IView.h"
+#include "../../interfaces/IView.h"
 #include "../helpers/rss_reader.h"
 
 class NewsView : public View {
