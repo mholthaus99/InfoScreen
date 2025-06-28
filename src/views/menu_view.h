@@ -1,37 +1,64 @@
-#include "../system/view_controller.h"  // or wherever it's defined
-#include "../interfaces/IViewRenderer.h"
-#include "../interfaces/IView.h"
 #include <Arduino.h>
+
 #include <functional>
 
+#include "../interfaces/IView.h"
+#include "../interfaces/IViewRenderer.h"
+#include "../system/view_controller.h"  // or wherever it's defined
 
-  class FunctionView : public View {
-  public:
+class FunctionView : public View {
+   public:
+    /**
+     * @brief Callback to ViewController to switch views.
+     */
     using SwitchViewCallback = std::function<void(int)>;
 
+    /**
+     * @brief Sets the callback to switch views.
+     */
     void setSwitchViewCallback(SwitchViewCallback callback) {
         _switchViewCallback = callback;
     }
 
-   
-
+    /**
+     * @brief Overridden: Called when the view is entered.
+     */
     void onEnter() override;
+
+    /**
+     * @brief Overridden: Handles the "back" event to switch to DefaultView.
+     */
     void onBack() override;
+
+    /**
+     * @brief Overridden: Handles the "function" event to switch to DefaultView.
+     */
     void onFunction() override;
+
+    /**
+     * @brief Overridden: Handles digit input to switch views.
+     * @param digit The digit pressed (1, 2, or 3).
+     */
     void onDigit(int digit) override;
+
+    /**
+     * @brief Overridden: Renders the FunctionView.
+     */
     void render() override;
 
-
-
-  private:
-
+   private:
+    /**
+     * @brief Calls the callback to switch views.
+     * @param index The index of the view to switch to.
+     */
     void setViewControllerIndex(int index) {
-      if (_switchViewCallback) {
-        _switchViewCallback(index);
-      }
+        if (_switchViewCallback) {
+            _switchViewCallback(index);
+        }
     }
 
-    SwitchViewCallback _switchViewCallback; // Callback to switch views
-  };
-
-
+    /**
+     * @brief Callback to switch views in the ViewController.
+     */
+    SwitchViewCallback _switchViewCallback;  // Callback to switch views
+};

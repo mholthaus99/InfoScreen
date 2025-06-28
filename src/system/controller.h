@@ -1,35 +1,59 @@
 #pragma once
 
-#include <functional>
-
-#include "../interfaces/IViewRenderer.h"
-#include "../interfaces/IView.h"
-#include "../interfaces/IInputDevice.h"
-#include "view_controller.h"
 #include <Arduino.h>
 
-class Controller {
-public:
-    using SwitchViewCallback = std::function<void(int)>;
+#include <functional>
 
+#include "../interfaces/IInputDevice.h"
+#include "../interfaces/IView.h"
+#include "../interfaces/IViewRenderer.h"
+#include "view_controller.h"
+
+class Controller {
+   public:
+    /**
+     * @brief Constructs the Controller with a renderer and input device.
+     * @param renderer The view renderer to use for rendering views.
+     * @param inputDevice The input device to handle user inputs.
+     */
     Controller(IViewRenderer& renderer, IInputDevice& inputDevice);
 
+    /**
+     * @brief Callback type for switching views.
+     * This callback is used to switch between different views in the application.
+     */
+    using SwitchViewCallback = std::function<void(int)>;
+
+    /**
+     * @brief Gets the callback for switching views.
+     * @return A SwitchViewCallback that can be used to switch views.
+     */
     SwitchViewCallback getSwitchViewCallback();
 
+    /**
+     * @brief Adds a view to the controller.
+     * @param view The view to add.
+     */
     void addView(View* view);
 
+    /**
+     * @brief Initializes the controller.
+     * Sets up input device callbacks and switches to the initial view.
+     */
     void init();
 
+    /**
+     * @brief Main loop of the controller.
+     * Polls the input device and renders the current view.
+     */
     void loop();
 
-private:
+   private:
     IViewRenderer& _renderer;
     IInputDevice& _inputDevice;
     ViewController _viewController;
 
     void setInputDeviceCallbacks();
-
-
 
     template <typename MethodPtr>
     void dispatchInputHandler(MethodPtr method) {
@@ -44,7 +68,4 @@ private:
             (view->*method)(std::forward<Args>(args)...);
         }
     }
-
 };
-
-

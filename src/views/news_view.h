@@ -1,21 +1,29 @@
 #pragma once
-#include "../interfaces/IView.h"
 #include <Arduino.h>
+
+#include "../interfaces/IView.h"
 #include "../utilities/rss_reader.h"
 
 class NewsView : public View {
-private:
+   private:
+    /**
+     * @brief Time of the last headline change in milliseconds.
+     */
     unsigned long timeOfLastTitleChange = 0;
 
-public:
     /**
-     * @brief Renders the news headline and updates every 5 seconds.
+     * @brief Draws the next headline on the display.
+     */
+    void drawNextHeadline();
+
+   public:
+    /**
+     * @brief Overridden: Renders the news headline and updates every 5 seconds.
      */
     void render() override;
 
     /**
-     * @brief Handles IR "skip" event by advancing to next headline.
+     * @brief Overridden: Handles IR "skip" event by advancing to next headline.
      */
     void onSkip() override;
 };
-

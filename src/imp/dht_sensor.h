@@ -4,7 +4,7 @@
 #include <DHT.h>
 
 class DHTSensor {
-public:
+   public:
     DHTSensor(uint8_t pin, uint8_t type = DHT11);
 
     void begin();
@@ -14,7 +14,7 @@ public:
     const char* getFormattedTemperature();
     const char* getFormattedHumidity();
 
-private:
+   private:
     DHT _dht;
     char _tempBuf[16];
     char _humBuf[16];

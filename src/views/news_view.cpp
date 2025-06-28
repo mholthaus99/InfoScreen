@@ -1,27 +1,22 @@
 #include "news_view.h"
 
-  void NewsView::render() {
+void NewsView::render() {
     if (millis() - timeOfLastTitleChange >= 5000) {
-      const char* headline = RSS::getNextHeadline();
-
-      if (headline && headline[0] != '\0') {
-        _viewRenderer->drawWrap(headline);
-      }
-      else {
-        _viewRenderer->drawText(0, "no headlines");
-      }
-
-      timeOfLastTitleChange = millis();
+        drawNextHeadline();
+        timeOfLastTitleChange = millis();
     }
-  }
+}
 
-  void NewsView::onSkip() {
+void NewsView::onSkip() {
+    drawNextHeadline();
+}
+
+void NewsView::drawNextHeadline() {
     const char* headline = RSS::getNextHeadline();
 
     if (headline && headline[0] != '\0') {
-      _viewRenderer->drawWrap(headline);
+        _viewRenderer->drawWrap(headline);
+    } else {
+        _viewRenderer->drawText(0, "no headlines");
     }
-    else {
-      _viewRenderer->drawText(0, "no headlines");
-    }
-  }
+}

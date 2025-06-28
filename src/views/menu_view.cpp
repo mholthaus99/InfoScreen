@@ -1,7 +1,5 @@
 #include "menu_view.h"
 
-
-
 void FunctionView::onEnter() {
     if (_viewRenderer == nullptr) {
         Serial.println("FunctionView: _viewRenderer is null, cannot render.");
@@ -13,32 +11,29 @@ void FunctionView::onEnter() {
 }
 
 void FunctionView::onBack() {
-    setViewControllerIndex(0); // Switch to DefaultView
+    setViewControllerIndex(0);  // Switch to DefaultView
 }
 
 void FunctionView::onFunction() {
-    setViewControllerIndex(0); // Switch to DefaultView
+    setViewControllerIndex(0);  // Switch to DefaultView
 }
 
 void FunctionView::onDigit(int digit) {
     Serial.printf("Digit %d pressed in FunctionView\n", digit);
     switch (digit) {
-    case 1:
-        setViewControllerIndex(1); // Switch to DefaultView
-        break;
-    case 2:
-        setViewControllerIndex(2); // Switch to DefaultView
-        break;
-    case 3:
-        setViewControllerIndex(3); // Switch to DefaultView
-        break;
-    default:
-        Serial.println("Invalid digit in FunctionView");
-        break;
+        case 1:
+            setViewControllerIndex(1);  // Switch to DefaultView
+            break;
+        case 2:
+            setViewControllerIndex(2);  // Switch to DefaultView
+            break;
+        case 3:
+            setViewControllerIndex(3);  // Switch to DefaultView
+            break;
+        default:
+            Serial.println("Invalid digit in FunctionView");
+            break;
     }
 }
 
-void FunctionView::render() {
-
-
-}
+void FunctionView::render() {}
