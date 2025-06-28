@@ -21,18 +21,18 @@ void MenuView::onFunction() {
 void MenuView::onDigit(int digit) {
     Serial.printf("Digit %d pressed in FunctionView\n", digit);
     switch (digit) {
-    case 1:
-        setViewControllerIndex(1);  // Switch to DefaultView
-        break;
-    case 2:
-        setViewControllerIndex(2);  // Switch to DefaultView
-        break;
-    case 3:
-        setViewControllerIndex(3);  // Switch to DefaultView
-        break;
-    default:
-        Serial.println("Invalid digit in FunctionView");
-        break;
+        case 1:
+            setViewControllerIndex(1);  // Switch to DefaultView
+            break;
+        case 2:
+            setViewControllerIndex(2);  // Switch to DefaultView
+            break;
+        case 3:
+            setViewControllerIndex(3);  // Switch to DefaultView
+            break;
+        default:
+            Serial.println("Invalid digit in FunctionView");
+            break;
     }
 }
 

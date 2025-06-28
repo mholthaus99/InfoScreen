@@ -6,8 +6,8 @@
 
 #include "../interfaces/IInputDevice.h"
 #include "../interfaces/IView.h"
-#include "../views/menu_view.h"
 #include "../interfaces/IViewRenderer.h"
+#include "../views/menu_view.h"
 #include "view_controller.h"
 
 class Controller {
@@ -36,7 +36,6 @@ class Controller {
      * @param view The view to add.
      */
     void addView(View* view);
-
 
     /**
      * @brief Main loop of the controller.

@@ -20,7 +20,7 @@ Hd44780LcdRenderer::Hd44780LcdRenderer()
 void Hd44780LcdRenderer::drawText(uint8_t col, uint8_t row, const char* text) {
     _lcd.setCursor(col, row);
     char buf[_cols + 1];
-    //int len = strlen(text);
+    // int len = strlen(text);
     if (col == 0) {
         snprintf(buf, sizeof(buf), "%-20s", text);
     } else {

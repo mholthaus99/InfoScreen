@@ -9,7 +9,7 @@
 #include "../system/view_controller.h"  // or wherever it's defined
 
 class MenuView : public View {
-public:
+   public:
     /**
      * @brief Callback to ViewController to switch views.
      */
@@ -18,9 +18,8 @@ public:
     /**
      * @brief Sets the callback to switch views.
      */
-   
-    MenuView(SwitchViewCallback switchViewCallback)
-        : _switchViewCallback(switchViewCallback) {}
+
+    MenuView(SwitchViewCallback switchViewCallback) : _switchViewCallback(switchViewCallback) {}
     /**
      * @brief Overridden: Called when the view is entered.
      */
@@ -47,7 +46,7 @@ public:
      */
     void render() override;
 
-private:
+   private:
     /**
      * @brief Calls the callback to switch views.
      * @param index The index of the view to switch to.

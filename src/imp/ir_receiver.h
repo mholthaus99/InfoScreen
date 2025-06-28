@@ -11,7 +11,7 @@
 
 class IRReceiver : public IInputDevice {
    public:
-    explicit IRReceiver(uint16_t recvPin);
+    explicit IRReceiver();
 
     // void begin() override;
     void poll() override;
