@@ -6,8 +6,6 @@ void WiFiManager::setCredentials(const char* ssid, const char* password){
       _password = password;
 }
 
-
-
 void WiFiManager::init(){
      connect();
 }

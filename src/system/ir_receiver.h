@@ -6,27 +6,7 @@
 #include "ir_codes.h"
 #include <functional>
 
-
-
-
 #include "../interfaces/IInputDevice.h"
-#include <Arduino.h>
-#include <functional>
-
-// struct IRCallbacks {
-//      std::function<void()> onPower;
-//      std::function<void()> onFunction;
-//      std::function<void()> onSkip;
-//      std::function<void()> onBack;
-//      std::function<void()> onPlayPause;
-//      std::function<void()> onVolumeUp;
-//      std::function<void()> onVolumeDown;
-//      std::function<void()> onChannelUp;
-//      std::function<void()> onChannelDown;
-//      std::function<void()> onEQ;
-//      std::function<void()> onRepeat;
-//      std::function<void(int)> onDigit;
-// };
 
 class IRReceiver : public IInputDevice {
 public:
