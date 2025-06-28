@@ -3,9 +3,10 @@
 #include <functional>
 
 #include "../interfaces/IViewRenderer.h"
-#include "../views/view.h"
+#include "../interfaces/IView.h"
 #include "../interfaces/IInputDevice.h"
 #include "view_controller.h"
+#include <Arduino.h>
 
 class Controller {
 public:

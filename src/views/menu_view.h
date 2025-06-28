@@ -1,6 +1,6 @@
 #include "../system/view_controller.h"  // or wherever it's defined
 #include "../interfaces/IViewRenderer.h"
-#include "view.h"
+#include "../interfaces/IView.h"
 #include <Arduino.h>
 #include <functional>
 
@@ -30,7 +30,7 @@
         _switchViewCallback(index);
       }
     }
-    
+
     SwitchViewCallback _switchViewCallback; // Callback to switch views
   };
 

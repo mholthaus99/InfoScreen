@@ -1,71 +1,79 @@
-/**
- * @file main.cpp
- * @brief Entry point for the InfoScreen application.
- *
- * Initializes hardware, sets up the LCD and view system, and starts the main controller loop.
- */
-
 #include <Arduino.h>
 #include "system/controller.h"
 #include "system/view_controller.h"
 
-#include "lcd_renderer.h"
-#include "views/menu_view.h"  // Provides FunctionView
-#include "Wire.h"
-#include "system/ir_receiver.h"
-#include "lcd_renderer.h"
+#include "imp/ir_receiver.h"
+#include "imp/lcd_renderer.h"
+#include "imp/dht_sensor.h"
+#include "imp/network.h"
+#include "utilities/weather.h"
+#include "utilities/time_utils.h"
 
- // LCD setup
-// hd44780_I2Cexp rawLcd(0x27);
-// Hd44780Adapter lcd(rawLcd, 4, 20);
-// LcdRenderer renderer(lcd);
+#include "views/menu_view.h"  
+#include "views/default_view.h"
+#include "views/news_view.h"
+
 
 Hd44780LcdRenderer renderer(0x27, 20, 4); // I2C address 0x27, 20 columns, 4 rows
-
-// Views that depend on the ViewController
-static FunctionView functionView;
-
-// Use IRReceiver dir   ectly if it is not abstract
-IRReceiver inputController(D5); // Pin 5 for IR receiver
-
-// Main application controller 
+IRReceiver inputController(D5); 
 Controller controller(renderer, inputController);
 
-/**
- * @brief Arduino setup function.
- * Initializes serial, I2C, LCD, views, and controller.
- */
+static WiFiManager wifiManager;
+
+static DHTSensor dhtSensor(D6, DHT11); // Pin D6 for DHT11 sensor
+static MyWeather weather;
+static TimeUtils timeUtils;
+
+static DefaultView defaultView(timeUtils, dhtSensor, weather);
+static FunctionView functionView;
+static NewsView newsView; // Declare NewsView instance
+
 void setup() {
 
-     inputController.begin();
 
      Serial.begin(115200);
-     delay(100);
-     Serial.println("Start setup");
-
-     Wire.begin();
-     Serial.println("Wire.begin done");
 
      renderer.begin();
-     Serial.println("lcd.begin done");
+
+     renderer.drawText("Welcome to InfoScreen!");
+     renderer.drawText("Starting wifi...");
+     
+
+     wifiManager.setCredentials(WIFI_SSID, WIFI_PASS);
+     wifiManager.connect();
+     renderer.drawText("WiFi Manager initialized");
+     delay(1000); // Give some time for WiFi to connect
+    
+     inputController.begin();
+     renderer.drawText("Input Controller initialized");
+     delay(1000); // Allow time for input controller to initialize
+     renderer.begin();
+     renderer.drawText("Renderer initialized");
+
+     dhtSensor.begin();
+     weather.init();
+     timeUtils.init();
+
 
      controller.addView(&functionView);
-     Serial.println("View added");
+     renderer.drawText("View added");
+
+     controller.addView(&defaultView);
+     renderer.drawText("Default View added");
+
+     controller.addView(&newsView); // Dynamically allocate NewsView
 
      functionView.setSwitchViewCallback(controller.getSwitchViewCallback());
-     Serial.println("Callback set");
+     renderer.drawText("Callback set");
+     delay(1000);
 
      controller.init();
-     Serial.println("Controller initialized");
+     renderer.drawText("Controller initialized");
 
 
 
 }
 
-/**
- * @brief Arduino main loop.
- * Delegates to the main controller loop.
- */
 void loop() {
      controller.loop();
 }

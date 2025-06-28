@@ -1,8 +1,9 @@
 #pragma once
 
 #include "../interfaces/IViewRenderer.h"
-#include "../views/view.h"
+#include "../interfaces/IView.h"
 #include <vector>
+#include <Arduino.h>
 
 class ViewController {
 public:

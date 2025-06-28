@@ -1,21 +1,14 @@
 #include "news_view.h"
-#include <Arduino.h>
-
-#include "../network/rss_reader.h"
-
-#include "../system/view_controller.h"
-
-namespace Views {
 
   void NewsView::render() {
     if (millis() - timeOfLastTitleChange >= 5000) {
       const char* headline = RSS::getNextHeadline();
 
       if (headline && headline[0] != '\0') {
-        //lcdextern.printWrapped(headline);
+        _viewRenderer->drawWrap(headline);
       }
       else {
-        //lcdextern.printAt("No headlines", 1);
+        _viewRenderer->drawText(0, "no headlines");
       }
 
       timeOfLastTitleChange = millis();
@@ -26,11 +19,9 @@ namespace Views {
     const char* headline = RSS::getNextHeadline();
 
     if (headline && headline[0] != '\0') {
-      //lcdextern.printWrapped(headline);
+      _viewRenderer->drawWrap(headline);
     }
     else {
-      //lcdextern.printAt("No headlines", 1);
+      _viewRenderer->drawText(0, "no headlines");
     }
   }
-
-}  // namespace Views

@@ -4,7 +4,7 @@
  */
 
 #include "controller.h"
-#include <Arduino.h>
+
 
 Controller::Controller(IViewRenderer& renderer, IInputDevice& inputDevice)
      : _renderer(renderer), _inputDevice(inputDevice), _viewController(renderer) {
@@ -23,7 +23,7 @@ void Controller::addView(View* view) {
 
 void Controller::init() {
      setInputDeviceCallbacks();
-     _viewController.switchTo(0);
+     _viewController.switchTo(1);
 }
 
 void Controller::loop() {

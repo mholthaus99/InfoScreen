@@ -3,6 +3,7 @@
 #include "../interfaces/IObject.h"
 #include <Arduino.h>
 #include <time.h>
+#include "../secrets.h"
 
 class TimeUtils : public ITime , public IObject {
 public:

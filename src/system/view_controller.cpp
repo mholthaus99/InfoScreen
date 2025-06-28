@@ -1,5 +1,5 @@
 #include "view_controller.h"
-#include <Arduino.h>
+
 
 ViewController::ViewController(IViewRenderer& renderer) : _renderer(renderer), _currentView(nullptr) {
   // Initialize the view controller with the renderer
@@ -10,6 +10,8 @@ void ViewController::addView(View* view) {
 }
 
 void ViewController::switchTo(int index) {
+
+  _renderer.clear(); // Clear the renderer before switching views
   Serial.printf("ViewController::switchTo(%d)\n", index);
   Serial.printf("Total views: %d\n", views.size());
 

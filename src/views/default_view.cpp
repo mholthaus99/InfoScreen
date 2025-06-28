@@ -1,38 +1,27 @@
 #include "default_view.h"
 
+void DefaultView::render() {
 
-#include "../network/weather.h"
-#include "../sensors/dht_sensor.h"
-
-
-namespace Views
-{
-
-  
-
-     void DefaultView::render()
+     _viewRenderer->drawText(0, _time.getFormattedTime());
+     if (millis() - lastToggle >= 5000)
      {
-        //  _renderer.drawText(0, 9, timeUtils.getFormattedTime());
 
-
-          if (millis() - lastToggle >= 5000)
+          if (!showingClimate)
           {
-               if (!showingClimate)
-               {
-                    _renderer.drawText(0,1,"Indoor Climate");
-                    _renderer.drawText(0,1,DHTSensor::getFormattedTemperature());
-                    _renderer.drawText(0,1, DHTSensor::getFormattedHumidity());
-                    showingClimate = true;
-               }
-               else
-               {
-                    _renderer.drawText(0,1,Weather::getLocation());
-                    _renderer.drawText(0,2,Weather::getDescription());
-                    _renderer.drawText(0,3,Weather::getTemperature());
-                    showingClimate = false;
-               }
-               lastToggle = millis();
-          }
-     }
 
-}  // namespace Views
+               _viewRenderer->drawText(1, "Indoor Climate");
+               _viewRenderer->drawText(2, _sensor.getFormattedTemperature());
+               _viewRenderer->drawText(3, _sensor.getFormattedHumidity());
+               showingClimate = true;
+          }
+          else
+          {
+               _viewRenderer->drawText(1, _weather.getLocation());
+               _viewRenderer->drawText(2, _weather.getCurrentConditions());
+               _viewRenderer->drawText(3, _weather.getTemperature());
+               showingClimate = false;
+          }
+          lastToggle = millis();
+     }
+}
+

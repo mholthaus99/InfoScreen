@@ -1,21 +1,23 @@
 #pragma once
-#include "view.h"
+#include <Arduino.h>
+#include "../interfaces/IView.h"
 #include "../interfaces/IViewRenderer.h"
 #include "../interfaces/ITime.h"
-namespace Views
+#include "../interfaces/IWeather.h"
+#include "../imp/dht_sensor.h"
+class DefaultView : public View
 {
-    class DefaultView : public View
-    {
+public:
+    void render() override;
+    DefaultView(ITime& time, DHTSensor& sensor, IWeather& weather) : _time(time), _sensor(sensor), _weather(weather) {}
 
-    public:
-        void render() override;
-        DefaultView(IViewRenderer& renderer, ITime& time) : _renderer(renderer), _time(time){}
+private:
 
-    private:
-        IViewRenderer& _renderer;
-        ITime& _time;
-        bool showingClimate = false;
-        unsigned long lastToggle = 0;
-    };
+    ITime& _time;
+    DHTSensor& _sensor;
+    IWeather& _weather;
+    bool showingClimate = false;
+    unsigned long lastToggle = 0;
+};
 
-}
+
