@@ -1,17 +1,12 @@
 #include "network.h"
 
-#include <Arduino.h>
-
-void WiFiManager::setCredentials(const char* ssid, const char* password) {
-    _ssid = ssid;
-    _password = password;
-}
-
-void WiFiManager::init() {
-    connect();
-}
-
-void WiFiManager::connect() {
+void WiFiManager::begin(const char* ssid, const char* password) {
+    if (ssid) {
+        _ssid = ssid;
+    }
+    if (password) {
+        _password = password;
+    }
     Serial.println("Connecting to Wi-Fi...");
 
     WiFi.mode(WIFI_STA);

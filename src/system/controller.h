@@ -6,6 +6,7 @@
 
 #include "../interfaces/IInputDevice.h"
 #include "../interfaces/IView.h"
+#include "../views/menu_view.h"
 #include "../interfaces/IViewRenderer.h"
 #include "view_controller.h"
 
@@ -36,11 +37,6 @@ class Controller {
      */
     void addView(View* view);
 
-    /**
-     * @brief Initializes the controller.
-     * Sets up input device callbacks and switches to the initial view.
-     */
-    void init();
 
     /**
      * @brief Main loop of the controller.
@@ -52,6 +48,8 @@ class Controller {
     IViewRenderer& _renderer;
     IInputDevice& _inputDevice;
     ViewController _viewController;
+
+    MenuView* _menuView;
 
     void setInputDeviceCallbacks();
 

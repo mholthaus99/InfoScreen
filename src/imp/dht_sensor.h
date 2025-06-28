@@ -5,9 +5,9 @@
 
 class DHTSensor {
    public:
-    DHTSensor(uint8_t pin, uint8_t type = DHT11);
+    DHTSensor();
 
-    void begin();
+    // void begin();
     float getTemperatureF();
     float getHumidity();
 

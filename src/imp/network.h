@@ -1,19 +1,10 @@
-#ifndef WIFI_MANAGER_H
-#define WIFI_MANAGER_H
-
+#pragma once
 #include <ESP8266WiFi.h>
 
-#include "../interfaces/INetwork.h"
-#include "../interfaces/IObject.h"
-class WiFiManager : public INetwork, public IObject {
+class WiFiManager {
    public:
-    // WiFiManager(const char* ssid, const char* password);
-
-    void init() override;
-
-    void setCredentials(const char* ssid, const char* password);
-    void connect() override;
-    bool isConnected() override;
+    void begin(const char* ssid, const char* password);
+    bool isConnected();
 
     const char* getSSID() const;
     const char* getPassword() const;
@@ -27,5 +18,3 @@ class WiFiManager : public INetwork, public IObject {
     const char* _password;
     String _ipBuffer;
 };
-
-#endif  // WIFI_MANAGER_H

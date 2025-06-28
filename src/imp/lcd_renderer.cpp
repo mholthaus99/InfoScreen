@@ -1,25 +1,26 @@
 #include "lcd_renderer.h"
 
-Hd44780LcdRenderer::Hd44780LcdRenderer(uint8_t i2cAddress, uint8_t cols, uint8_t rows)
-    : _lcd(),
-      _i2cAddress(i2cAddress),
-      _cols(cols),
-      _rows(rows),
-      _currentRow(0),
-      _backlightOn(true) {
+Hd44780LcdRenderer::Hd44780LcdRenderer()
+    : _lcd(), _i2cAddress(0x27), _cols(20), _rows(4), _currentRow(0), _backlightOn(true) {
     // Initialize the LCD with the specified I2C address and dimensions
-}
 
-void Hd44780LcdRenderer::begin() {
     Wire.begin();
     _lcd.begin(_cols, _rows, _i2cAddress);
-    _lcd.backlight();
+    _lcd.backlight();      // Turn on the backlight by default
+    _lcd.clear();          // Clear the display initially
+    _lcd.setCursor(0, 0);  // Set the cursor to the top
 }
+
+// void Hd44780LcdRenderer::begin() {
+//     Wire.begin();
+//     _lcd.begin(_cols, _rows, _i2cAddress);
+//     _lcd.backlight();
+// }
 
 void Hd44780LcdRenderer::drawText(uint8_t col, uint8_t row, const char* text) {
     _lcd.setCursor(col, row);
     char buf[_cols + 1];
-    int len = strlen(text);
+    //int len = strlen(text);
     if (col == 0) {
         snprintf(buf, sizeof(buf), "%-20s", text);
     } else {

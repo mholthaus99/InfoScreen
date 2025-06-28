@@ -6,14 +6,11 @@
 #include "../interfaces/ITime.h"
 #include "../secrets.h"
 
-class TimeUtils : public ITime, public IObject {
+class TimeUtils {
    public:
-    // TimeUtils(const char* ntpServer = "time.nist.gov", long timezoneOffset = 0,
-    // bool daylightSavingTime = false);
     TimeUtils();
-    void init() override;
-    const char* getFormattedTime() override;
-    void update() override;
+
+    const char* getFormattedTime();  // override;
 
    private:
     bool syncWithNTP();

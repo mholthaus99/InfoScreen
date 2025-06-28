@@ -8,11 +8,11 @@
 #include "../interfaces/IWeather.h"
 #include "secrets.h"
 
-class MyWeather : public IWeather {
+class MyWeather {
    public:
-    const char* getCurrentConditions() override;
-    const char* getLocation() override;
-    const char* getTemperature() override;
+    const char* getCurrentConditions();
+    const char* getLocation();
+    const char* getTemperature();
 
     void init() {
         if (!fetch()) {

@@ -10,13 +10,13 @@ int TimeUtils::getTimeZoneOffset() {
     return TIMEZONE_OFFSET * 3600;
 }
 
-// Removed erroneous update() function; if you intended to override a virtual method, declare it
-// properly in the class header and implement as TimeUtils::update() here.
-void TimeUtils::update() {
-    // Implement your update logic here, if needed.
-    // For example, you could periodically check if a resync is needed.
-    syncWithNTP();  // This will trigger NTP sync if needed.
-}
+// // Removed erroneous update() function; if you intended to override a virtual method, declare it
+// // properly in the class header and implement as TimeUtils::update() here.
+// void TimeUtils::update() {
+//     // Implement your update logic here, if needed.
+//     // For example, you could periodically check if a resync is needed.
+//     syncWithNTP();  // This will trigger NTP sync if needed.
+// }
 bool TimeUtils::syncWithNTP() {
     configTime(getTimeZoneOffset(), getDSTOffset(),
                ntpServer);  // NTP sync, no offsets here
@@ -49,9 +49,9 @@ bool TimeUtils::syncWithNTP() {
     }
 }
 
-void TimeUtils::init() {
-    syncWithNTP();
-}
+// void TimeUtils::init() {
+//     syncWithNTP();
+// }
 
 const char* TimeUtils::getFormattedTime() {
     static char timeStr[20];

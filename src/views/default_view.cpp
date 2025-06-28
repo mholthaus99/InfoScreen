@@ -1,5 +1,10 @@
 #include "default_view.h"
 
+DefaultView::DefaultView() {
+    // Initialize the sensor and weather data
+    _weather.init();
+}
+
 void DefaultView::render() {
     _viewRenderer->drawText(0, _time.getFormattedTime());
     if (millis() - lastToggle >= 5000) {

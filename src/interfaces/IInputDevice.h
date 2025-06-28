@@ -19,7 +19,7 @@ class IInputDevice {
    public:
     virtual ~IInputDevice() = default;
 
-    virtual void begin() = 0;
+    virtual void begin() {}
     virtual void poll() = 0;
 
     // Input events the Controller listens for:

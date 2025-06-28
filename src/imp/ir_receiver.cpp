@@ -1,8 +1,6 @@
 #include "ir_receiver.h"
 
-IRReceiver::IRReceiver(uint16_t recvPin) : irrecv(recvPin), registeredCallbacks{} {}
-
-void IRReceiver::begin() {
+IRReceiver::IRReceiver(uint16_t recvPin) : irrecv(recvPin), registeredCallbacks{} {
     irrecv.enableIRIn();
 }
 

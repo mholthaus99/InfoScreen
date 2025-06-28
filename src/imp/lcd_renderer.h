@@ -20,14 +20,16 @@ class Hd44780LcdRenderer : public IViewRenderer {
      * @param cols The number of columns on the LCD.
      * @param rows The number of rows on the LCD.
      */
-    Hd44780LcdRenderer(uint8_t i2cAddress, uint8_t cols, uint8_t rows);
+    Hd44780LcdRenderer();
+    // Hd44780LcdRenderer(uint8_t i2cAddress, uint8_t cols, uint8_t rows);
 
-    /**
-     * @brief Calls the lcd instance .begin() method to initialize the display.
-     * This method should be called before using the display.
-     * TODO: see if I can remove this method and just call _lcd.begin() directly in the constructor.
-     */
-    void begin();
+    // /**
+    //  * @brief Calls the lcd instance .begin() method to initialize the display.
+    //  * This method should be called before using the display.
+    //  * TODO: see if I can remove this method and just call _lcd.begin() directly in the
+    //  constructor.
+    //  */
+    // void begin();
 
     /**
      * @brief Draws text at a specific column and row on the LCD.

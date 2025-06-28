@@ -6,20 +6,22 @@
 #include "controller.h"
 
 Controller::Controller(IViewRenderer& renderer, IInputDevice& inputDevice)
-    : _renderer(renderer), _inputDevice(inputDevice), _viewController(renderer) {}
+    : _renderer(renderer), _inputDevice(inputDevice), _viewController(renderer) {
 
-Controller::SwitchViewCallback Controller::getSwitchViewCallback() {
-    return [this](int index) { _viewController.switchTo(index); };
+    // Construct MenuView with internal callback
+    _menuView = new MenuView([this](int index) {
+        _viewController.switchTo(index);
+        });
+
+    addView(_menuView);
+    _viewController.switchTo(0);  // Start on MenuView
+    setInputDeviceCallbacks();
 }
+
 
 void Controller::addView(View* view) {
     _viewController.addView(view);
-    view->setViewController(&_renderer);
-}
-
-void Controller::init() {
-    setInputDeviceCallbacks();
-    _viewController.switchTo(1);
+    view->setViewRenderer(&_renderer);
 }
 
 void Controller::loop() {
@@ -30,7 +32,7 @@ void Controller::loop() {
 }
 
 void Controller::setInputDeviceCallbacks() {
-    _inputDevice.setCallbacks({[this]() { dispatchInputHandler(&View::onPower); },
+    _inputDevice.setCallbacks({ [this]() { dispatchInputHandler(&View::onPower); },
                                [this]() { _viewController.switchTo(0); },
                                [this]() { dispatchInputHandler(&View::onSkip); },
                                [this]() { dispatchInputHandler(&View::onBack); },
@@ -41,5 +43,5 @@ void Controller::setInputDeviceCallbacks() {
                                [this]() { dispatchInputHandler(&View::onChannelDown); },
                                [this]() { dispatchInputHandler(&View::onEQ); },
                                [this]() { dispatchInputHandler(&View::onRepeat); },
-                               [this](int d) { dispatchInputHandler(&View::onDigit, d); }});
+                               [this](int d) { dispatchInputHandler(&View::onDigit, d); } });
 }

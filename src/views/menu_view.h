@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 
 #include <functional>
@@ -6,8 +8,8 @@
 #include "../interfaces/IViewRenderer.h"
 #include "../system/view_controller.h"  // or wherever it's defined
 
-class FunctionView : public View {
-   public:
+class MenuView : public View {
+public:
     /**
      * @brief Callback to ViewController to switch views.
      */
@@ -16,10 +18,9 @@ class FunctionView : public View {
     /**
      * @brief Sets the callback to switch views.
      */
-    void setSwitchViewCallback(SwitchViewCallback callback) {
-        _switchViewCallback = callback;
-    }
-
+   
+    MenuView(SwitchViewCallback switchViewCallback)
+        : _switchViewCallback(switchViewCallback) {}
     /**
      * @brief Overridden: Called when the view is entered.
      */
@@ -46,7 +47,7 @@ class FunctionView : public View {
      */
     void render() override;
 
-   private:
+private:
     /**
      * @brief Calls the callback to switch views.
      * @param index The index of the view to switch to.

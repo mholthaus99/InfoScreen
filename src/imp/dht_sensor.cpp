@@ -1,8 +1,6 @@
 #include "dht_sensor.h"
 
-DHTSensor::DHTSensor(uint8_t pin, uint8_t type) : _dht(pin, type) {}
-
-void DHTSensor::begin() {
+DHTSensor::DHTSensor() : _dht(D6, DHT11) {  // Default pin D6 and type DHT11
     _dht.begin();
 }
 
