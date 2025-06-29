@@ -1,18 +1,13 @@
 #include <Arduino.h>
 
-
-//#include <DisplayGadget.h>
 #include "DisplayGadget.h"
-#include "secrets.h"
+
 #include "contrib/hardware/lcd_renderer.h"
 #include "contrib/hardware/ir_receiver.h"
-
 #include "contrib/hardware/network.h"
 
 #include "contrib/views/default_view.h"
 #include "contrib/views/news_view.h"
-
-
 
 Hd44780LcdRenderer renderer;
 IRReceiver inputController;

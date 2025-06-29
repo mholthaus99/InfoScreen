@@ -29,7 +29,7 @@
      "platforms": ["espressif8266"],
      "build": {
        "srcFilter": [
-         "+<src/>"
+         "+<*>"
        ]
      },
      "dependencies": [
@@ -67,7 +67,7 @@
          "library.json"
        ],
        "exclude": [
-         "src/secrets.h",
+        
          "src/main.cpp"
        ]
      }
