@@ -15,14 +15,14 @@
      "authors": [
        {
          "name": "Maxwell Holthaus",
-         "email": "you@example.com",
-         "url": "https://github.com/yourusername/DisplayGadget",
+         "email": "mholthaus99@gmail.com",
+         "url": "https://github.com/mholthaus99/InfoScreen",
          "maintainer": true
        }
      ],
      "repository": {
        "type": "git",
-       "url": "https://github.com/yourusername/DisplayGadget.git"
+       "url": "https://github.com/mholthaus99/InfoScreen.git"
      },
      "license": "MIT",
      "frameworks": ["arduino"],
@@ -62,7 +62,9 @@
      "export": {
        "include": [
          "src",
-         "examples"
+         "examples",
+         "README.md",
+         "library.json"
        ],
        "exclude": [
          "src/secrets.h",
